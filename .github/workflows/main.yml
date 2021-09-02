@@ -5,18 +5,12 @@ on:
       - main
 jobs:
   Build-and-Deploy:
-    # env:
-    #   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-    #   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID}}
-    #   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        # if: ${{ env.VERCEL_TOKEN && env.VERCEL_ORG_ID && env.VERCEL_PROJECT_ID }}
         uses: actions/checkout@v2
 
       - uses: amondnet/vercel-action@v20
-        # if: ${{ env.VERCEL_TOKEN && env.VERCEL_ORG_ID && env.VERCEL_PROJECT_ID }}
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
