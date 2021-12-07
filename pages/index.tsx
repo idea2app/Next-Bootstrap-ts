@@ -17,7 +17,7 @@ export function getStaticProps() {
   return { props: { mainNav, framework } };
 }
 
-export default ({
+const HomePage = ({
   mainNav,
   framework,
 }: InferGetStaticPropsType<typeof getStaticProps>) => (
@@ -126,3 +126,5 @@ export default ({
     </footer>
   </div>
 );
+
+export default HomePage;

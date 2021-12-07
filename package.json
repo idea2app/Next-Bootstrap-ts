@@ -4,6 +4,7 @@
   "description": "React project scaffold based on TypeScript, Next.js & Bootstrap.",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
