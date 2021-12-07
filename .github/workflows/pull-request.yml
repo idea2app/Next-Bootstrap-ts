@@ -1,8 +1,5 @@
-name: PR
+name: Pull Request
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches-ignore:
       - main
@@ -10,8 +7,8 @@ jobs:
   Build-and-Deploy:
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID}}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID}}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,6 +20,6 @@ jobs:
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: ./
