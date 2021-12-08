@@ -1,7 +1,5 @@
 import type { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -88,22 +86,6 @@ const HomePage = ({
         ))}
       </Row>
     </main>
-
-    <footer
-      className={`flex-fill d-flex justify-content-center align-items-center border-top ${styles.footer}`}
-    >
-      <a
-        className="flex-fill d-flex justify-content-center align-items-center"
-        href="https://vercel.com?utm_source=create-next-app&amp;utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by
-        <span className={`mx-2 ${styles.logo}`}>
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </span>
-      </a>
-    </footer>
   </>
 );
 
