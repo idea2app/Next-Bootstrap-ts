@@ -2,12 +2,9 @@ import type { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 
 import styles from '../styles/Home.module.scss';
@@ -21,31 +18,14 @@ const HomePage = ({
   mainNav,
   framework,
 }: InferGetStaticPropsType<typeof getStaticProps>) => (
-  <div>
+  <>
     <Head>
       <title>Next-Bootstrap.ts</title>
       <meta
         name="description"
         content="React project scaffold based on TypeScript, Next.js &amp; Bootstrap."
       />
-      <link rel="icon" href="/favicon.ico" />
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      />
     </Head>
-
-    <Navbar bg="dark" variant="dark" className={styles.navbar}>
-      <Container>
-        <Navbar.Brand href=".">Next-Bootstrap.ts</Navbar.Brand>
-        <Nav className="me-auto">
-          {/* <Nav.Link href="#component">Component</Nav.Link> */}
-          <Nav.Link href="https://github.com/idea2app/nextjs-reactbootstrap-ts">
-            Source code
-          </Nav.Link>
-        </Nav>
-      </Container>
-    </Navbar>
 
     <main
       className={`flex-fill d-flex flex-column justify-content-center align-items-center ${styles.main}`}
@@ -124,7 +104,7 @@ const HomePage = ({
         </span>
       </a>
     </footer>
-  </div>
+  </>
 );
 
 export default HomePage;
