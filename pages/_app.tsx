@@ -18,11 +18,15 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
         />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+        />
       </Head>
 
       <Navbar bg="dark" variant="dark" fixed="top">
         <Container>
-          <Navbar.Brand href=".">Next-Bootstrap.ts</Navbar.Brand>
+          <Navbar.Brand href="/">Next-Bootstrap.ts</Navbar.Brand>
           <Nav className="me-auto">
             {/* <Nav.Link href="#component">Component</Nav.Link> */}
             <Nav.Link href="https://github.com/idea2app/nextjs-reactbootstrap-ts">
