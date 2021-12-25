@@ -1,10 +1,10 @@
 import type { InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
+import PageHead from '../components/PageHead';
 import styles from '../styles/Home.module.scss';
 import { mainNav, framework } from './api/home';
 
@@ -17,13 +17,7 @@ const HomePage = ({
   framework,
 }: InferGetStaticPropsType<typeof getStaticProps>) => (
   <>
-    <Head>
-      <title>Next-Bootstrap.ts</title>
-      <meta
-        name="description"
-        content="React project scaffold based on TypeScript, Next.js &amp; Bootstrap."
-      />
-    </Head>
+    <PageHead />
 
     <main
       className={`flex-fill d-flex flex-column justify-content-center align-items-center ${styles.main}`}

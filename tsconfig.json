@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES5",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["@types/jest", "jest-playwright-preset"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
