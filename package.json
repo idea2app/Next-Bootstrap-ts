@@ -1,10 +1,10 @@
 {
   "name": "@idea2app/next-bootstrap-ts",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "React project scaffold based on TypeScript, Next.js & Bootstrap.",
   "private": true,
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky install  &&  npx playwright install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
