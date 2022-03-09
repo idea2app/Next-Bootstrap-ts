@@ -13,9 +13,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        if: ${{ env.VERCEL_TOKEN && env.VERCEL_ORG_ID && env.VERCEL_PROJECT_ID }}
 
-      - uses: amondnet/vercel-action@v20
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        if: ${{ !env.VERCEL_TOKEN || !env.VERCEL_ORG_ID || !env.VERCEL_PROJECT_ID }}
+        with:
+          node-version: 14
+          cache: yarn
+
+      - name: Install & build
+        if: ${{ !env.VERCEL_TOKEN || !env.VERCEL_ORG_ID || !env.VERCEL_PROJECT_ID }}
+        run: yarn  &&  yarn export
+
+      - name: Deploy to GitHub pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ !env.VERCEL_TOKEN || !env.VERCEL_ORG_ID || !env.VERCEL_PROJECT_ID }}
+        with:
+          publish_dir: ./out
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          force_orphan: true
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v20
         if: ${{ env.VERCEL_TOKEN && env.VERCEL_ORG_ID && env.VERCEL_PROJECT_ID }}
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
