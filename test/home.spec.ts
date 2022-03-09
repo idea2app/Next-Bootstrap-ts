@@ -19,7 +19,7 @@ describe('Home page', () => {
     const navLinks = (await page.$$('.navbar-nav .nav-link')).map(link =>
       link.textContent(),
     );
-    expect(await Promise.all(navLinks)).toEqual(['Source code']);
+    expect(await Promise.all(navLinks)).toEqual(['Component', 'Source code']);
   });
 
   it('should render Nav Card list', async () => {

@@ -1,34 +1,21 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Image from 'next/image';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import '../styles/globals.less';
 
-import 'idea-react/dist/index.css';
-import '../styles/globals.css';
+const Name = process.env.NEXT_PUBLIC_SITE_NAME || '';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
-        />
       </Head>
-
       <Navbar bg="primary" variant="dark" fixed="top">
         <Container>
-          <Navbar.Brand href="/">Next-Bootstrap.ts</Navbar.Brand>
+          <Navbar.Brand href="/">{Name}</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/component">Component</Nav.Link>
             <Nav.Link href="https://github.com/idea2app/nextjs-reactbootstrap-ts">

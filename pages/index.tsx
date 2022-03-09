@@ -1,11 +1,8 @@
 import type { InferGetStaticPropsType } from 'next';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import { Row, Col, Card, Button } from 'react-bootstrap';
 
 import PageHead from '../components/PageHead';
-import styles from '../styles/Home.module.scss';
+import styles from '../styles/Home.module.less';
 import { mainNav, framework } from './api/home';
 
 export function getStaticProps() {
