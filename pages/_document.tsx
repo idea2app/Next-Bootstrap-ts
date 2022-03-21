@@ -6,8 +6,8 @@ export default function Document() {
       <Head>
         <link rel="icon" href="/favicon.ico" />
 
-        <link rel="manifest" href="manifest.json" />
-        <script src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.17/pwacompat.min.js"></script>
+        <link rel="manifest" href="/manifest.json" />
+        <script src="https://polyfill.kaiyuanshe.cn/feature/PWAManifest.js"></script>
 
         <link
           rel="stylesheet"
