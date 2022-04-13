@@ -13,20 +13,25 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Navbar bg="primary" variant="dark" fixed="top">
+      <Navbar bg="primary" variant="dark" fixed="top" expand="sm">
         <Container>
           <Navbar.Brand href="/">{Name}</Navbar.Brand>
-          <Nav className="me-auto">
-            <Link href="/component" passHref>
-              <Nav.Link>Component</Nav.Link>
-            </Link>
-            <Link
-              href="https://github.com/idea2app/nextjs-reactbootstrap-ts"
-              passHref
-            >
-              <Nav.Link>Source code</Nav.Link>
-            </Link>
-          </Nav>
+
+          <Navbar.Toggle aria-controls="navbar-inner" />
+
+          <Navbar.Collapse id="navbar-inner">
+            <Nav className="me-auto">
+              <Link href="/component" passHref>
+                <Nav.Link>Component</Nav.Link>
+              </Link>
+              <Link
+                href="https://github.com/idea2app/nextjs-reactbootstrap-ts"
+                passHref
+              >
+                <Nav.Link>Source code</Nav.Link>
+              </Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
 

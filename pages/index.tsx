@@ -1,5 +1,5 @@
 import type { InferGetStaticPropsType } from 'next';
-import { Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 import PageHead from '../components/PageHead';
 import styles from '../styles/Home.module.less';
@@ -16,9 +16,7 @@ const HomePage = ({
   <>
     <PageHead />
 
-    <main
-      className={`flex-fill d-flex flex-column justify-content-center align-items-center ${styles.main}`}
-    >
+    <Container as="main" className={styles.main}>
       <h1 className={`m-0 text-center ${styles.title}`}>
         Welcome to
         <a className="text-primary mx-2" href="https://nextjs.org">
@@ -33,33 +31,32 @@ const HomePage = ({
         </code>
       </p>
 
-      <div
-        className={`d-flex flex-wrap flex-column flex-sm-row justify-content-center align-items-center ${styles.grid}`}
-      >
+      <Row className="g-4" xs={1} sm={2} md={4}>
         {mainNav.map(({ link, title, summary }) => (
-          <Card
-            key={link}
-            className={`m-3 p-4 rounded-3 border ${styles.card}`}
-            tabIndex={-1}
-          >
-            <Card.Body>
-              <Card.Title as="h2" className="fs-4 mb-3">
-                <a href={link} className="stretched-link">
-                  {title} &rarr;
-                </a>
-              </Card.Title>
-              <Card.Text className="fs-5">{summary}</Card.Text>
-            </Card.Body>
-          </Card>
+          <Col key={link}>
+            <Card
+              className={`h-100 p-4 rounded-3 border ${styles.card}`}
+              tabIndex={-1}
+            >
+              <Card.Body>
+                <Card.Title as="h2" className="fs-4 mb-3">
+                  <a href={link} className="stretched-link">
+                    {title} &rarr;
+                  </a>
+                </Card.Title>
+                <Card.Text className="fs-5">{summary}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
         ))}
-      </div>
+      </Row>
 
       <h2 className="my-4 text-center">Upstream projects</h2>
-      <Row>
+      <Row className="g-4" xs={1} sm={2} md={3}>
         {framework.map(({ logo, title, summary, link, repository }) => (
-          <Col sm={4} key={title}>
+          <Col key={title}>
             <Card className={`h-100 ${styles.card}`}>
-              <Card.Img variant="top" src={logo} className={styles.cardImg} />
+              <Card.Img variant="top" src={logo} />
               <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>{summary}</Card.Text>
@@ -76,7 +73,7 @@ const HomePage = ({
           </Col>
         ))}
       </Row>
-    </main>
+    </Container>
   </>
 );
 

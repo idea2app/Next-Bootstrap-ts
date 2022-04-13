@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import dynamic from 'next/dynamic';
 import Container from 'react-bootstrap/Container';
 import {
@@ -9,12 +10,29 @@ import {
   FilterInput,
   FilePicker,
   EditorHTML,
+  CodeBlock,
 } from 'idea-react';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-tsx';
 
 import PageHead from '../components/PageHead';
 import RichEditData from './api/rich-edit.json';
 
 const Editor = dynamic(() => import('../components/Editor'), { ssr: false });
+
+Editor.displayName = 'Editor';
+
+function Example({ title, children }: PropsWithChildren<{ title: string }>) {
+  return (
+    <>
+      <h2 className="mt-3">{title}</h2>
+      {children}
+      <CodeBlock language="tsx">{children}</CodeBlock>
+    </>
+  );
+}
 
 export default function ComponentPage() {
   const title = 'Component examples',
@@ -27,35 +45,48 @@ export default function ComponentPage() {
       <Container>
         <h1 className="my-4 text-center">{title}</h1>
 
-        <h2 className="mt-3">Time Distance</h2>
-        <TimeDistance date="1989-06-04" />
+        <Example title="Time Distance">
+          <TimeDistance date="1989-06-04" />
+        </Example>
 
-        <h2 className="mt-3">Pagination Bar</h2>
-        <PaginationBar
-          pathResolver={index => `/test?page=${index}`}
-          total={10}
-          current={5}
-        />
-        <h2 className="mt-3">Icon</h2>
-        <Icon name="heart" className="text-danger" />
+        <Example title="Pagination Bar">
+          <PaginationBar
+            className="my-3 justify-content-end"
+            size="sm"
+            count={42}
+            pageCount={5}
+            currentPage={1}
+            onChange={console.log}
+          />
+        </Example>
 
-        <h2 className="mt-3">Avatar</h2>
-        <Avatar src="https://github.com/idea2app.png" />
+        <Example title="Icon">
+          <Icon name="heart" className="text-danger" />
+        </Example>
 
-        <h2 className="mt-3">Nameplate</h2>
-        <Nameplate avatar="https://github.com/idea2app.png" name="idea2app" />
+        <Example title="Avatar">
+          <Avatar src="https://github.com/idea2app.png" />
+        </Example>
 
-        <h2 className="mt-3">Filter Input</h2>
-        <FilterInput name="tags" />
+        <Example title="Nameplate">
+          <Nameplate avatar="https://github.com/idea2app.png" name="idea2app" />
+        </Example>
 
-        <h2 className="mt-3">File Picker</h2>
-        <FilePicker accept="image/*" multiple name="images" />
+        <Example title="Filter Input">
+          <FilterInput name="tags" />
+        </Example>
 
-        <h2 className="mt-3">Editor</h2>
-        <Editor name="content" defaultValue={content} />
+        <Example title="File Picker">
+          <FilePicker accept="image/*" multiple name="images" />
+        </Example>
 
-        <h2 className="mt-3">Editor HTML</h2>
-        <EditorHTML data={content} />
+        <Example title="Editor">
+          <Editor name="content" defaultValue={content} />
+        </Example>
+
+        <Example title="Editor HTML">
+          <EditorHTML data={content} />
+        </Example>
       </Container>
     </>
   );

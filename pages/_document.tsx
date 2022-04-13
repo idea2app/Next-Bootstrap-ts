@@ -7,7 +7,7 @@ export default function Document() {
         <link rel="icon" href="/favicon.ico" />
 
         <link rel="manifest" href="/manifest.json" />
-        <script src="https://polyfill.kaiyuanshe.cn/feature/PWAManifest.js"></script>
+        <script src="https://polyfill.web-cell.dev/feature/PWAManifest.js"></script>
 
         <link
           rel="stylesheet"
@@ -15,11 +15,15 @@ export default function Document() {
         />
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/idea-react@0.10.3/dist/index.css"
+          href="https://cdn.jsdelivr.net/npm/idea-react@0.22.0/dist/index.css"
         />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/themes/prism.min.css"
         />
       </Head>
 
