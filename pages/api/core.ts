@@ -1,4 +1,5 @@
 import { ServerResponse } from 'http';
+import { HTTPError, Request, request as call } from 'koajax';
 import { setCookie } from 'nookies';
 import {
   GetServerSidePropsContext,
@@ -6,35 +7,15 @@ import {
   NextApiResponse,
 } from 'next';
 
-export type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
-
 const BackHost = process.env.NEXT_PUBLIC_API_HOST;
 const Host =
   typeof window !== 'undefined'
     ? new URL('/api/', location.origin) + ''
     : BackHost;
 
-export class HTTPError<T> extends URIError {
-  status: number;
-  header?: Record<string, string>;
-  body: T;
-
-  constructor(message: string, status: number, body: T, header?: Headers) {
-    super(message);
-
-    this.status = status;
-
-    if (header)
-      this.header = Object.fromEntries(
-        [...header].map(([key, value]) => [key, value]),
-      );
-    this.body = body;
-  }
-}
-
-export async function request<T>(
+export async function request<T = void>(
   path: string,
-  method?: HTTPMethod,
+  method?: Request['method'],
   body?: any,
   context?: Partial<GetServerSidePropsContext>,
   headers: Record<string, any> = {},
@@ -48,28 +29,34 @@ export async function request<T>(
     headers['Content-Type'] = 'application/json';
   } catch {}
 
-  const response = await fetch(new URL(path, Host) + '', {
+  const { response } = call<T>({
+    path: new URL(path, Host) + '',
     method,
     body,
     headers,
+    responseType: 'json',
   });
-  const data = response.status !== 204 ? await response.json() : {};
+  const { body: data } = await response;
 
-  if (response.status < 300) return data as T;
-
-  const { status, statusText, headers: header } = response;
-
-  throw new HTTPError(statusText, status, data, header);
+  return data!;
 }
 
-export async function requestClient<T>(
+export async function requestClient<T = void>(
   path: string,
-  method?: HTTPMethod,
+  method?: Request['method'],
   body?: any,
   headers: Record<string, any> = {},
 ) {
   try {
-    return request<T>(new URL(path, BackHost) + '', method, body, {}, headers);
+    const token = '';
+
+    return request<T>(
+      new URL(path, BackHost) + '',
+      method,
+      body,
+      {},
+      { Authorization: `Bearer ${token}`, ...headers },
+    );
   } catch (error) {
     if (error instanceof HTTPError) location.href = `/${error.status}`;
 

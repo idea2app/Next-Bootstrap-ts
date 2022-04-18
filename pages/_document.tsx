@@ -15,7 +15,7 @@ export default function Document() {
         />
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/idea-react@0.22.0/dist/index.css"
+          href="https://cdn.jsdelivr.net/npm/idea-react@0.22.2/dist/index.css"
         />
         <link
           rel="stylesheet"
@@ -23,7 +23,7 @@ export default function Document() {
         />
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/themes/prism.min.css"
+          href="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/themes/prism.min.css"
         />
       </Head>
 
