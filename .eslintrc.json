@@ -1,6 +1,7 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
+    "react/jsx-no-target-blank": "warn",
     "@next/next/no-sync-scripts": "warn"
   }
 }
