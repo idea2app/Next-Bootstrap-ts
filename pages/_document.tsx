@@ -23,7 +23,7 @@ export default function Document() {
         />
         <link
           rel="stylesheet"
-          href="https://unpkg.com/prismjs@1.28.0/themes/prism.min.css"
+          href="https://unpkg.com/prismjs@1.29.0/themes/prism.min.css"
         />
       </Head>
 
