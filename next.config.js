@@ -1,8 +1,9 @@
 const withLess = require('next-with-less'),
-  withoutCSSImport = require('next-remove-imports'),
+  removeCSSImport = require('next-remove-imports'),
   setPWA = require('next-pwa');
 
 const { NODE_ENV } = process.env,
+  withoutCSSImport = removeCSSImport(),
   withPWA = setPWA({
     dest: 'public',
     register: true,
@@ -11,9 +12,10 @@ const { NODE_ENV } = process.env,
   });
 
 /** @type {import('next').NextConfig} */
-module.exports = withPWA({
-  ...withLess({
-    reactStrictMode: true,
-  }),
-  ...withoutCSSImport(),
-});
+module.exports = withPWA(
+  withoutCSSImport(
+    withLess({
+      reactStrictMode: true,
+    }),
+  ),
+);
