@@ -15,7 +15,7 @@ export default function Document() {
         />
         <link
           rel="stylesheet"
-          href="https://unpkg.com/idea-react@0.26.7/dist/index.css"
+          href="https://unpkg.com/idea-react@0.26.10/dist/index.css"
         />
         <link
           rel="stylesheet"
