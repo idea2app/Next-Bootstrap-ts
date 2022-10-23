@@ -1,8 +1,4 @@
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-typescript';
-import 'prismjs/components/prism-tsx';
-
+// eslint-disable-next-line simple-import-sort/imports
 import {
   Avatar,
   CodeBlock,
@@ -17,6 +13,11 @@ import {
 import dynamic from 'next/dynamic';
 import { PropsWithChildren } from 'react';
 import Container from 'react-bootstrap/Container';
+
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-tsx';
 
 import PageHead from '../components/PageHead';
 import RichEditData from './api/rich-edit.json';
