@@ -1,5 +1,5 @@
-import type { PropsWithChildren } from 'react';
 import Head from 'next/head';
+import type { PropsWithChildren } from 'react';
 
 export type PageHeadProps = PropsWithChildren<{
   title?: string;

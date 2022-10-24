@@ -1,17 +1,19 @@
-import { PropsWithChildren } from 'react';
-import dynamic from 'next/dynamic';
-import Container from 'react-bootstrap/Container';
+// eslint-disable-next-line simple-import-sort/imports
 import {
-  TimeDistance,
-  PaginationBar,
-  Icon,
   Avatar,
-  Nameplate,
-  FilterInput,
-  FilePicker,
-  EditorHTML,
   CodeBlock,
+  EditorHTML,
+  FilePicker,
+  FilterInput,
+  Icon,
+  Nameplate,
+  PaginationBar,
+  TimeDistance,
 } from 'idea-react';
+import dynamic from 'next/dynamic';
+import { PropsWithChildren } from 'react';
+import Container from 'react-bootstrap/Container';
+
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-typescript';
