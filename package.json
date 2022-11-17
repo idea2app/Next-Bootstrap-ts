@@ -26,6 +26,8 @@
     "idea-react": "^0.26.10",
     "koajax": "^0.8.3",
     "next": "^12.2.5",
+    "next-compose-plugins": "^2.2.1",
+    "next-translate": "^1.5.0",
     "nookies": "^2.5.2",
     "prismjs": "^1.29.0",
     "react": "^17.0.2",

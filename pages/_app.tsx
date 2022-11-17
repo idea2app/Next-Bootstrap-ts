@@ -3,7 +3,7 @@ import '../styles/globals.less';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Container, Image, Nav, Navbar } from 'react-bootstrap';
+import { Container, Dropdown, Image, Nav, Navbar } from 'react-bootstrap';
 
 const Name = process.env.NEXT_PUBLIC_SITE_NAME || '';
 
@@ -32,6 +32,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               </Link>
             </Nav>
           </Navbar.Collapse>
+
+          <Dropdown className="me-3 mt-1">
+            <Dropdown.Toggle>Zh/En</Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="/en">En</Dropdown.Item>
+              <Dropdown.Item href="/zh">Zh</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </Container>
       </Navbar>
 
