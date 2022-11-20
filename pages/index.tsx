@@ -17,6 +17,7 @@ const HomePage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   const { t } = useTranslation();
+
   return (
     <>
       <PageHead />

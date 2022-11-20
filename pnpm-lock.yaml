@@ -27,7 +27,6 @@ specifiers:
   less-loader: ^11.0.0
   lint-staged: ^13.0.3
   next: ^12.2.5
-  next-compose-plugins: ^2.2.1
   next-pwa: ~5.6.0
   next-translate: ^1.5.0
   next-with-less: ^2.0.5
@@ -56,7 +55,6 @@ dependencies:
   idea-react: 0.26.10_skupw6xbzkakjdhvqodqtebpzu
   koajax: 0.8.3_typescript@4.8.2
   next: 12.2.5_sfoxds7t5ydpegc3knd667wn6m
-  next-compose-plugins: 2.2.1
   next-translate: 1.6.0_next@12.2.5+react@17.0.2
   nookies: 2.5.2
   prismjs: 1.29.0
@@ -5205,10 +5203,6 @@ packages:
       - supports-color
     dev: true
     optional: true
-
-  /next-compose-plugins/2.2.1:
-    resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==}
-    dev: false
 
   /next-pwa/5.6.0_next@12.2.5:
     resolution: {integrity: sha512-XV8g8C6B7UmViXU8askMEYhWwQ4qc/XqJGnexbLV68hzKaGHZDMtHsm2TNxFcbR7+ypVuth/wwpiIlMwpRJJ5A==}
