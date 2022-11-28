@@ -18,7 +18,7 @@ const HomePage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
 
-  const { locale: currentLocale } = router;
+  const locale = router.currentLocale;
 
   const allNaves = [
     { locale: 'en', nav: mainNav },
