@@ -21,6 +21,29 @@ export const mainNav = [
   },
 ];
 
+export const zhMainNav = [
+  {
+    title: '文档',
+    link: 'https://nextjs.org/docs',
+    summary: '查找有关 Next.js 功能和 API 的深入信息。',
+  },
+  {
+    title: '学习',
+    link: 'https://nextjs.org/learn',
+    summary: '在带有测验的交互式课程中了解 Next.js!',
+  },
+  {
+    title: '示例',
+    link: 'https://github.com/vercel/next.js/tree/master/examples',
+    summary: '发现和部署示例 Next.js 项目。',
+  },
+  {
+    title: '部署',
+    link: 'https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
+    summary: '使用 Vercel 立即将您的 Next.js 站点部署到公共 URL。',
+  },
+];
+
 export const framework = [
   {
     title: 'Next.js',

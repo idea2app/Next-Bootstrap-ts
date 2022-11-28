@@ -3,11 +3,16 @@ import '../styles/globals.less';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import useTranslation from 'next-translate/useTranslation';
 import { Container, Dropdown, Image, Nav, Navbar } from 'react-bootstrap';
 
 const Name = process.env.NEXT_PUBLIC_SITE_NAME || '';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const { t } = useTranslation();
+
   return (
     <>
       <Head>
@@ -22,22 +27,22 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <Navbar.Collapse id="navbar-inner">
             <Nav className="me-auto">
               <Link href="/component" passHref>
-                <Nav.Link>Component</Nav.Link>
+                <Nav.Link> {t('common:nav1')}</Nav.Link>
               </Link>
               <Link
                 href="https://github.com/idea2app/nextjs-reactbootstrap-ts"
                 passHref
               >
-                <Nav.Link>Source code</Nav.Link>
+                <Nav.Link> {t('common:link2')}</Nav.Link>
               </Link>
             </Nav>
           </Navbar.Collapse>
 
           <Dropdown className="me-3 mt-1">
-            <Dropdown.Toggle>Zh/En</Dropdown.Toggle>
+            <Dropdown.Toggle>{t('common:lang')}</Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item href="/en">En</Dropdown.Item>
-              <Dropdown.Item href="/zh">Zh</Dropdown.Item>
+              <Dropdown.Item href="/en">En/英</Dropdown.Item>
+              <Dropdown.Item href="/zh">Zh/中</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Container>
