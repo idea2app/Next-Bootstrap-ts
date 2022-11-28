@@ -9,9 +9,13 @@ const { NODE_ENV } = process.env,
     disable: NODE_ENV === 'development',
   });
 
+const nextTranslate = require('next-translate');
+
 /** @type {import('next').NextConfig} */
+
 module.exports = withPWA(
   withLess({
+    ...nextTranslate(),
     reactStrictMode: true,
   }),
 );

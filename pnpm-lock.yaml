@@ -28,6 +28,7 @@ specifiers:
   lint-staged: ^13.0.3
   next: ^12.2.5
   next-pwa: ~5.6.0
+  next-translate: ^1.5.0
   next-with-less: ^2.0.5
   nookies: ^2.5.2
   playwright: ^1.25.1
@@ -54,6 +55,7 @@ dependencies:
   idea-react: 0.26.10_skupw6xbzkakjdhvqodqtebpzu
   koajax: 0.8.3_typescript@4.8.2
   next: 12.2.5_sfoxds7t5ydpegc3knd667wn6m
+  next-translate: 1.6.0_next@12.2.5+react@17.0.2
   nookies: 2.5.2
   prismjs: 1.29.0
   react: 17.0.2
@@ -5223,6 +5225,16 @@ packages:
       - uglify-js
       - webpack
     dev: true
+
+  /next-translate/1.6.0_next@12.2.5+react@17.0.2:
+    resolution: {integrity: sha512-rmRBYOwPHvokN+5uH3O/SZqfRUVORLkgt/097mSaq3+CWcEtXEjkVrfBZpYwZ8W3og4QVd+uphYX//qegnIbRg==}
+    peerDependencies:
+      next: '>= 10.0.0'
+      react: '>= 16.8.0'
+    dependencies:
+      next: 12.2.5_sfoxds7t5ydpegc3knd667wn6m
+      react: 17.0.2
+    dev: false
 
   /next-with-less/2.0.5_dunabz2lpnpx335455gossad6i:
     resolution: {integrity: sha512-1MJDcgFOPucFPCMXV7rTqcWiLI2nLSBi8bA6msvkiNLhYyZMXaFl4MkyYf7eOEUUEtA/c5eD0grPhbcDkrKqPQ==}
