@@ -17,8 +17,8 @@ const HomePage = ({
   zhMainNav,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
-
-  const locale = router.currentLocale;
+  // @ts-ignore
+  const { currentLocale } = router;
 
   const allNaves = [
     { locale: 'en', nav: mainNav },
