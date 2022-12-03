@@ -1,46 +1,25 @@
-export const mainNav = [
-  {
-    title: 'Documentation',
-    link: 'https://nextjs.org/docs',
-    summary: 'Find in-depth information about Next.js features and API.',
-  },
-  {
-    title: 'Learn',
-    link: 'https://nextjs.org/learn',
-    summary: 'Learn about Next.js in an interactive course with quizzes!',
-  },
-  {
-    title: 'Examples',
-    link: 'https://github.com/vercel/next.js/tree/master/examples',
-    summary: 'Discover and deploy boilerplate example Next.js projects.',
-  },
-  {
-    title: 'Deploy',
-    link: 'https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
-    summary: 'Instantly deploy your Next.js site to a public URL with Vercel.',
-  },
-];
+import { i18n } from '../../models/Translation';
 
-export const zhMainNav = [
+export const mainNav = () => [
   {
-    title: '文档',
+    title: i18n.t('documentation'),
     link: 'https://nextjs.org/docs',
-    summary: '查找有关 Next.js 功能和 API 的深入信息。',
+    summary: i18n.t('documentation_summary'),
   },
   {
-    title: '学习',
+    title: i18n.t('learn'),
     link: 'https://nextjs.org/learn',
-    summary: '在带有测验的交互式课程中了解 Next.js!',
+    summary: i18n.t('learn_summary'),
   },
   {
-    title: '示例',
+    title: i18n.t('examples'),
     link: 'https://github.com/vercel/next.js/tree/master/examples',
-    summary: '发现和部署示例 Next.js 项目。',
+    summary: i18n.t('examples_summary'),
   },
   {
-    title: '部署',
+    title: i18n.t('deploy'),
     link: 'https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
-    summary: '使用 Vercel 立即将您的 Next.js 站点部署到公共 URL。',
+    summary: i18n.t('deploy_summary'),
   },
 ];
 
