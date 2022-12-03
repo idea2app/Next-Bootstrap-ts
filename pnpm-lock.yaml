@@ -22,9 +22,12 @@ specifiers:
   less: ^4.1.3
   less-loader: ^11.1.0
   lint-staged: ^13.0.4
+  mobx: ^5.15.7
+  mobx-i18n: ^0.3.3
+  mobx-react: ^6.3.1
+  mobx-restful: ^0.6.0-rc.18
   next: ^12.3.4
   next-pwa: ~5.6.0
-  next-translate: ^1.6.0
   next-with-less: ^2.0.5
   nookies: ^2.5.2
   prettier: ^2.8.0
@@ -48,8 +51,11 @@ dependencies:
   editorjs-html: 3.4.2
   idea-react: 0.27.10_pln2tismy4sdv2rhbuo7sdpnju
   koajax: 0.8.3_typescript@4.9.3
+  mobx: 5.15.7
+  mobx-i18n: 0.3.3_mobx@5.15.7
+  mobx-react: 6.3.1_hhkghttxnhy2fe22wf4styxgna
+  mobx-restful: 0.6.0-rc.18_u5xgoorg6yzvdvercnuaox6oka
   next: 12.3.4_sfoxds7t5ydpegc3knd667wn6m
-  next-translate: 1.6.0_next@12.3.4+react@17.0.2
   nookies: 2.5.2
   prismjs: 1.29.0
   react: 17.0.2
@@ -2197,6 +2203,13 @@ packages:
       supports-color: 7.2.0
     dev: true
 
+  /class-validator/0.13.2:
+    resolution: {integrity: sha512-yBUcQy07FPlGzUjoLuUfIOXzgynnQPPruyK1Ge2B74k9ROwnle1E+NxLWnUv5OLU8hA/qL5leAE9XnXq3byaBw==}
+    dependencies:
+      libphonenumber-js: 1.10.14
+      validator: 13.7.0
+    dev: false
+
   /classnames/2.3.1:
     resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
     dev: false
@@ -3681,6 +3694,10 @@ packages:
       type-check: 0.4.0
     dev: true
 
+  /libphonenumber-js/1.10.14:
+    resolution: {integrity: sha512-McGS7GV/WjJ2KjfOGhJU1oJn29RYeo7Q+RpANRbUNMQ9gj5XArpbjurSuyYPTejFwbaUojstQ4XyWCrAzGOUXw==}
+    dev: false
+
   /lilconfig/2.0.6:
     resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
     engines: {node: '>=10'}
@@ -3868,6 +3885,16 @@ packages:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
 
+  /mobx-i18n/0.3.3_mobx@5.15.7:
+    resolution: {integrity: sha512-o2HPDQO1464CMKfenBXHU1foyPxCkKnbnXYrYCXdtzX+8aFwkAa93MxDyXR9zXT0AiZt7jZikO2b0S8kKu0I0Q==}
+    peerDependencies:
+      mobx: '>=4 <6'
+    dependencies:
+      '@swc/helpers': 0.4.14
+      mobx: 5.15.7
+      regenerator-runtime: 0.13.11
+    dev: false
+
   /mobx-react-lite/2.2.2_hhkghttxnhy2fe22wf4styxgna:
     resolution: {integrity: sha512-2SlXALHIkyUPDsV4VTKVR9DW7K3Ksh1aaIv3NrNJygTbhXe2A9GrcKHZ2ovIiOp/BXilOcTYemfHHZubP431dg==}
     peerDependencies:
@@ -3898,6 +3925,23 @@ packages:
     transitivePeerDependencies:
       - react-dom
       - react-native
+    dev: false
+
+  /mobx-restful/0.6.0-rc.18_u5xgoorg6yzvdvercnuaox6oka:
+    resolution: {integrity: sha512-Tawww9r8Fb9saT+y7/Xun0RsoyXgiVfUFA7z7PsHpGI8agYx0h9N2LML47Zh3LT5bsZgkuyL01lOOSbXARpTzQ==}
+    peerDependencies:
+      mobx: '>=4 <6'
+    dependencies:
+      '@swc/helpers': 0.4.14
+      class-validator: 0.13.2
+      koajax: 0.8.3_typescript@4.9.3
+      mobx: 5.15.7
+      reflect-metadata: 0.1.13
+      regenerator-runtime: 0.13.11
+      web-utility: 3.9.9_typescript@4.9.3
+    transitivePeerDependencies:
+      - jsdom
+      - typescript
     dev: false
 
   /mobx/5.15.7:
@@ -3960,16 +4004,6 @@ packages:
       - uglify-js
       - webpack
     dev: true
-
-  /next-translate/1.6.0_next@12.3.4+react@17.0.2:
-    resolution: {integrity: sha512-rmRBYOwPHvokN+5uH3O/SZqfRUVORLkgt/097mSaq3+CWcEtXEjkVrfBZpYwZ8W3og4QVd+uphYX//qegnIbRg==}
-    peerDependencies:
-      next: '>= 10.0.0'
-      react: '>= 16.8.0'
-    dependencies:
-      next: 12.3.4_sfoxds7t5ydpegc3knd667wn6m
-      react: 17.0.2
-    dev: false
 
   /next-with-less/2.0.5_7qch47vmkxdytnoviaew2l266y:
     resolution: {integrity: sha512-1MJDcgFOPucFPCMXV7rTqcWiLI2nLSBi8bA6msvkiNLhYyZMXaFl4MkyYf7eOEUUEtA/c5eD0grPhbcDkrKqPQ==}
@@ -4454,6 +4488,10 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
+
+  /reflect-metadata/0.1.13:
+    resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}
+    dev: false
 
   /regenerate-unicode-properties/10.0.1:
     resolution: {integrity: sha512-vn5DU6yg6h8hP/2OkQo3K7uVILvY4iu0oI4t3HFa81UPkhGJwkRwM10JEc3upjdhHjs/k8GJY1sRBhk5sr69Bw==}
@@ -5186,6 +5224,11 @@ packages:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
     dev: true
 
+  /validator/13.7.0:
+    resolution: {integrity: sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==}
+    engines: {node: '>= 0.10'}
+    dev: false
+
   /warning/4.0.3:
     resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
     dependencies:
@@ -5197,9 +5240,9 @@ packages:
     peerDependencies:
       typescript: ^4.1.0
     dependencies:
-      '@swc/helpers': 0.4.11
+      '@swc/helpers': 0.4.14
       element-internals-polyfill: 1.1.11
-      regenerator-runtime: 0.13.9
+      regenerator-runtime: 0.13.11
       typescript: 4.9.3
     dev: false
 

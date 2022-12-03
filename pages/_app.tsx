@@ -1,17 +1,21 @@
 import '../styles/globals.less';
 
+import { observer, useStaticRendering } from 'mobx-react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
 import { Container, Dropdown, Image, Nav, Navbar } from 'react-bootstrap';
+
+import { isServer } from '../models/Base';
+import { i18n, LanguageName } from '../models/Translation';
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+useStaticRendering(isServer());
 
 const Name = process.env.NEXT_PUBLIC_SITE_NAME || '';
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-  const { t } = useTranslation();
+const AppShell = observer(({ Component, pageProps }: AppProps) => {
+  const { currentLanguage, t } = i18n;
 
   return (
     <>
@@ -27,22 +31,30 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <Navbar.Collapse id="navbar-inner">
             <Nav className="me-auto">
               <Link href="/component" passHref>
-                <Nav.Link> {t('common:nav1')}</Nav.Link>
+                <Nav.Link> {t('component')}</Nav.Link>
               </Link>
               <Link
-                href="https://github.com/idea2app/nextjs-reactbootstrap-ts"
+                href="https://github.com/idea2app/Next-Bootstrap-TS"
                 passHref
               >
-                <Nav.Link> {t('common:link2')}</Nav.Link>
+                <Nav.Link>{t('source_code')}</Nav.Link>
               </Link>
             </Nav>
           </Navbar.Collapse>
 
           <Dropdown className="me-3 mt-1">
-            <Dropdown.Toggle>{t('common:lang')}</Dropdown.Toggle>
+            <Dropdown.Toggle>{LanguageName[currentLanguage]}</Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item href="/en">En/英</Dropdown.Item>
-              <Dropdown.Item href="/zh">Zh/中</Dropdown.Item>
+              {Object.entries(LanguageName).map(([key, name]) => (
+                <Dropdown.Item
+                  key={key}
+                  onClick={() =>
+                    i18n.changeLanguage(key as typeof currentLanguage)
+                  }
+                >
+                  {name}
+                </Dropdown.Item>
+              ))}
             </Dropdown.Menu>
           </Dropdown>
         </Container>
@@ -59,7 +71,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by
+          {t('powered_by')}
           <span className="mx-2">
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
@@ -67,4 +79,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       </footer>
     </>
   );
-}
+});
+
+export default AppShell;

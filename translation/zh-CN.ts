@@ -1,0 +1,17 @@
+export default {
+  welcome_to: '欢迎使用',
+  get_started_by_editing: '开始你的项目吧，编辑',
+  upstream_projects: '上游项目',
+  home_page: '主页',
+  source_code: '源代码',
+  component: '组件',
+  powered_by: '强力驱动自',
+  documentation: '文档',
+  documentation_summary: '查找有关 Next.js 功能和 API 的深入信息。',
+  learn: '学习',
+  learn_summary: '在带有测验的交互式课程中了解 Next.js！',
+  examples: '示例',
+  examples_summary: '发现和部署示例 Next.js 项目。',
+  deploy: '部署',
+  deploy_summary: '使用 Vercel 立即将您的 Next.js 站点部署到公共 URL。',
+} as const;
