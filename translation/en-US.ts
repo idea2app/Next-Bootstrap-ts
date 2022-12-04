@@ -5,6 +5,7 @@ export default {
   home_page: 'Home Page',
   source_code: 'Source Code',
   component: 'Component',
+  pagination: 'Pagination',
   powered_by: 'Powered by',
   documentation: 'Documentation',
   documentation_summary:
@@ -16,4 +17,14 @@ export default {
   deploy: 'Deploy',
   deploy_summary:
     'Instantly deploy your Next.js site to a public URL with Vercel.',
+  create: 'Create',
+  submit: 'Submit',
+  cancel: 'Cancel',
+  edit: 'Edit',
+  total_x_rows: ({ totalCount }: { totalCount: number }) =>
+    `Total ${totalCount} rows`,
+  repository_name: 'Repository Name',
+  programming_language: 'Programming Language',
+  topic: 'Topic',
+  star_count: 'Star Count',
 } as const;

@@ -31,9 +31,13 @@ const AppShell = observer(({ Component, pageProps }: AppProps) => {
           <Navbar.Collapse id="navbar-inner">
             <Nav className="me-auto">
               <Link href="/component" passHref>
-                <Nav.Link> {t('component')}</Nav.Link>
+                <Nav.Link>{t('component')}</Nav.Link>
+              </Link>
+              <Link href="/pagination" passHref>
+                <Nav.Link>{t('pagination')}</Nav.Link>
               </Link>
               <Link
+                target="_blank"
                 href="https://github.com/idea2app/Next-Bootstrap-TS"
                 passHref
               >
