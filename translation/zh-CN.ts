@@ -5,6 +5,7 @@ export default {
   home_page: '主页',
   source_code: '源代码',
   component: '组件',
+  pagination: '分页',
   powered_by: '强力驱动自',
   documentation: '文档',
   documentation_summary: '查找有关 Next.js 功能和 API 的深入信息。',
@@ -14,4 +15,14 @@ export default {
   examples_summary: '发现和部署示例 Next.js 项目。',
   deploy: '部署',
   deploy_summary: '使用 Vercel 立即将您的 Next.js 站点部署到公共 URL。',
+  create: '新增',
+  submit: '提交',
+  cancel: '取消',
+  edit: '编辑',
+  total_x_rows: ({ totalCount }: { totalCount: number }) =>
+    `共 ${totalCount} 行`,
+  repository_name: '仓库名',
+  programming_language: '编程语言',
+  topic: '话题',
+  star_count: '星标数',
 } as const;
