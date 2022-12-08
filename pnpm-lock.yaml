@@ -24,7 +24,7 @@ specifiers:
   less-loader: ^11.1.0
   lint-staged: ^13.1.0
   mobx: ^5.15.7
-  mobx-i18n: ^0.3.6
+  mobx-i18n: ^0.3.7
   mobx-react: ^6.3.1
   mobx-restful: ^0.6.0-rc.19
   mobx-restful-table: ^0.4.1
@@ -54,7 +54,7 @@ dependencies:
   idea-react: 0.27.11_wuwhjehtb3nhae7urou2zggzfe
   koajax: 0.8.3_typescript@4.9.4
   mobx: 5.15.7
-  mobx-i18n: 0.3.6_mobx@5.15.7
+  mobx-i18n: 0.3.7_mobx@5.15.7
   mobx-react: 6.3.1_hhkghttxnhy2fe22wf4styxgna
   mobx-restful: 0.6.0-rc.19_ko5aw6egmzhmuoydeephv2wbae
   mobx-restful-table: 0.4.1_xi7pryn2632t4p3fx5qukzupfm
@@ -3880,8 +3880,8 @@ packages:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
 
-  /mobx-i18n/0.3.6_mobx@5.15.7:
-    resolution: {integrity: sha512-hfa+TUaIpgGAGIJ0tq6WOHYNTrTHPt6bUHbAwNxbyiP+puCnYAA8EnKyBLXALUi+cvTB4jtv6MgJueoPjI96rQ==}
+  /mobx-i18n/0.3.7_mobx@5.15.7:
+    resolution: {integrity: sha512-o4+boM9QWG+0oDeuaSgjiN4orhODiG99BHg2d6FhfMI9mEANOyvS3veh8IjrtkFd+Do8zjbvUlvMOt6x+Piw3Q==}
     peerDependencies:
       mobx: '>=4 <6'
     dependencies:
@@ -3932,7 +3932,7 @@ packages:
       classnames: 2.3.2
       lodash: 4.17.21
       mobx: 5.15.7
-      mobx-i18n: 0.3.6_mobx@5.15.7
+      mobx-i18n: 0.3.7_mobx@5.15.7
       mobx-react: 6.3.1_hhkghttxnhy2fe22wf4styxgna
       mobx-restful: 0.6.0-rc.19_ko5aw6egmzhmuoydeephv2wbae
       react: 17.0.2

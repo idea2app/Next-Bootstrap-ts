@@ -16,7 +16,7 @@
     "idea-react": "^0.27.11",
     "koajax": "^0.8.3",
     "mobx": "^5.15.7",
-    "mobx-i18n": "^0.3.6",
+    "mobx-i18n": "^0.3.7",
     "mobx-react": "^6.3.1",
     "mobx-restful": "^0.6.0-rc.19",
     "mobx-restful-table": "^0.4.1",
