@@ -2,8 +2,9 @@ import { computed } from 'mobx';
 import { observer } from 'mobx-react';
 import { Column, RestTable } from 'mobx-restful-table';
 import { PureComponent } from 'react';
-import { Badge, Button, Container } from 'react-bootstrap';
+import { Badge, Container } from 'react-bootstrap';
 
+import PageHead from '../components/PageHead';
 import repositoryStore, { Repository } from '../models/Repository';
 import { i18n } from '../models/Translation';
 
@@ -56,32 +57,26 @@ export default class PaginationPage extends PureComponent {
         ),
       },
       { key: 'stargazers_count', type: 'number', renderHead: t('star_count') },
-      {
-        renderBody: data => (
-          <Button
-            className="text-nowrap"
-            variant="warning"
-            size="sm"
-            onClick={() => (repositoryStore.currentOne = data)}
-          >
-            {t('edit')}
-          </Button>
-        ),
-      },
     ];
   }
 
   render() {
+    const { t } = i18n;
+
     return (
       <Container style={{ height: '91vh' }}>
+        <PageHead title={t('pagination')} />
+
         <RestTable
           className="text-center"
           striped
           hover
           editable
+          deletable
           columns={this.columns}
           store={repositoryStore}
           translater={i18n}
+          onCheck={console.log}
         />
       </Container>
     );

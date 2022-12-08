@@ -40,11 +40,20 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository][16] - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deployment
+
+### Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform][12] from the creators of Next.js.
 
 Check out our [Next.js deployment documentation][17] for more details.
+
+### Docker
+
+```shell
+pnpm pack-image
+pnpm container
+```
 
 [1]: https://reactjs.org/
 [2]: https://www.typescriptlang.org/

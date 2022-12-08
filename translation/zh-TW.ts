@@ -1,3 +1,5 @@
+import { IDType } from 'mobx-restful';
+
 export default {
   welcome_to: '歡迎使用',
   get_started_by_editing: '開始你的專案吧，編輯',
@@ -19,8 +21,11 @@ export default {
   submit: '提交',
   cancel: '取消',
   edit: '編輯',
+  delete: '刪除',
   total_x_rows: ({ totalCount }: { totalCount: number }) =>
     `共 ${totalCount} 行`,
+  sure_to_delete_x: ({ keys }: { keys: IDType[] }) =>
+    `您確定刪除 ${keys.join('、')} 嗎？`,
   repository_name: '倉庫名',
   programming_language: '編程語言',
   topic: '話題',

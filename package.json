@@ -3,43 +3,34 @@
   "version": "0.7.0",
   "description": "React project scaffold based on TypeScript, Next.js, Bootstrap & Workbox.",
   "private": true,
-  "scripts": {
-    "prepare": "husky install",
-    "dev": "next dev",
-    "build": "next build",
-    "export": "next build  &&  next export",
-    "start": "next start",
-    "lint": "next lint",
-    "test": "lint-staged  &&  npm run lint"
-  },
   "dependencies": {
     "@editorjs/code": "^2.8.0",
-    "@editorjs/editorjs": "^2.26.1",
+    "@editorjs/editorjs": "^2.26.2",
     "@editorjs/header": "^2.7.0",
-    "@editorjs/image": "^2.7.0",
+    "@editorjs/image": "^2.7.1",
     "@editorjs/link": "^2.5.0",
     "@editorjs/list": "^1.8.0",
     "@editorjs/paragraph": "^2.9.0",
     "@editorjs/quote": "^2.5.0",
     "editorjs-html": "^3.4.2",
-    "idea-react": "^0.27.10",
+    "idea-react": "^0.27.11",
     "koajax": "^0.8.3",
     "mobx": "^5.15.7",
-    "mobx-i18n": "^0.3.4",
+    "mobx-i18n": "^0.3.6",
     "mobx-react": "^6.3.1",
-    "mobx-restful": "^0.6.0-rc.18",
-    "mobx-restful-table": "^0.3.0",
+    "mobx-restful": "^0.6.0-rc.19",
+    "mobx-restful-table": "^0.4.1",
     "next": "^12.3.4",
     "prismjs": "^1.29.0",
     "react": "^17.0.2",
-    "react-bootstrap": "^2.6.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^17.0.2",
     "react-editor-js": "^2.1.0",
     "web-utility": "^3.9.9"
   },
   "devDependencies": {
     "@octokit/openapi-types": "^14.0.0",
-    "@types/node": "^16.18.4",
+    "@types/node": "^16.18.7",
     "@types/react": "^17.0.52",
     "eslint": "^8.29.0",
     "eslint-config-next": "^12.3.4",
@@ -51,9 +42,9 @@
     "lint-staged": "^13.1.0",
     "next-pwa": "~5.6.0",
     "next-with-less": "^2.0.5",
-    "prettier": "^2.8.0",
+    "prettier": "^2.8.1",
     "ts-node": "^10.9.1",
-    "typescript": "~4.9.3"
+    "typescript": "~4.9.4"
   },
   "prettier": {
     "singleQuote": true,
@@ -63,5 +54,16 @@
   "lint-staged": {
     "*.{html,md,less,json,yml,js,ts,tsx}": "prettier --write",
     "*.{js,jsx,ts,tsx}": "eslint --fix"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next build  &&  next export",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "lint-staged  &&  npm run lint",
+    "pack-image": "docker build -t next-bootstrap-ts:latest .",
+    "container": "docker rm -f next-bootstrap-ts  &&  docker run --name next-bootstrap-ts -p 3000:3000 -d next-bootstrap-ts:latest"
   }
 }
