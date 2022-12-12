@@ -36,6 +36,9 @@ const AppShell = observer(({ Component, pageProps }: AppProps) => {
               <Link href="/pagination" passHref>
                 <Nav.Link>{t('pagination')}</Nav.Link>
               </Link>
+              <Link href="/scroll-list" passHref>
+                <Nav.Link>{t('scroll_list')}</Nav.Link>
+              </Link>
               <Link
                 target="_blank"
                 href="https://github.com/idea2app/Next-Bootstrap-TS"

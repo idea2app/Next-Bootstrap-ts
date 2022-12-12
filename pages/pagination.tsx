@@ -5,13 +5,13 @@ import { PureComponent } from 'react';
 import { Badge, Container } from 'react-bootstrap';
 
 import PageHead from '../components/PageHead';
-import repositoryStore, { Repository } from '../models/Repository';
+import repositoryStore, { GitRepository } from '../models/Repository';
 import { i18n } from '../models/Translation';
 
 @observer
 export default class PaginationPage extends PureComponent {
   @computed
-  get columns(): Column<Repository>[] {
+  get columns(): Column<GitRepository>[] {
     const { t } = i18n;
 
     return [
