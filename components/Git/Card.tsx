@@ -7,7 +7,9 @@ import { GitRepository } from '../../models/Repository';
 import { i18n } from '../../models/Translation';
 import { GitLogo } from './Logo';
 
-export interface GitCardProps extends GitRepository {
+export interface GitCardProps
+  extends Pick<GitRepository, 'full_name' | 'html_url' | 'languages'>,
+    Partial<Pick<GitRepository, 'topics' | 'description' | 'homepage'>> {
   className?: string;
 }
 
