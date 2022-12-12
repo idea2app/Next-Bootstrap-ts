@@ -30,4 +30,9 @@ export default {
   programming_language: '编程语言',
   topic: '话题',
   star_count: '星标数',
+
+  // Scroll List
+  scroll_list: '滚动列表',
+  load_more: '加载更多……',
+  no_more: '没有更多',
 } as const;

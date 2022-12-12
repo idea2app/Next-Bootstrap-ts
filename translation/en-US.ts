@@ -32,4 +32,9 @@ export default {
   programming_language: 'Programming Language',
   topic: 'Topic',
   star_count: 'Star Count',
+
+  // Scroll List
+  scroll_list: 'Scroll List',
+  load_more: 'Load more...',
+  no_more: 'No more',
 } as const;

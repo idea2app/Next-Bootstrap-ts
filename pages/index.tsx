@@ -1,7 +1,8 @@
 import { observer } from 'mobx-react';
 import type { InferGetServerSidePropsType } from 'next';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Card,Col, Container, Row } from 'react-bootstrap';
 
+import { GitCard } from '../components/Git/Card';
 import PageHead from '../components/PageHead';
 import { i18n } from '../models/Translation';
 import styles from '../styles/Home.module.less';
@@ -57,25 +58,21 @@ const HomePage = observer(
 
           <h2 className="my-4 text-center">{t('upstream_projects')}</h2>
           <Row className="g-4" xs={1} sm={2} md={3}>
-            {framework.map(({ logo, title, summary, link, repository }) => (
-              <Col key={title}>
-                <Card className={`h-100 ${styles.card}`}>
-                  <Card.Img variant="top" src={logo} />
-                  <Card.Body>
-                    <Card.Title>{title}</Card.Title>
-                    <Card.Text>{summary}</Card.Text>
-                  </Card.Body>
-                  <Card.Footer className="d-flex justify-content-around">
-                    <Button variant="primary" href={link}>
-                      {t('home_page')}
-                    </Button>
-                    <Button variant="success" href={repository}>
-                      {t('source_code')}
-                    </Button>
-                  </Card.Footer>
-                </Card>
-              </Col>
-            ))}
+            {framework.map(
+              ({ title, languages, tags, summary, link, repository }) => (
+                <Col key={title}>
+                  <GitCard
+                    className={`h-100 ${styles.card}`}
+                    full_name={title}
+                    html_url={repository}
+                    homepage={link}
+                    languages={languages}
+                    topics={tags}
+                    description={summary}
+                  />
+                </Col>
+              ),
+            )}
           </Row>
         </Container>
       </>
