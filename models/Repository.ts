@@ -29,7 +29,7 @@ const getGitLanguages = memoize(async (URI: string) => {
 export class RepositoryModel extends ListModel<GitRepository> {
   client = githubClient;
   baseURI = 'orgs/idea2app/repos';
-  indexKey = 'name' as const;
+  indexKey = 'full_name' as const;
 
   @toggle('downloading')
   async getOne(URI: string) {

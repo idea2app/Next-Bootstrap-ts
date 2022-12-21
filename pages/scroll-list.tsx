@@ -5,7 +5,7 @@ import { FC } from 'react';
 import { Container } from 'react-bootstrap';
 
 import { GitList } from '../components/Git';
-import PageHead from '../components/PageHead';
+import { PageHead } from '../components/PageHead';
 import repositoryStore from '../models/Repository';
 import { i18n } from '../models/Translation';
 import { withTranslation } from './api/core';

@@ -4,9 +4,12 @@ import { Column, RestTable } from 'mobx-restful-table';
 import { PureComponent } from 'react';
 import { Badge, Container } from 'react-bootstrap';
 
-import PageHead from '../components/PageHead';
+import { PageHead } from '../components/PageHead';
 import repositoryStore, { GitRepository } from '../models/Repository';
 import { i18n } from '../models/Translation';
+import { withTranslation } from './api/core';
+
+export const getServerSideProps = withTranslation();
 
 @observer
 export default class PaginationPage extends PureComponent {
@@ -17,7 +20,6 @@ export default class PaginationPage extends PureComponent {
     return [
       {
         key: 'full_name',
-        type: 'url',
         renderHead: t('repository_name'),
         renderBody: ({ html_url, full_name }) => (
           <a target="_blank" href={html_url} rel="noreferrer">
@@ -25,17 +27,7 @@ export default class PaginationPage extends PureComponent {
           </a>
         ),
       },
-      {
-        key: 'homepage',
-        type: 'url',
-        renderHead: t('home_page'),
-        renderBody: ({ homepage }) =>
-          homepage && (
-            <a target="_blank" href={homepage} rel="noreferrer">
-              {homepage}
-            </a>
-          ),
-      },
+      { key: 'homepage', type: 'url', renderHead: t('home_page') },
       { key: 'language', renderHead: t('programming_language') },
       {
         key: 'topics',

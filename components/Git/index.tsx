@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import { ScrollList, ScrollListProps } from 'mobx-restful-table';
-import { Col, Row } from 'react-bootstrap';
+import { Col,Row } from 'react-bootstrap';
 
 import { GitRepository, RepositoryModel } from '../../models/Repository';
 import { i18n } from '../../models/Translation';

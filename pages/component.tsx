@@ -11,7 +11,7 @@ import {
   TimeDistance,
 } from 'idea-react';
 import dynamic from 'next/dynamic';
-import { PropsWithChildren } from 'react';
+import { FC } from 'react';
 import Container from 'react-bootstrap/Container';
 
 import 'prismjs/components/prism-javascript';
@@ -19,22 +19,20 @@ import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-tsx';
 
-import PageHead from '../components/PageHead';
+import { PageHead } from '../components/PageHead';
 import RichEditData from './api/rich-edit.json';
 
 const Editor = dynamic(() => import('../components/Editor'), { ssr: false });
 
 Editor.displayName = 'Editor';
 
-function Example({ title, children }: PropsWithChildren<{ title: string }>) {
-  return (
-    <>
-      <h2 className="mt-3">{title}</h2>
-      {children}
-      <CodeBlock language="tsx">{children}</CodeBlock>
-    </>
-  );
-}
+const Example: FC<{ title: string }> = ({ title, children }) => (
+  <>
+    <h2 className="mt-3">{title}</h2>
+    {children}
+    <CodeBlock language="tsx">{children}</CodeBlock>
+  </>
+);
 
 export default function ComponentPage() {
   const title = 'Component examples',
