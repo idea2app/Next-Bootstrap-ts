@@ -8,13 +8,15 @@ import { GitList } from '../components/Git';
 import { PageHead } from '../components/PageHead';
 import repositoryStore from '../models/Repository';
 import { i18n } from '../models/Translation';
-import { withTranslation } from './api/core';
+import { withErrorLog, withTranslation } from './api/core';
 
-export const getServerSideProps = withTranslation(async () => {
-  const list = await repositoryStore.getList({}, 1);
+export const getServerSideProps = withErrorLog(
+  withTranslation(async () => {
+    const list = await repositoryStore.getList({}, 1);
 
-  return { props: { list } };
-});
+    return { props: { list } };
+  }),
+);
 
 const ScrollListPage: FC<
   InferGetServerSidePropsType<typeof getServerSideProps>
