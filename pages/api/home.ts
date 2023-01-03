@@ -1,25 +1,27 @@
 import { i18n } from '../../models/Translation';
 
+const { t } = i18n;
+
 export const mainNav = () => [
   {
-    title: i18n.t('documentation'),
+    title: t('documentation'),
     link: 'https://nextjs.org/docs',
-    summary: i18n.t('documentation_summary'),
+    summary: t('documentation_summary'),
   },
   {
-    title: i18n.t('learn'),
+    title: t('learn'),
     link: 'https://nextjs.org/learn',
-    summary: i18n.t('learn_summary'),
+    summary: t('learn_summary'),
   },
   {
-    title: i18n.t('examples'),
+    title: t('examples'),
     link: 'https://github.com/vercel/next.js/tree/master/examples',
-    summary: i18n.t('examples_summary'),
+    summary: t('examples_summary'),
   },
   {
-    title: i18n.t('deploy'),
+    title: t('deploy'),
     link: 'https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
-    summary: i18n.t('deploy_summary'),
+    summary: t('deploy_summary'),
   },
 ];
 
