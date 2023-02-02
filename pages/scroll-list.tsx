@@ -6,13 +6,13 @@ import { Container } from 'react-bootstrap';
 
 import { GitList } from '../components/Git';
 import { PageHead } from '../components/PageHead';
-import repositoryStore from '../models/Repository';
+import repositoryStore, { RepositoryModel } from '../models/Repository';
 import { i18n } from '../models/Translation';
 import { withErrorLog, withTranslation } from './api/core';
 
 export const getServerSideProps = withErrorLog(
   withTranslation(async () => {
-    const list = await repositoryStore.getList({}, 1);
+    const list = await new RepositoryModel().getList();
 
     return { props: { list } };
   }),
