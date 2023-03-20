@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import { ScrollList, ScrollListProps } from 'mobx-restful-table';
-import { Col,Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 import { GitRepository, RepositoryModel } from '../../models/Repository';
 import { i18n } from '../../models/Translation';
@@ -13,7 +13,7 @@ export interface GitListProps extends ScrollListProps<GitRepository> {
 @observer
 export class GitList extends ScrollList<GitListProps> {
   store = this.props.store;
-  translater = i18n;
+  translator = i18n;
 
   constructor(props: GitListProps) {
     super(props);

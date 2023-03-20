@@ -60,14 +60,14 @@ export default class PaginationPage extends PureComponent {
         <PageHead title={t('pagination')} />
 
         <RestTable
-          className="text-center"
+          className="h-100 text-center"
           striped
           hover
           editable
           deletable
           columns={this.columns}
           store={repositoryStore}
-          translater={i18n}
+          translator={i18n}
           onCheck={console.log}
         />
       </Container>
