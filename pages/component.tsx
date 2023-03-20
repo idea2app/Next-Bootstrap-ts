@@ -2,6 +2,7 @@
 import dynamic from 'next/dynamic';
 import { textJoin } from 'mobx-i18n';
 import { observer } from 'mobx-react';
+import Head from 'next/head';
 import { FC } from 'react';
 import { Container } from 'react-bootstrap';
 import { CodeBlock, EditorHTML } from 'idea-react';
@@ -44,6 +45,13 @@ const ComponentPage = observer(() => {
 
   return (
     <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/prismjs@1.29.0/themes/prism.min.css"
+        />
+      </Head>
+
       <PageHead title={title} />
 
       <Container>
