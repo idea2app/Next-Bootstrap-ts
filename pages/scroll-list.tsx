@@ -1,10 +1,11 @@
 import { Loading } from 'idea-react';
 import { observer } from 'mobx-react';
+import { ScrollList } from 'mobx-restful-table';
 import { InferGetServerSidePropsType } from 'next';
 import { FC } from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 
-import { GitList } from '../components/Git';
+import { GitCard } from '../components/Git/Card';
 import { PageHead } from '../components/PageHead';
 import repositoryStore, { RepositoryModel } from '../models/Repository';
 import { i18n } from '../models/Translation';
@@ -28,7 +29,20 @@ const ScrollListPage: FC<
 
     {repositoryStore.downloading > 0 && <Loading />}
 
-    <GitList store={repositoryStore} defaultData={list} />
+    <ScrollList
+      translator={i18n}
+      store={repositoryStore}
+      renderList={allItems => (
+        <Row as="ul" className="list-unstyled g-4" xs={1} sm={2}>
+          {allItems.map(item => (
+            <Col as="li" key={item.id}>
+              <GitCard className="h-100 shadow-sm" {...item} />
+            </Col>
+          ))}
+        </Row>
+      )}
+      defaultData={list}
+    />
   </Container>
 ));
 
