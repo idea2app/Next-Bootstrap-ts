@@ -1,3 +1,4 @@
+import { text2color } from 'idea-react';
 import { computed } from 'mobx';
 import { observer } from 'mobx-react';
 import { Column, RestTable } from 'mobx-restful-table';
@@ -38,6 +39,7 @@ export default class PaginationPage extends PureComponent {
               <Badge
                 key={topic}
                 className="me-2"
+                bg={text2color(topic, ['light'])}
                 as="a"
                 target="_blank"
                 href={`https://github.com/topics/${topic}`}
