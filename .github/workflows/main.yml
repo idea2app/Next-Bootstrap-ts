@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-node@v3
         if: ${{ !env.VERCEL_TOKEN || !env.VERCEL_ORG_ID || !env.VERCEL_PROJECT_ID }}
         with:
-          node-version: 16
+          node-version: 18
           cache: pnpm
 
       - name: Install Dependencies
