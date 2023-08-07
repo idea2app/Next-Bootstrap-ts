@@ -2,15 +2,15 @@ import { text2color } from 'idea-react';
 import { computed } from 'mobx';
 import { observer } from 'mobx-react';
 import { Column, RestTable } from 'mobx-restful-table';
+import { compose, translator } from 'next-ssr-middleware';
 import { PureComponent } from 'react';
 import { Badge, Container } from 'react-bootstrap';
 
 import { PageHead } from '../components/PageHead';
 import repositoryStore, { GitRepository } from '../models/Repository';
 import { i18n } from '../models/Translation';
-import { withTranslation } from './api/core';
 
-export const getServerSideProps = withTranslation();
+export const getServerSideProps = compose(translator(i18n));
 
 @observer
 export default class PaginationPage extends PureComponent {

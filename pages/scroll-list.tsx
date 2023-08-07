@@ -2,6 +2,7 @@ import { Loading } from 'idea-react';
 import { observer } from 'mobx-react';
 import { ScrollList } from 'mobx-restful-table';
 import { InferGetServerSidePropsType } from 'next';
+import { compose, errorLogger, translator } from 'next-ssr-middleware';
 import { FC } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
@@ -9,14 +10,15 @@ import { GitCard } from '../components/Git/Card';
 import { PageHead } from '../components/PageHead';
 import repositoryStore, { RepositoryModel } from '../models/Repository';
 import { i18n } from '../models/Translation';
-import { withErrorLog, withTranslation } from './api/core';
 
-export const getServerSideProps = withErrorLog(
-  withTranslation(async () => {
+export const getServerSideProps = compose(
+  errorLogger,
+  translator(i18n),
+  async () => {
     const list = await new RepositoryModel().getList();
 
     return { props: { list } };
-  }),
+  },
 );
 
 const ScrollListPage: FC<
