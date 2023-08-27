@@ -40,8 +40,7 @@ export const getServerSideProps = compose(translator(i18n));
 const ComponentPage = observer(() => {
   const { t } = i18n;
 
-  const title = textJoin(t('component'), t('examples')),
-    content = JSON.stringify(RichEditData);
+  const title = textJoin(t('component'), t('examples'));
 
   return (
     <>
@@ -62,11 +61,11 @@ const ComponentPage = observer(() => {
         </Example>
 
         <Example title="Block Editor">
-          <BlockEditor name="content" defaultValue={content} />
+          <BlockEditor name="content" defaultValue={RichEditData} />
         </Example>
 
         <Example title="Block Editor to HTML">
-          <EditorHTML data={content} />
+          <EditorHTML data={RichEditData} />
         </Example>
       </Container>
     </>

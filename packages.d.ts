@@ -5,7 +5,7 @@ declare module '*.less' {
 }
 
 declare module '@editorjs/*' {
-  const Plugin: import('react').ComponentClass;
+  const Plugin: import('@editorjs/editorjs').ToolConstructable;
 
   export default Plugin;
 }

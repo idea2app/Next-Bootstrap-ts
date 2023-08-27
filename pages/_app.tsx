@@ -1,6 +1,7 @@
 import '../styles/globals.less';
 
-import { observer, useStaticRendering } from 'mobx-react';
+import { configure } from 'mobx';
+import { enableStaticRendering, observer } from 'mobx-react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Image } from 'react-bootstrap';
@@ -9,8 +10,9 @@ import { MainNavigator } from '../components/MainNavigator';
 import { isServer } from '../models/Base';
 import { i18n } from '../models/Translation';
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-useStaticRendering(isServer());
+configure({ enforceActions: 'never' });
+
+enableStaticRendering(isServer());
 
 const { t } = i18n;
 
