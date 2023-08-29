@@ -8,10 +8,10 @@
 ## Technology stack
 
 - Language: [TypeScript v5][2]
-- Component engine: [Nextjs v12][3]
+- Component engine: [Nextjs v13][3]
 - Component suite: [Bootstrap v5][4]
 - PWA framework: [Workbox v6][5]
-- State management: [MobX][9]
+- State management: [MobX v6][9]
 - CI / CD: GitHub [Actions][11] + [Vercel][12]
 
 ## Getting Started
@@ -55,7 +55,7 @@ pnpm pack-image
 pnpm container
 ```
 
-[1]: https://reactjs.org/
+[1]: https://react.dev/
 [2]: https://www.typescriptlang.org/
 [3]: https://nextjs.org/
 [4]: https://getbootstrap.com/

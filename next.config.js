@@ -12,8 +12,4 @@ const { NODE_ENV } = process.env,
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = withPWA(
-  withLess({
-    reactStrictMode: true,
-  }),
-);
+module.exports = withPWA(withLess({}));

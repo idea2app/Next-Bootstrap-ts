@@ -1,6 +1,5 @@
 import { Option, Select } from 'idea-react';
 import { observer } from 'mobx-react';
-import Link from 'next/link';
 import { FC } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
@@ -26,15 +25,12 @@ export const MainNavigator: FC = observer(() => {
 
         <Navbar.Collapse id="navbar-inner">
           <Nav className="me-auto">
-            <Link href="/component" passHref>
-              <Nav.Link>{t('component')}</Nav.Link>
-            </Link>
-            <Link href="/pagination" passHref>
-              <Nav.Link>{t('pagination')}</Nav.Link>
-            </Link>
-            <Link href="/scroll-list" passHref>
-              <Nav.Link>{t('scroll_list')}</Nav.Link>
-            </Link>
+            <Nav.Link href="/component">{t('component')}</Nav.Link>
+
+            <Nav.Link href="/pagination">{t('pagination')}</Nav.Link>
+
+            <Nav.Link href="/scroll-list">{t('scroll_list')}</Nav.Link>
+
             <Nav.Link
               target="_blank"
               href="https://github.com/idea2app/Next-Bootstrap-TS"
