@@ -4,7 +4,7 @@ import { textJoin } from 'mobx-i18n';
 import { observer } from 'mobx-react';
 import Head from 'next/head';
 import { compose, translator } from 'next-ssr-middleware';
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { Container } from 'react-bootstrap';
 import { CodeBlock, EditorHTML } from 'idea-react';
 
@@ -27,7 +27,10 @@ const BlockEditor = dynamic(() => import('../components/BlockEditor'), {
 });
 BlockEditor.displayName = 'BlockEditor';
 
-const Example: FC<{ title: string }> = ({ title, children }) => (
+const Example: FC<PropsWithChildren<{ title: string }>> = ({
+  title,
+  children,
+}) => (
   <>
     <h2 className="mt-3">{title}</h2>
     {children}
