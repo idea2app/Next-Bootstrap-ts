@@ -7,12 +7,19 @@
 
 ## Technology stack
 
-- Language: [TypeScript v5][2]
+- Language: [TypeScript v5][2] + [MDX v2][10]
 - Component engine: [Nextjs v13][3]
 - Component suite: [Bootstrap v5][4]
 - PWA framework: [Workbox v6][5]
 - State management: [MobX v6][9]
 - CI / CD: GitHub [Actions][11] + [Vercel][12]
+
+## Major examples
+
+1. [Markdown articles](pages/article/)
+2. [Editor components](pages/component.tsx)
+3. [Pagination table](pages/pagination.tsx)
+4. [Scroll list](pages/scroll-list.tsx)
 
 ## Getting Started
 
@@ -64,6 +71,7 @@ pnpm container
 [7]: https://david-dm.org/idea2app/next-bootstrap-ts
 [8]: https://github.com/idea2app/Next-Bootstrap-ts/actions/workflows/main.yml
 [9]: https://github.com/mobxjs/mobx/tree/mobx4and5/docs
+[10]: https://mdxjs.com/
 [11]: https://github.com/features/actions
 [12]: https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme
 [13]: https://nextjs.org/docs/api-routes/introduction

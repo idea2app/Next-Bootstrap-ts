@@ -17,6 +17,8 @@ export default {
   examples_summary: '发现和部署示例 Next.js 项目。',
   deploy: '部署',
   deploy_summary: '使用 Vercel 立即将您的 Next.js 站点部署到公共 URL。',
+
+  // Pagination Table
   create: '新增',
   submit: '提交',
   cancel: '取消',
@@ -35,4 +37,7 @@ export default {
   scroll_list: '滚动列表',
   load_more: '加载更多……',
   no_more: '没有更多',
+
+  // MDX Article
+  article: '文章',
 } as const;

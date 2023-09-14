@@ -1,4 +1,6 @@
 import NextMDX from '@next/mdx';
+import CopyPlugin from 'copy-webpack-plugin';
+import { readdirSync, statSync } from 'fs';
 import setPWA from 'next-pwa';
 import withLess from 'next-with-less';
 import RemarkFrontMatter from 'remark-frontmatter';
@@ -34,8 +36,40 @@ export default withPWA(
             resource.request = resource.request.replace(/^node:/, '');
           }),
         );
+
+        if (
+          statSync('pages/article', {
+            throwIfNoEntry: false,
+          })?.isDirectory() &&
+          readdirSync('pages/article')[0]
+        )
+          config.plugins.push(
+            new CopyPlugin({
+              patterns: [
+                {
+                  from: 'pages/article',
+                  to: 'static/article',
+                },
+              ],
+            }),
+          );
         return config;
       },
+      rewrites: async () => ({
+        fallback: [
+          {
+            source: '/article/:path*',
+            destination: `/_next/static/article/:path*`,
+            has: [
+              {
+                type: 'header',
+                key: 'Accept',
+                value: '.*(image|audio|video|application)/.*',
+              },
+            ],
+          },
+        ],
+      }),
     }),
   ),
 );

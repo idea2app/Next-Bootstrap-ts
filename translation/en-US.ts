@@ -19,6 +19,8 @@ export default {
   deploy: 'Deploy',
   deploy_summary:
     'Instantly deploy your Next.js site to a public URL with Vercel.',
+
+  // Pagination Table
   create: 'Create',
   submit: 'Submit',
   cancel: 'Cancel',
@@ -37,4 +39,7 @@ export default {
   scroll_list: 'Scroll List',
   load_more: 'Load more...',
   no_more: 'No more',
+
+  // MDX Article
+  article: 'Article',
 } as const;
