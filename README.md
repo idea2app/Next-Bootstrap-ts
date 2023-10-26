@@ -2,13 +2,12 @@
 
 [React][1] project scaffold based on [TypeScript][2], [Next.js][3], [Bootstrap][4] & [Workbox][5]. And this project bootstrapped with [`create-next-app`][6].
 
-[![NPM Dependency](https://david-dm.org/idea2app/next-bootstrap-ts.svg)][7]
 [![CI & CD](https://github.com/idea2app/Next-Bootstrap-ts/actions/workflows/main.yml/badge.svg)][8]
 
 ## Technology stack
 
-- Language: [TypeScript v5][2] + [MDX v2][10]
-- Component engine: [Nextjs v13][3]
+- Language: [TypeScript v5][2] + [MDX v3][10]
+- Component engine: [Nextjs v14][3]
 - Component suite: [Bootstrap v5][4]
 - PWA framework: [Workbox v6][5]
 - State management: [MobX v6][9]
@@ -68,7 +67,6 @@ pnpm container
 [4]: https://getbootstrap.com/
 [5]: https://developers.google.com/web/tools/workbox
 [6]: https://github.com/vercel/next.js/tree/canary/packages/create-next-app
-[7]: https://david-dm.org/idea2app/next-bootstrap-ts
 [8]: https://github.com/idea2app/Next-Bootstrap-ts/actions/workflows/main.yml
 [9]: https://github.com/mobxjs/mobx/tree/mobx4and5/docs
 [10]: https://mdxjs.com/
