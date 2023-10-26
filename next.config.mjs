@@ -55,7 +55,7 @@ export default withPWA(
           );
         return config;
       },
-      rewrites: async () => ({
+      rewrites: () => ({
         fallback: [
           {
             source: '/article/:path*',
