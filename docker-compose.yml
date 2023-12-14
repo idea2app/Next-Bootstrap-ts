@@ -6,11 +6,6 @@ networks:
 services:
   next-bootstrap-ts:
     image: idea2app/next-bootstrap-ts
-    environment:
-      - NODE_ENV=production
-      - PORT=3000
-    ports:
-      - 3000:3000
     networks:
       - idea2app
     healthcheck:
