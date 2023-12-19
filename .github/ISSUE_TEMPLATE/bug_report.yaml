@@ -1,4 +1,4 @@
-name: 🐞 Bug
+name: 🐛 Bug
 description: File a bug/issue
 title: "[BUG] <title>"
 labels: ["Bug", "Needs Triage"]
@@ -28,26 +28,111 @@ body:
       description: Steps to reproduce the behavior.
       placeholder: |
         1. In this environment...
-        1. With this config...
-        1. Run '...'
-        1. See error...
+        2. With this config...
+        3. Run '...'
+        4. See error...
     validations:
       required: false
-  - type: textarea
+  - type: dropdown
+    id: hardware
     attributes:
-      label: Environment
-      description: |
-        examples:
-          - **OS**: Ubuntu 20.04
-          - **Node**: 13.14.0
-          - **npm**: 7.6.3
-      value: |
-        - OS:
-        - Node:
-        - npm:
-      render: Markdown
-    validations:
-      required: false
+      label: What hardware are you seeing the problem on?
+      multiple: true
+      options:
+        - Desktop
+        - Pad
+        - Phone
+        - Smart Device
+        - Car
+  - type: dropdown
+    id: system
+    attributes:
+      label: What operating system are you seeing the problem on?
+      multiple: true
+      options:
+        - BSD
+        - Linux
+        - Windows
+        - MacOS
+        - iOS
+        - Android
+  - type: dropdown
+    id: subsystem
+    attributes:
+      label: What subsystem are you seeing the problem on?
+      multiple: true
+      options:
+        - Docker
+        - WSL
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Arc Browser
+        - Opera
+        - Brave
+        - UC Browser
+  - type: dropdown
+    id: network_connection
+    attributes:
+      label: What network connection are you use?
+      multiple: true
+      options:
+        - WLAN
+        - WiFi
+        - 4G
+        - 5G
+  - type: dropdown
+    id: network_environment
+    attributes:
+      label: What network environment are you use?
+      multiple: true
+      options:
+        - Global
+        - China mainland
+  - type: dropdown
+    id: cli
+    attributes:
+      label: What command line terminal are you use?
+      multiple: true
+      options:
+        - Shell
+        - CMD
+        - Powershell
+  - type: dropdown
+    id: javascript_runtime
+    attributes:
+      label: What JavaScript runtime are you use?
+      multiple: true
+      options:
+        - Node.js
+        - Bun
+        - Deno
+  - type: dropdown
+    id: javascript_package_manager
+    attributes:
+      label: What JavaScript package manager are you use?
+      multiple: true
+      options:
+        - npm
+        - Yarn
+        - pnpm
+        - Bun
+  - type: dropdown
+    id: development_environment
+    attributes:
+      label: What development environment are you use?
+      multiple: true
+      options:
+        - Local
+        - Gitpod
+        - GitHub Codespaces
   - type: textarea
     attributes:
       label: Anything else?
