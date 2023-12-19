@@ -35,7 +35,7 @@ body:
   - type: dropdown
     id: hardware
     attributes:
-      label: What hardware are you seeing the problem on?
+      label: What kind of hardware did the bug occur on?
       multiple: true
       options:
         - Desktop
@@ -47,7 +47,7 @@ body:
   - type: dropdown
     id: system
     attributes:
-      label: What operating system are you seeing the problem on?
+      label: On which operating system are you experiencing the problem?
       multiple: true
       options:
         - BSD
@@ -60,11 +60,12 @@ body:
   - type: dropdown
     id: subsystem
     attributes:
-      label: What subsystem are you seeing the problem on?
+      label: What subsystem is the problem related to?
       multiple: true
       options:
         - Docker
         - WSL
+        - WINE
 
   - type: dropdown
     id: browsers
@@ -76,15 +77,15 @@ body:
         - Chrome
         - Safari
         - Microsoft Edge
-        - Arc Browser
         - Opera
         - Brave
+        - Arc Browser
         - UC Browser
 
   - type: dropdown
     id: network_connection
     attributes:
-      label: What network connection are you use?
+      label: What kind of network are you connecting to?
       multiple: true
       options:
         - WLAN
@@ -93,9 +94,9 @@ body:
         - 5G
 
   - type: dropdown
-    id: network_environment
+    id: network_region
     attributes:
-      label: What network environment are you use?
+      label: What network region are you in?
       multiple: true
       options:
         - Global
@@ -104,7 +105,7 @@ body:
   - type: dropdown
     id: cli
     attributes:
-      label: What command line terminal are you use?
+      label: Which command line terminal are you using?
       multiple: true
       options:
         - Shell
@@ -114,12 +115,13 @@ body:
   - type: dropdown
     id: javascript_runtime
     attributes:
-      label: What JavaScript runtime are you use?
+      label: Which JavaScript runtime are you using?
       multiple: true
       options:
         - Node.js
         - Bun
         - Deno
+
   - type: dropdown
     id: javascript_package_manager
     attributes:
