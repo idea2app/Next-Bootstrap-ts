@@ -1,7 +1,8 @@
 name: 🐛 Bug
 description: File a bug/issue
-title: "[BUG] <title>"
-labels: ["Bug", "Needs Triage"]
+title: <title>
+labels:
+  - bug
 body:
   - type: checkboxes
     attributes:
@@ -10,14 +11,17 @@ body:
       options:
         - label: I have searched the existing issues
           required: true
+
   - type: textarea
     attributes:
       label: Current Behavior
       description: A concise description of what you're experiencing.
+
   - type: textarea
     attributes:
       label: Expected Behavior
       description: A concise description of what you expected to happen.
+
   - type: textarea
     attributes:
       label: Steps To Reproduce
@@ -27,6 +31,7 @@ body:
         2. With this config...
         3. Run '...'
         4. See error...
+
   - type: dropdown
     id: hardware
     attributes:
@@ -38,6 +43,7 @@ body:
         - Phone
         - Smart Device
         - Car
+
   - type: dropdown
     id: system
     attributes:
@@ -50,6 +56,7 @@ body:
         - MacOS
         - iOS
         - Android
+
   - type: dropdown
     id: subsystem
     attributes:
@@ -58,6 +65,7 @@ body:
       options:
         - Docker
         - WSL
+
   - type: dropdown
     id: browsers
     attributes:
@@ -72,6 +80,7 @@ body:
         - Opera
         - Brave
         - UC Browser
+
   - type: dropdown
     id: network_connection
     attributes:
@@ -82,6 +91,7 @@ body:
         - WiFi
         - 4G
         - 5G
+
   - type: dropdown
     id: network_environment
     attributes:
@@ -90,6 +100,7 @@ body:
       options:
         - Global
         - China mainland
+
   - type: dropdown
     id: cli
     attributes:
@@ -99,6 +110,7 @@ body:
         - Shell
         - CMD
         - Powershell
+
   - type: dropdown
     id: javascript_runtime
     attributes:
@@ -118,6 +130,7 @@ body:
         - Yarn
         - pnpm
         - Bun
+
   - type: dropdown
     id: development_environment
     attributes:
@@ -127,6 +140,7 @@ body:
         - Local
         - Gitpod
         - GitHub Codespaces
+
   - type: textarea
     attributes:
       label: Anything else?
