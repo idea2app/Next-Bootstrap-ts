@@ -125,7 +125,7 @@ body:
   - type: dropdown
     id: javascript_package_manager
     attributes:
-      label: What JavaScript package manager are you use?
+      label: Which JavaScript package manager are you using?
       multiple: true
       options:
         - npm
@@ -136,7 +136,7 @@ body:
   - type: dropdown
     id: development_environment
     attributes:
-      label: What development environment are you use?
+      label: Which development environment are you using?
       multiple: true
       options:
         - Local

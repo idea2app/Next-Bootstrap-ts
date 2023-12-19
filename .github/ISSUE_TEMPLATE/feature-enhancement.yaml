@@ -15,7 +15,12 @@ body:
   - type: textarea
     attributes:
       label: Description
-      description: A detailed description of the new feature or enhancement you are proposing.
+      description: |
+        A detailed description of the new feature or enhancement you are proposing. Additionally, provide any relevant
+        links, references, or attachments to offer more context about the proposal. You can also attach images or other
+        files by clicking this area to highlight it and then dragging files in.
+
+        Tip: You can attach images or other files by clicking this area to highlight it and then dragging files in.
     validations:
       required: true
 
@@ -28,16 +33,3 @@ body:
     attributes:
       label: Proposed Solution
       description: If you have a specific solution in mind, please describe it here.
-
-  - type: textarea
-    attributes:
-      label: Additional Information
-      description: Any additional information or context that might be relevant to the feature/enhancement request.
-
-  - type: textarea
-    attributes:
-      label: Anything else?
-      description: |
-        Links? References? Anything that will give us more context about the feature or enhancement you are proposing!
-
-        Tip: You can attach images or other files by clicking this area to highlight it and then dragging files in.
