@@ -1,6 +1,6 @@
 {
   "name": "@idea2app/next-bootstrap-ts",
-  "version": "1.2.0",
+  "version": "1.5.0",
   "description": "React project scaffold based on TypeScript, Next.js, Bootstrap & Workbox.",
   "private": true,
   "engines": {
@@ -51,7 +51,7 @@
     "@types/lodash": "^4.14.202",
     "@types/node": "^18.19.3",
     "@types/react": "^18.2.45",
-    "eslint": "^8.55.0",
+    "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",

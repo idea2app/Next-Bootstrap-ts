@@ -1,5 +1,5 @@
-name: 🐛 Bug
-description: File a bug/issue
+name: 🐛 User Bug report
+description: File an UI bug/issue
 title: <title>
 labels:
   - bug
@@ -16,11 +16,15 @@ body:
     attributes:
       label: Current Behavior
       description: A concise description of what you're experiencing.
+    validations:
+      required: true
 
   - type: textarea
     attributes:
       label: Expected Behavior
       description: A concise description of what you expected to happen.
+    validations:
+      required: true
 
   - type: textarea
     attributes:
@@ -31,6 +35,8 @@ body:
         2. With this config...
         3. Run '...'
         4. See error...
+    validations:
+      required: true
 
   - type: dropdown
     id: hardware
@@ -43,6 +49,8 @@ body:
         - Phone
         - Smart Device
         - Car
+    validations:
+      required: true
 
   - type: dropdown
     id: system
@@ -56,19 +64,18 @@ body:
         - MacOS
         - iOS
         - Android
+    validations:
+      required: true
 
-  - type: dropdown
-    id: subsystem
+  - type: input
+    id: system-version
     attributes:
-      label: What subsystem is the problem related to?
-      multiple: true
-      options:
-        - Docker
-        - WSL
-        - WINE
+      label: The version of your Operation System
+    validations:
+      required: true
 
   - type: dropdown
-    id: browsers
+    id: Web-browser
     attributes:
       label: What browsers are you seeing the problem on?
       multiple: true
@@ -81,9 +88,18 @@ body:
         - Brave
         - Arc Browser
         - UC Browser
+    validations:
+      required: true
+
+  - type: input
+    id: Web-browser-version
+    attributes:
+      label: The version of your Web browser
+    validations:
+      required: true
 
   - type: dropdown
-    id: network_connection
+    id: network-connection
     attributes:
       label: What kind of network are you connecting to?
       multiple: true
@@ -92,56 +108,19 @@ body:
         - WiFi
         - 4G
         - 5G
+    validations:
+      required: true
 
   - type: dropdown
-    id: network_region
+    id: network-region
     attributes:
       label: What network region are you in?
       multiple: true
       options:
         - Global
         - China mainland
-
-  - type: dropdown
-    id: cli
-    attributes:
-      label: Which command line terminal are you using?
-      multiple: true
-      options:
-        - Shell
-        - CMD
-        - Powershell
-
-  - type: dropdown
-    id: javascript_runtime
-    attributes:
-      label: Which JavaScript runtime are you using?
-      multiple: true
-      options:
-        - Node.js
-        - Bun
-        - Deno
-
-  - type: dropdown
-    id: javascript_package_manager
-    attributes:
-      label: Which JavaScript package manager are you using?
-      multiple: true
-      options:
-        - npm
-        - Yarn
-        - pnpm
-        - Bun
-
-  - type: dropdown
-    id: development_environment
-    attributes:
-      label: Which development environment are you using?
-      multiple: true
-      options:
-        - Local
-        - Gitpod
-        - GitHub Codespaces
+    validations:
+      required: true
 
   - type: textarea
     attributes:

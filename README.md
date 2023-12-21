@@ -4,7 +4,8 @@
 
 [![CI & CD](https://github.com/idea2app/Next-Bootstrap-ts/actions/workflows/main.yml/badge.svg)][7]
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)][8] [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)][9]
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)][8]
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)][9]
 
 ## Technology stack
 
