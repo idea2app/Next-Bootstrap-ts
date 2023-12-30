@@ -16,6 +16,11 @@ services:
     labels:
       - 'autoheal=true'
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.80'
+          memory: 500M
     logging:
       driver: 'json-file'
       options:
