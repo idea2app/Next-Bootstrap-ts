@@ -1,4 +1,5 @@
 import NextMDX from '@next/mdx';
+import { withSentryConfig } from '@sentry/nextjs';
 import CopyPlugin from 'copy-webpack-plugin';
 import { readdirSync, statSync } from 'fs';
 import setPWA from 'next-pwa';
@@ -8,7 +9,8 @@ import RemarkGfm from 'remark-gfm';
 import RemarkMdxFrontMatter from 'remark-mdx-frontmatter';
 import webpack from 'webpack';
 
-const { NODE_ENV } = process.env;
+const { NODE_ENV, SENTRY_AUTH_TOKEN, SENTRY_ORG, SENTRY_PROJECT } = process.env;
+const isDev = NODE_ENV === 'development';
 
 const withMDX = NextMDX({
   extension: /\.mdx?$/,
@@ -21,11 +23,11 @@ const withPWA = setPWA({
   dest: 'public',
   register: true,
   skipWaiting: true,
-  disable: NODE_ENV === 'development',
+  disable: isDev,
 });
 
 /** @type {import('next').NextConfig} */
-export default withPWA(
+const nextConfig = withPWA(
   withLess(
     withMDX({
       pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
@@ -73,3 +75,21 @@ export default withPWA(
     }),
   ),
 );
+
+export default isDev || !SENTRY_AUTH_TOKEN
+  ? nextConfig
+  : withSentryConfig(
+      {
+        ...nextConfig,
+        sentry: {
+          transpileClientSDK: true,
+          autoInstrumentServerFunctions: false,
+        },
+      },
+      {
+        org: SENTRY_ORG,
+        project: SENTRY_PROJECT,
+        authToken: SENTRY_AUTH_TOKEN,
+        silent: true,
+      },
+    );
