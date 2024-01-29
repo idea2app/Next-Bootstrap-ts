@@ -111,7 +111,7 @@ pnpm container
 [19]: https://github.com/apps/settings
 [20]: https://github.com/new?template_name=Next-Bootstrap-ts&template_owner=idea2app
 [21]: https://codespaces.new/idea2app/Next-Bootstrap-ts
-[22]: https://github.com/idea2app/Next-Bootstrap-ts/blob/80967ed49045af9dbcf4d3695a2c39d53a6f71f1/.github/workflows/pull-request.yml#L9-L12
+[22]: https://github.com/idea2app/Next-Bootstrap-ts/blob/80967ed49045af9dbcf4d3695a2c39d53a6f71f1/.github/workflows/pull-request.yml#L9-L11
 [23]: https://github.com/idea2app/Next-Bootstrap-ts/settings/secrets/actions
 [24]: https://github.com/kaiyuanshe/kaiyuanshe.github.io/blob/bb4675a56bf1d6b207231313da5ed0af7cf0ebd6/.github/workflows/pull-request.yml#L32-L56
 [25]: https://github.com/idea2app/Next-Bootstrap-ts/issues/new/choose
