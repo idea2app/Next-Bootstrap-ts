@@ -12,12 +12,12 @@ import { i18n } from '../models/Translation';
 
 export const getServerSideProps = compose(translator(i18n));
 
+const { t } = i18n;
+
 @observer
 export default class PaginationPage extends PureComponent {
   @computed
   get columns(): Column<GitRepository>[] {
-    const { t } = i18n;
-
     return [
       {
         key: 'full_name',
@@ -55,8 +55,6 @@ export default class PaginationPage extends PureComponent {
   }
 
   render() {
-    const { t } = i18n;
-
     return (
       <Container style={{ height: '91vh' }}>
         <PageHead title={t('pagination')} />
