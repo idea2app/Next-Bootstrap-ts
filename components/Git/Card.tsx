@@ -1,9 +1,9 @@
 import { text2color } from 'idea-react';
+import { GitRepository } from 'mobx-github';
 import { observer } from 'mobx-react';
 import { FC } from 'react';
 import { Badge, Button, Card, Col, Row } from 'react-bootstrap';
 
-import { GitRepository } from '../../models/Repository';
 import { i18n } from '../../models/Translation';
 import { GitLogo } from './Logo';
 
@@ -35,7 +35,7 @@ export const GitCard: FC<GitCardProps> = observer(
           {topics.map(topic => (
             <Badge
               key={topic}
-              className="me-1"
+              className="me-1 text-decoration-none"
               bg={text2color(topic, ['light'])}
               as="a"
               target="_blank"

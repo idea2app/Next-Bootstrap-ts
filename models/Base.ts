@@ -1,9 +1,10 @@
 import { HTTPClient } from 'koajax';
+import { githubClient, RepositoryModel } from 'mobx-github';
 
 export const isServer = () => typeof window === 'undefined';
 
 const VercelHost = process.env.VERCEL_URL,
-  GithubToken = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+  GithubToken = process.env.GITHUB_TOKEN;
 
 const API_Host = isServer()
   ? VercelHost
@@ -16,10 +17,7 @@ export const ownClient = new HTTPClient({
   responseType: 'json',
 });
 
-export const githubClient = new HTTPClient({
-  baseURI: 'https://api.github.com/',
-  responseType: 'json',
-}).use(({ request }, next) => {
+githubClient.use(({ request }, next) => {
   if (GithubToken)
     request.headers = {
       ...request.headers,
@@ -27,3 +25,5 @@ export const githubClient = new HTTPClient({
     };
   return next();
 });
+
+export const repositoryStore = new RepositoryModel('idea2app');

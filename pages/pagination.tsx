@@ -1,5 +1,6 @@
 import { text2color } from 'idea-react';
 import { computed } from 'mobx';
+import { GitRepository } from 'mobx-github';
 import { observer } from 'mobx-react';
 import { Column, RestTable } from 'mobx-restful-table';
 import { compose, translator } from 'next-ssr-middleware';
@@ -7,7 +8,7 @@ import { PureComponent } from 'react';
 import { Badge, Container } from 'react-bootstrap';
 
 import { PageHead } from '../components/PageHead';
-import repositoryStore, { GitRepository } from '../models/Repository';
+import { repositoryStore } from '../models/Base';
 import { i18n } from '../models/Translation';
 
 export const getServerSideProps = compose(translator(i18n));
