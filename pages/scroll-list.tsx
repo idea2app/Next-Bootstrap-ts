@@ -1,4 +1,5 @@
 import { Loading } from 'idea-react';
+import { RepositoryModel } from 'mobx-github';
 import { observer } from 'mobx-react';
 import { ScrollList } from 'mobx-restful-table';
 import { InferGetServerSidePropsType } from 'next';
@@ -8,7 +9,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 import { GitCard } from '../components/Git/Card';
 import { PageHead } from '../components/PageHead';
-import repositoryStore, { RepositoryModel } from '../models/Repository';
+import { repositoryStore } from '../models/Base';
 import { i18n } from '../models/Translation';
 
 export const getServerSideProps = compose(
