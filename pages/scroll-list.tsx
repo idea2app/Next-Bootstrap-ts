@@ -3,7 +3,7 @@ import { RepositoryModel } from 'mobx-github';
 import { observer } from 'mobx-react';
 import { ScrollList } from 'mobx-restful-table';
 import { InferGetServerSidePropsType } from 'next';
-import { compose, errorLogger, translator } from 'next-ssr-middleware';
+import { cache, compose, errorLogger, translator } from 'next-ssr-middleware';
 import { FC } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
@@ -14,6 +14,7 @@ import { i18n } from '../models/Translation';
 
 export const getServerSideProps = compose(
   errorLogger,
+  cache(),
   translator(i18n),
   async () => {
     const list = await new RepositoryModel('idea2app').getList();
