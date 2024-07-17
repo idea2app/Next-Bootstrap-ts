@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
     steps:
       - uses: actions/checkout@v4
 
@@ -20,8 +21,8 @@ jobs:
           sh .github/workflows/replace-repository-name.sh \
             ${{ env.TEMPLATE_OWNER }} ${{ env.TEMPLATE_NAME }} \
             ${{ github.repository_owner }} ${{ github.event.repository.name }}
-          rm -f .github/workflows/init-template.yml
-
+          git checkout -- .github/workflows/init-template.yml
+          
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: '[fix] replace Repository Name'

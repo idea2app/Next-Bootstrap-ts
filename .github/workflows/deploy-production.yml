@@ -9,8 +9,8 @@ on:
       - v*
 env:
   ARTIFACT_PATH: /tmp/artifact.tar
-  BOX_NAME: next-bootstrap-ts
-  BOX_URL: idea2app/next-bootstrap-ts
+  BOX_NAME: ${{ github.event.repository.name }}
+  BOX_URL: ${{ github.repository }}
 
 jobs:
   deploy_docker_image:
@@ -24,6 +24,8 @@ jobs:
 
       - name: Inject Environment variables
         run: |
+          echo "BOX_NAME=${BOX_NAME@L}" >> "${GITHUB_ENV}"
+          echo "BOX_URL=${BOX_URL@L}" >> "${GITHUB_ENV}"
           cat > .env.local <<EOF
           ${{ secrets.ENV_FILE }}
           EOF
