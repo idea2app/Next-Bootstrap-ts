@@ -7,11 +7,11 @@ import Error from 'next/error';
 import { NotFoundCard } from '../components/NotFoundCard';
 import { i18n } from '../models/Translation';
 
-const CustomErrorComponent: NextPage<ErrorProps> = ({ statusCode }) => (
+const CustomErrorComponent: NextPage<ErrorProps> = props => (
   <>
-    <h1 className="text-center">{statusCode}</h1>
+    <Error {...props} />
 
-    <NotFoundCard />
+    <NotFoundCard {...props} />
   </>
 );
 const enableSentry =
