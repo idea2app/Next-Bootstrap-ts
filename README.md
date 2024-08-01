@@ -23,6 +23,9 @@
 2. [Editor components](pages/component.tsx)
 3. [Pagination table](pages/pagination.tsx)
 4. [Scroll list](pages/scroll-list.tsx)
+5. [Not Found page (NGO)](pages/_error.tsx)
+   - Global: https://notfound.org/
+   - Chinese: https://www.dnpw.org/cn/pa-notfound.html
 
 ## Best practice
 
