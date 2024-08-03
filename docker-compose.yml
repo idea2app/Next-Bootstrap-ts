@@ -4,8 +4,8 @@ networks:
   idea2app:
 
 services:
-  next-bootstrap-ts:
-    image: idea2app/next-bootstrap-ts
+  Next-Bootstrap-ts:
+    image: luojiyin1987/Next-Bootstrap-ts
     networks:
       - idea2app
     healthcheck:
@@ -34,11 +34,11 @@ services:
 
   caddy:
     depends_on:
-      - next-bootstrap-ts
+      - Next-Bootstrap-ts
     image: caddy
     ports:
       - 80:80
       - 443:443
     networks:
       - idea2app
-    command: caddy reverse-proxy --from your.domain.com --to next-bootstrap-ts:3000
+    command: caddy reverse-proxy --from your.domain.com --to Next-Bootstrap-ts:3000

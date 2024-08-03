@@ -1,5 +1,5 @@
 {
-  "name": "@idea2app/next-bootstrap-ts",
+  "name": "@luojiyin1987/Next-Bootstrap-ts",
   "version": "1.7.0",
   "description": "React project scaffold based on TypeScript, Next.js, Bootstrap & Workbox.",
   "private": true,
@@ -81,7 +81,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "lint-staged  &&  npm run lint",
-    "pack-image": "docker build -t idea2app/next-bootstrap-ts:latest .",
-    "container": "docker rm -f next-bootstrap-ts  &&  docker run --name next-bootstrap-ts -p 3000:3000 -d idea2app/next-bootstrap-ts:latest"
+    "pack-image": "docker build -t luojiyin1987/Next-Bootstrap-ts:latest .",
+    "container": "docker rm -f Next-Bootstrap-ts  &&  docker run --name Next-Bootstrap-ts -p 3000:3000 -d luojiyin1987/Next-Bootstrap-ts:latest"
   }
 }
