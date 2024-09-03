@@ -1,5 +1,10 @@
 import { HTTPError } from 'koajax';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { ProxyAgent, setGlobalDispatcher } from 'undici';
+
+const { HTTP_PROXY } = process.env;
+
+if (HTTP_PROXY) setGlobalDispatcher(new ProxyAgent(HTTP_PROXY));
 
 export type NextAPI = (
   req: NextApiRequest,
@@ -17,7 +22,8 @@ export function safeAPI(handler: NextAPI): NextAPI {
         res.status(400);
         return res.send({ message: (error as Error).message });
       }
-      let { message, status, body } = error;
+      const { message, response } = error;
+      let { status, body } = response;
 
       res.status(status);
       res.statusMessage = message;
