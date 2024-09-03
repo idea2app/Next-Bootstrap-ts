@@ -1,5 +1,6 @@
 import '../styles/globals.less';
 
+import { HTTPError } from 'koajax';
 import { configure } from 'mobx';
 import { enableStaticRendering, observer } from 'mobx-react';
 import type { AppProps } from 'next/app';
@@ -17,6 +18,12 @@ configure({ enforceActions: 'never' });
 enableStaticRendering(isServer());
 
 const { t } = i18n;
+
+globalThis.addEventListener?.('unhandledrejection', ({ reason }) => {
+  const { message } = (reason || {}) as HTTPError;
+
+  if (message) alert(message);
+});
 
 const AppShell: FC<AppProps> = observer(({ Component, pageProps, router }) => (
   <>

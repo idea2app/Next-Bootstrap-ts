@@ -1,4 +1,4 @@
-FROM node:18-slim AS base
+FROM node:20-slim AS base
 RUN apt-get update && \
     apt-get install ca-certificates curl libjemalloc-dev -y --no-install-recommends  && \
     rm -rf /var/lib/apt/lists/*
@@ -14,7 +14,7 @@ WORKDIR /app
 
 FROM base AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store  pnpm i --frozen-lockfile
-RUN pnpm build
+RUN CI=true  pnpm build
 
 FROM base
 COPY --from=build /app/public ./public
