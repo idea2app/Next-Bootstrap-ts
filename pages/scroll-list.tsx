@@ -1,8 +1,7 @@
 import { Loading } from 'idea-react';
-import { RepositoryModel } from 'mobx-github';
+import { GitRepository, RepositoryModel } from 'mobx-github';
 import { observer } from 'mobx-react';
 import { ScrollList } from 'mobx-restful-table';
-import { InferGetServerSidePropsType } from 'next';
 import { cache, compose, errorLogger, translator } from 'next-ssr-middleware';
 import { FC } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -23,9 +22,7 @@ export const getServerSideProps = compose(
   },
 );
 
-const ScrollListPage: FC<
-  InferGetServerSidePropsType<typeof getServerSideProps>
-> = observer(({ list }) => (
+const ScrollListPage: FC<{ list: GitRepository[] }> = observer(({ list }) => (
   <Container>
     <PageHead title={i18n.t('scroll_list')} />
 

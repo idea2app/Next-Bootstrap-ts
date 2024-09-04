@@ -3,6 +3,7 @@ import { withSentryConfig } from '@sentry/nextjs';
 import CopyPlugin from 'copy-webpack-plugin';
 import { readdirSync, statSync } from 'fs';
 import setPWA from 'next-pwa';
+// @ts-ignore
 import withLess from 'next-with-less';
 import RemarkFrontMatter from 'remark-frontmatter';
 import RemarkGfm from 'remark-gfm';
@@ -27,11 +28,10 @@ const withPWA = setPWA({
   disable: isDev,
 });
 
-/** @type {import('next').NextConfig} */
 const nextConfig = withPWA(
   withLess(
     withMDX({
-      output: CI && 'standalone',
+      output: CI ? 'standalone' : undefined,
       pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
       transpilePackages: ['@sentry/browser'],
 
@@ -60,7 +60,9 @@ const nextConfig = withPWA(
           );
         return config;
       },
-      rewrites: () => ({
+      rewrites: async () => ({
+        beforeFiles: [],
+        afterFiles: [],
         fallback: [
           {
             source: '/article/:path*',
@@ -81,7 +83,7 @@ const nextConfig = withPWA(
 
 export default isDev || !SENTRY_AUTH_TOKEN
   ? nextConfig
-  : withSentryConfig(...nextConfig, {
+  : withSentryConfig(nextConfig, {
       autoInstrumentServerFunctions: false,
       org: SENTRY_ORG,
       project: SENTRY_PROJECT,
