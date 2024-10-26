@@ -20,8 +20,8 @@ enableStaticRendering(isServer());
 const { t } = i18n;
 
 globalThis.addEventListener?.('unhandledrejection', ({ reason }) => {
-  var { message, response } = reason as HTTPError;
-  const { statusText, body } = response || {};
+  let { message } = reason as HTTPError;
+  const { statusText, body } = reason.response || {};
 
   message = body?.message || statusText || message;
 

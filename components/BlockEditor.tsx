@@ -32,6 +32,5 @@ const Tools = {
 };
 
 export default function Editor(props: Omit<EditorProps, 'tools'>) {
-  // @ts-ignore
   return <Core tools={Tools} {...props} />;
 }

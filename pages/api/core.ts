@@ -23,9 +23,9 @@ export function safeAPI(handler: NextAPI): NextAPI {
         return res.send({ message: (error as Error).message });
       }
       const { message, response } = error;
-      let { status, body } = response;
+      let { body } = response;
 
-      res.status(status);
+      res.status(response.status);
       res.statusMessage = message;
 
       if (body instanceof ArrayBuffer)
@@ -35,8 +35,9 @@ export function safeAPI(handler: NextAPI): NextAPI {
 
           body = JSON.parse(body);
           console.error(body);
-        } catch {}
-
+        } catch {
+          //
+        }
       res.send(body);
     }
   };

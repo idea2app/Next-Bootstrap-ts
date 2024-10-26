@@ -10,7 +10,7 @@
 ## Technology stack
 
 - Language: [TypeScript v5][2] + [MDX v3][10]
-- Component engine: [Next.js v14][3]
+- Component engine: [Next.js v15][3]
 - Component suite: [Bootstrap v5][4]
 - PWA framework: [Workbox v6][5]
 - State management: [MobX v6][11]
