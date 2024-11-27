@@ -3,10 +3,9 @@ import dynamic from 'next/dynamic';
 import { FC } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
-import { i18n } from '../models/Translation';
+import { t } from '../models/Translation';
 
-const { t } = i18n,
-  LanguageMenu = dynamic(import('./LanguageMenu'), { ssr: false });
+const LanguageMenu = dynamic(import('./LanguageMenu'), { ssr: false });
 
 const Name = process.env.NEXT_PUBLIC_SITE_NAME || '';
 

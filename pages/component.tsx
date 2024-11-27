@@ -14,7 +14,7 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-tsx';
 
 import { PageHead } from '../components/PageHead';
-import { i18n } from '../models/Translation';
+import { i18n, t } from '../models/Translation';
 import RichEditData from './api/rich-edit.json';
 
 const HTMLEditor = dynamic(() => import('../components/HTMLEditor'), {
@@ -41,8 +41,6 @@ const Example: FC<PropsWithChildren<{ title: string }>> = ({
 export const getServerSideProps = compose(translator(i18n));
 
 const ComponentPage = observer(() => {
-  const { t } = i18n;
-
   const title = textJoin(t('component'), t('examples'));
 
   return (

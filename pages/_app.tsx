@@ -11,21 +11,19 @@ import { Image } from 'react-bootstrap';
 import { MainNavigator } from '../components/MainNavigator';
 import { MDXLayout } from '../components/MDXLayout';
 import { isServer } from '../models/Base';
-import { i18n } from '../models/Translation';
+import { t } from '../models/Translation';
 
 configure({ enforceActions: 'never' });
 
 enableStaticRendering(isServer());
 
-const { t } = i18n;
-
 globalThis.addEventListener?.('unhandledrejection', ({ reason }) => {
-  let { message } = reason as HTTPError;
-  const { statusText, body } = reason.response || {};
+  const { message, response } = reason as HTTPError;
+  const { statusText, body } = response || {};
 
-  message = body?.message || statusText || message;
+  const tips = body?.message || statusText || message;
 
-  if (message) alert(message);
+  if (tips) alert(tips);
 });
 
 const AppShell: FC<AppProps> = observer(({ Component, pageProps, router }) => (

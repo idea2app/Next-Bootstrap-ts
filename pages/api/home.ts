@@ -1,6 +1,4 @@
-import { i18n } from '../../models/Translation';
-
-const { t } = i18n;
+import { t } from '../../models/Translation';
 
 export const mainNav = () => [
   {

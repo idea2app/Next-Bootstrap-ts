@@ -1,14 +1,14 @@
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
-import { PureComponent } from 'react';
-import { Image } from 'react-bootstrap';
+import { Component } from 'react';
+import { Image, ImageProps } from 'react-bootstrap';
 
-export interface GitLogoProps {
+export interface GitLogoProps extends ImageProps {
   name: string;
 }
 
 @observer
-export class GitLogo extends PureComponent<GitLogoProps> {
+export class GitLogo extends Component<GitLogoProps> {
   @observable
   accessor path = '';
 
@@ -41,8 +41,8 @@ export class GitLogo extends PureComponent<GitLogoProps> {
 
   render() {
     const { path } = this;
-    const { name } = this.props;
+    const { name, ...props } = this.props;
 
-    return path && <Image fluid src={path} alt={name} />;
+    return path && <Image fluid {...props} src={path} alt={name} />;
   }
 }

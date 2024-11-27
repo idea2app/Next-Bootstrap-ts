@@ -4,19 +4,17 @@ import { GitRepository } from 'mobx-github';
 import { observer } from 'mobx-react';
 import { Column, RestTable } from 'mobx-restful-table';
 import { compose, translator } from 'next-ssr-middleware';
-import { PureComponent } from 'react';
+import { Component } from 'react';
 import { Badge, Container } from 'react-bootstrap';
 
 import { PageHead } from '../components/PageHead';
 import { repositoryStore } from '../models/Base';
-import { i18n } from '../models/Translation';
+import { i18n, t } from '../models/Translation';
 
 export const getServerSideProps = compose(translator(i18n));
 
-const { t } = i18n;
-
 @observer
-export default class PaginationPage extends PureComponent {
+export default class PaginationPage extends Component {
   @computed
   get columns(): Column<GitRepository>[] {
     return [
