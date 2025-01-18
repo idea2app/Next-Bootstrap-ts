@@ -14,6 +14,7 @@
     "rangav.vscode-thunder-client",
     "eamodio.gitlens",
     "github.vscode-pull-request-github",
-    "github.vscode-github-actions"
+    "github.vscode-github-actions",
+    "GitHub.copilot"
   ]
 }

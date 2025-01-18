@@ -1,5 +1,5 @@
 {
-  "name": "Next-Bootstrap.ts scaffold",
+  "name": "Next-Bootstrap-ts scaffold",
   "short_name": "Next.ts demo",
   "start_url": ".",
   "description": "React project scaffold based on TypeScript, Next.js, Bootstrap & Workbox.",
