@@ -100,7 +100,8 @@
     "export": "next build  &&  next export",
     "start": "next start",
     "lint": "next lint  &&  tsc --noEmit",
-    "lint:all": "eslint \"components/**/*.{js,jsx,ts,tsx}\" \"pages/**/*.{js,jsx,ts,tsx}\"",
+    "lint:all": "eslint .",
+    "lint:inspect": "eslint --inspect-config",
     "test": "lint-staged  &&  npm run lint",
     "pack-image": "docker build -t idea2app/next-bootstrap-ts:latest .",
     "container": "docker rm -f next-bootstrap-ts  &&  docker run --name next-bootstrap-ts -p 3000:3000 -d idea2app/next-bootstrap-ts:latest"
