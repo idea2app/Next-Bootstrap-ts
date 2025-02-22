@@ -1,13 +1,16 @@
 // @ts-check
-import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import reactPlugin from 'eslint-plugin-react';
+import react from 'eslint-plugin-react';
 import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
 import tsEslint from 'typescript-eslint';
 import { fileURLToPath } from 'url';
+
+/**
+ * @see{@link https://github.com/typescript-eslint/typescript-eslint/blob/main/eslint.config.mjs}
+ */
 
 const tsconfigRootDir = fileURLToPath(new URL('.', import.meta.url)),
   flatCompat = new FlatCompat();
@@ -17,7 +20,7 @@ export default tsEslint.config(
   {
     plugins: {
       '@typescript-eslint': tsEslint.plugin,
-      react: fixupPluginRules(reactPlugin),
+      react,
       'simple-import-sort': simpleImportSortPlugin,
     },
   },
@@ -29,7 +32,7 @@ export default tsEslint.config(
   // extends ...
   eslint.configs.recommended,
   ...tsEslint.configs.recommended,
-  ...fixupConfigRules(flatCompat.extends('plugin:@next/next/core-web-vitals')),
+  ...flatCompat.extends('plugin:@next/next/core-web-vitals'),
 
   // base config
   {
