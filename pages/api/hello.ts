@@ -3,9 +3,9 @@ import type { NextApiResponse } from 'next';
 
 import { safeAPI } from './core';
 
-type Data = {
+interface Data {
   name: string;
-};
+}
 
 export default safeAPI(async (req, res: NextApiResponse<Data>) =>
   res.status(401).json({ name: 'John Doe' }),
