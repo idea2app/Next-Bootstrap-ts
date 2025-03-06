@@ -1,6 +1,6 @@
 import cspellPlugin from '@cspell/eslint-plugin';
 import eslint from '@eslint/js';
-// @ts-expect-error next plugin is not typed
+// @ts-expect-error eslint-plugin-next doesn't come with TypeScript definitions
 import nextPlugin from '@next/eslint-plugin-next';
 import stylistic from '@stylistic/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
@@ -54,6 +54,14 @@ export default tsEslint.config(
       'arrow-body-style': ['error', 'as-needed'],
       'no-empty-pattern': 'warn',
       'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: "TSPropertySignature[key.name='children']",
+          message:
+            'Please use PropsWithChildren<T> instead of defining children manually',
+        },
+      ],
       'consistent-return': 'warn',
       'prefer-destructuring': ['error', { object: true, array: true }],
       // next
@@ -79,17 +87,8 @@ export default tsEslint.config(
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-empty-object-type': 'off',
       '@typescript-eslint/no-unsafe-declaration-merging': 'warn',
-
-      // @typescript-eslint + eslint, works together
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-      'no-restricted-syntax': [
-        'error',
-        {
-          selector: "TSPropertySignature[key.name='children']",
-          message:
-            'Please use PropsWithChildren<T> instead of defining children manually',
-        },
-      ],
+
       // stylistic
       '@stylistic/padding-line-between-statements': [
         'error',

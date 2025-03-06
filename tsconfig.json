@@ -18,6 +18,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.mjs", "**/*.ts", "**/*.tsx", "*.mjs"],
+  "include": ["next-env.d.ts", "**/*.mjs", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
