@@ -15,6 +15,7 @@ async function uploadByFile(file: File) {
     return { success: 1, file: { url } };
   } catch (error) {
     console.error(error);
+
     return { success: 0 };
   }
 }

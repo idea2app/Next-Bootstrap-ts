@@ -20,6 +20,7 @@ export function safeAPI(handler: NextAPI): NextAPI {
         console.error(error);
 
         res.status(400);
+
         return res.send({ message: (error as Error).message });
       }
       const { message, response } = error;

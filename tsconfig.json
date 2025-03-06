@@ -18,12 +18,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.mjs",
-    "**/*.ts",
-    "**/*.tsx",
-    "eslint.config.mjs"
-  ],
+  "include": ["next-env.d.ts", "**/*.mjs", "**/*.ts", "**/*.tsx", "*.mjs"],
   "exclude": ["node_modules"]
 }

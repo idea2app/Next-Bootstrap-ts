@@ -58,7 +58,7 @@ const ComponentPage = observer(() => {
         <h1 className="my-4 text-center">{title}</h1>
 
         <Example title="HTML Editor">
-          <HTMLEditor defaultValue="Hello, HTML!" onChange={console.log} />
+          <HTMLEditor defaultValue="Hello, HTML!" onChange={console.info} />
         </Example>
 
         <Example title="Block Editor">
