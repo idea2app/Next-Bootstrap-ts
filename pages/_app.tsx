@@ -10,7 +10,7 @@ import { Image } from 'react-bootstrap';
 
 import { MainNavigator } from '../components/MainNavigator';
 import { MDXLayout } from '../components/MDXLayout';
-import { isServer } from '../models/Base';
+import { isServer } from '../models/configuration';
 import { t } from '../models/Translation';
 
 configure({ enforceActions: 'never' });

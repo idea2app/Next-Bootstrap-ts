@@ -3,11 +3,11 @@ import dynamic from 'next/dynamic';
 import { FC } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
+import { Name } from '../models/configuration';
 import { t } from '../models/Translation';
 
-const LanguageMenu = dynamic(import('./LanguageMenu'), { ssr: false });
-
-const Name = process.env.NEXT_PUBLIC_SITE_NAME || '';
+const LightSwitch = dynamic(() => import('./LightSwitch'), { ssr: false }),
+  LanguageMenu = dynamic(() => import('./LanguageMenu'), { ssr: false });
 
 export const MainNavigator: FC = observer(() => (
   <Navbar bg="primary" variant="dark" fixed="top" expand="sm" collapseOnSelect>
@@ -34,6 +34,7 @@ export const MainNavigator: FC = observer(() => (
           </Nav.Link>
         </Nav>
 
+        <LightSwitch className="my-3 my-sm-0 mx-sm-3" />
         <LanguageMenu />
       </Navbar.Collapse>
     </Container>

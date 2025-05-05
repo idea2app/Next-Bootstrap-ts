@@ -20,6 +20,7 @@ export default {
 
   // Pagination Table
   create: '新增',
+  view: '查看',
   submit: '提交',
   cancel: '取消',
   edit: '編輯',

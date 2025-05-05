@@ -22,6 +22,7 @@ export default {
 
   // Pagination Table
   create: 'Create',
+  view: 'View',
   submit: 'Submit',
   cancel: 'Cancel',
   edit: 'Edit',
