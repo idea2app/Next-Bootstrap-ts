@@ -31,11 +31,11 @@ globalThis.addEventListener?.('unhandledrejection', ({ reason }) => {
 });
 
 @observer
-export default class AppShell extends App<I18nProps> {
+export default class CustomApp extends App<I18nProps> {
   static async getInitialProps(context: AppContext) {
     return {
       ...(await App.getInitialProps(context)),
-      ...(await loadSSRLanguage(context.ctx.req!.headers)),
+      ...(await loadSSRLanguage(context.ctx)),
     };
   }
 

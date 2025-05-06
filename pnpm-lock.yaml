@@ -87,8 +87,8 @@ importers:
         specifier: ^0.3.5
         version: 0.3.5(core-js@3.42.0)(typescript@5.8.3)
       mobx-i18n:
-        specifier: ^0.7.0
-        version: 0.7.0(mobx@6.13.7)(typescript@5.8.3)
+        specifier: ^0.7.1
+        version: 0.7.1(mobx@6.13.7)(typescript@5.8.3)
       mobx-react:
         specifier: ^9.2.0
         version: 9.2.0(mobx@6.13.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -3985,8 +3985,8 @@ packages:
   mobx-github@0.3.5:
     resolution: {integrity: sha512-7F2hErcsHTeBLRyVg7n+Vtm/Ftf94DPn35JwX05igjppvWB9t1tV2cZ2bGzv5NFKhvC49ArWDEzOx9IaQLqgHA==}
 
-  mobx-i18n@0.7.0:
-    resolution: {integrity: sha512-cEuZXkqqgUGXKLM9RnFTErSNWZV/jHnLDcYiF0sEYWEY8ftDRoXF1tRQ9DImOToZv7KoDLoMP+1stx4wKz542w==}
+  mobx-i18n@0.7.1:
+    resolution: {integrity: sha512-J8iTlxkj19Rh75gst5IvNl8LnlBQVIRV7FAt8yaLBRhSSe4jaZxlDMwXiv0wuBZ6SUD71KYw1w4YTMAorL3O5w==}
     peerDependencies:
       mobx: '>=6.11'
 
@@ -9954,7 +9954,7 @@ snapshots:
       - jsdom
       - typescript
 
-  mobx-i18n@0.7.0(mobx@6.13.7)(typescript@5.8.3):
+  mobx-i18n@0.7.1(mobx@6.13.7)(typescript@5.8.3):
     dependencies:
       '@swc/helpers': 0.5.17
       '@types/node': 22.15.14
@@ -9993,7 +9993,7 @@ snapshots:
       classnames: 2.5.1
       lodash: 4.17.21
       mobx: 6.13.7
-      mobx-i18n: 0.7.0(mobx@6.13.7)(typescript@5.8.3)
+      mobx-i18n: 0.7.1(mobx@6.13.7)(typescript@5.8.3)
       mobx-react: 9.2.0(mobx@6.13.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       mobx-react-helper: 0.3.6(mobx@6.13.7)(react@19.1.0)
       mobx-restful: 2.1.0(core-js@3.42.0)(mobx@6.13.7)(typescript@5.8.3)

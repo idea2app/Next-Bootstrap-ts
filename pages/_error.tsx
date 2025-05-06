@@ -19,7 +19,7 @@ export default class CustomError extends Error<I18nProps> {
 
     return {
       ...(await Error.getInitialProps(context)),
-      ...(await loadSSRLanguage(context.req!.headers)),
+      ...(await loadSSRLanguage(context)),
     };
   }
 

@@ -1,4 +1,3 @@
-import { parseCookie } from 'mobx-i18n';
 import Document, {
   DocumentContext,
   Head,
@@ -7,21 +6,19 @@ import Document, {
   NextScript,
 } from 'next/document';
 
-import type { LanguageCode } from '../models/Translation';
+import { LanguageCode,parseSSRContext } from '../models/Translation';
 
-interface XDocumentProps {
+interface CustomDocumentProps {
   language: LanguageCode;
   colorScheme: 'light' | 'dark';
 }
 
-export default class XDocument extends Document<XDocumentProps> {
+export default class CustomDocument extends Document<CustomDocumentProps> {
   static async getInitialProps(context: DocumentContext) {
-    const props = await Document.getInitialProps(context),
-      { language = 'zh-CN', colorScheme = 'light' } = parseCookie(
-        context.req?.headers.cookie || '',
-      );
-
-    return { ...props, language, colorScheme };
+    return {
+      ...(await Document.getInitialProps(context)),
+      ...parseSSRContext<CustomDocumentProps>(context, ['language']),
+    };
   }
 
   render() {

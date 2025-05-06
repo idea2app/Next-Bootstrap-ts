@@ -1,8 +1,11 @@
 import {
   loadLanguageMapFrom,
+  parseCookie,
   TranslationMap,
   TranslationModel,
 } from 'mobx-i18n';
+import { DataObject } from 'mobx-restful';
+import { NextPageContext } from 'next';
 import { createContext } from 'react';
 
 import zhCN from '../translation/zh-CN';
@@ -43,4 +46,27 @@ export const LanguageName: Record<LanguageCode, string> = {
 
 export const I18nContext = createContext(i18n);
 
-export const loadSSRLanguage = loadLanguageMapFrom.bind(null, i18nData);
+export const parseSSRContext = <T extends DataObject = DataObject>(
+  { req, query }: NextPageContext,
+  queryKeys: (keyof T)[] = [],
+) => {
+  const cookie = parseCookie(req?.headers.cookie || '') as T;
+
+  for (const key of queryKeys)
+    cookie[key] =
+      (query[key as string]?.toString().split(',')[0] as T[keyof T]) ||
+      cookie[key];
+
+  return cookie;
+};
+
+export const loadSSRLanguage = (context: NextPageContext) => {
+  const { headers } = context.req || {},
+    { language } = parseSSRContext(context, ['language']);
+  const header = {
+    ...headers,
+    ...(language ? { cookie: `language=${language}` } : {}),
+  };
+
+  return loadLanguageMapFrom(i18nData, header);
+};
