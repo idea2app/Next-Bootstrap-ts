@@ -2,7 +2,6 @@ import '../styles/globals.less';
 
 import { HTTPError } from 'koajax';
 import { configure } from 'mobx';
-import { parseCookie } from 'mobx-i18n';
 import { enableStaticRendering, observer } from 'mobx-react';
 import App, { AppContext, AppProps } from 'next/app';
 import Head from 'next/head';
@@ -14,8 +13,8 @@ import { isServer } from '../models/configuration';
 import {
   createI18nStore,
   I18nContext,
-  i18nData,
   LanguageCode,
+  loadLanguage,
 } from '../models/Translation';
 import zhCN from '../translation/zh-CN';
 
@@ -40,17 +39,9 @@ interface AppShellProps extends AppProps {
 @observer
 export default class AppShell extends App<AppShellProps> {
   static async getInitialProps(context: AppContext) {
-    const props = await App.getInitialProps(context),
-      { language = 'zh-CN' } = parseCookie(
-        context.ctx.req?.headers.cookie || '',
-      );
-    const languageResolver = i18nData[language as LanguageCode];
-    const languageData =
-      typeof languageResolver === 'function'
-        ? (await languageResolver()).default
-        : languageResolver;
+    const props = await App.getInitialProps(context);
 
-    return { ...props, language, languageData };
+    return { ...props, ...(await loadLanguage(context.ctx.req!.headers)) };
   }
 
   i18nStore = createI18nStore(this.props.language, this.props.languageData);

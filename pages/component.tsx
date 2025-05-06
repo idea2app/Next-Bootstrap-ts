@@ -2,8 +2,7 @@
 import dynamic from 'next/dynamic';
 import { textJoin } from 'mobx-i18n';
 import { observer } from 'mobx-react';
-import { compose, translator } from 'next-ssr-middleware';
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import { CodeBlock, EditorHTML } from 'idea-react';
 
@@ -13,7 +12,7 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-tsx';
 
 import { PageHead } from '../components/PageHead';
-import { i18n, t } from '../models/Translation';
+import { I18nContext } from '../models/Translation';
 import RichEditData from './api/rich-edit.json';
 
 const HTMLEditor = dynamic(() => import('../components/HTMLEditor'), {
@@ -37,9 +36,9 @@ const Example: FC<PropsWithChildren<{ title: string }>> = ({
   </>
 );
 
-export const getServerSideProps = compose(translator(i18n));
-
 const ComponentPage = observer(() => {
+  const { t } = useContext(I18nContext);
+
   const title = textJoin(t('component'), t('examples'));
 
   return (

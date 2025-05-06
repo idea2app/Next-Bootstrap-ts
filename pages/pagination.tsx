@@ -8,7 +8,7 @@ import { Badge, Container } from 'react-bootstrap';
 
 import { PageHead } from '../components/PageHead';
 import { repositoryStore } from '../models/Base';
-import { i18n, I18nContext } from '../models/Translation';
+import { I18nContext } from '../models/Translation';
 
 @observer
 export default class PaginationPage extends Component {
@@ -61,11 +61,11 @@ export default class PaginationPage extends Component {
   }
 
   render() {
-    const { t } = this.observedContext;
+    const i18n = this.observedContext;
 
     return (
       <Container style={{ height: '91vh' }}>
-        <PageHead title={t('pagination')} />
+        <PageHead title={i18n.t('pagination')} />
 
         <RestTable
           className="h-100 text-center"

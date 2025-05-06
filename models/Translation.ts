@@ -1,4 +1,10 @@
-import { TranslationMap, TranslationModel } from 'mobx-i18n';
+import { IncomingHttpHeaders } from 'http';
+import {
+  parseCookie,
+  parseLanguageHeader,
+  TranslationMap,
+  TranslationModel,
+} from 'mobx-i18n';
 import { createContext } from 'react';
 
 import zhCN from '../translation/zh-CN';
@@ -18,8 +24,6 @@ export const createI18nStore = <N extends LanguageCode, K extends string>(
 
 export const i18n = createI18nStore();
 
-export const { t } = i18n;
-
 export const LanguageName: Record<LanguageCode, string> = {
   'zh-CN': '简体中文',
   'zh-TW': '繁體中文',
@@ -27,3 +31,17 @@ export const LanguageName: Record<LanguageCode, string> = {
 };
 
 export const I18nContext = createContext(i18n);
+
+export const loadLanguage = async ({
+  'accept-language': acceptLanguage,
+  cookie,
+}: IncomingHttpHeaders) => {
+  const { language } = parseCookie(cookie || ''),
+    languages = parseLanguageHeader(acceptLanguage || '');
+
+  const languageData = await i18n.loadLanguages(
+    [language, ...languages].filter(Boolean),
+  );
+
+  return { language: i18n.currentLanguage, languageData };
+};
