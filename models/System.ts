@@ -1,9 +1,10 @@
 import { observable, reaction } from 'mobx';
+import { setCookie } from 'mobx-i18n';
 import { persist, restore } from 'mobx-restful';
 
 import { isServer } from './configuration';
 
-type ColorScheme = 'light' | 'dark';
+export type ColorScheme = 'light' | 'dark';
 
 const matchColorScheme = (color: ColorScheme) =>
   globalThis.matchMedia?.(`(prefers-color-scheme: ${color})`);
@@ -25,7 +26,10 @@ export class SystemModel {
     );
   disposer = reaction(
     () => this.colorScheme,
-    scheme => (document.documentElement.dataset.bsTheme = scheme),
+    scheme => {
+      document.documentElement.dataset.bsTheme = scheme;
+      setCookie('colorScheme', scheme);
+    },
   );
 
   toggleColorScheme = () =>
