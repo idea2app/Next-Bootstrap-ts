@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react';
 import { InferGetStaticPropsType } from 'next';
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 
 import { MDXLayout } from '../../components/MDXLayout';
-import { i18n } from '../../models/Translation';
+import { I18nContext } from '../../models/Translation';
 import { ArticleMeta, pageListOf, traverseTree } from '../api/core';
 
 export const getStaticProps = async () => {
@@ -41,10 +41,13 @@ const renderTree = (list: ArticleMeta[]) => (
 );
 
 const ArticleIndexPage: FC<InferGetStaticPropsType<typeof getStaticProps>> =
-  observer(({ tree, list: { length } }) => (
-    <MDXLayout className="" title={`${i18n.t('article')} (${length})`}>
-      {renderTree(tree)}
-    </MDXLayout>
-  ));
+  observer(({ tree, list: { length } }) => {
+    const { t } = useContext(I18nContext);
 
+    return (
+      <MDXLayout className="" title={`${t('article')} (${length})`}>
+        {renderTree(tree)}
+      </MDXLayout>
+    );
+  });
 export default ArticleIndexPage;
