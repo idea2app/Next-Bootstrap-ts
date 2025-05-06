@@ -3,7 +3,7 @@ import '../styles/globals.less';
 import { HTTPError } from 'koajax';
 import { configure } from 'mobx';
 import { enableStaticRendering, observer } from 'mobx-react';
-import App, { AppContext, AppProps } from 'next/app';
+import App, { AppContext } from 'next/app';
 import Head from 'next/head';
 import { Image } from 'react-bootstrap';
 
@@ -13,10 +13,9 @@ import { isServer } from '../models/configuration';
 import {
   createI18nStore,
   I18nContext,
-  LanguageCode,
-  loadLanguage,
+  I18nProps,
+  loadSSRLanguage,
 } from '../models/Translation';
-import zhCN from '../translation/zh-CN';
 
 configure({ enforceActions: 'never' });
 
@@ -31,20 +30,16 @@ globalThis.addEventListener?.('unhandledrejection', ({ reason }) => {
   if (tips) alert(tips);
 });
 
-interface AppShellProps extends AppProps {
-  language: LanguageCode;
-  languageData: typeof zhCN;
-}
-
 @observer
-export default class AppShell extends App<AppShellProps> {
+export default class AppShell extends App<I18nProps> {
   static async getInitialProps(context: AppContext) {
-    const props = await App.getInitialProps(context);
-
-    return { ...props, ...(await loadLanguage(context.ctx.req!.headers)) };
+    return {
+      ...(await App.getInitialProps(context)),
+      ...(await loadSSRLanguage(context.ctx.req!.headers)),
+    };
   }
 
-  i18nStore = createI18nStore(this.props.language, this.props.languageData);
+  i18nStore = createI18nStore(this.props.language, this.props.languageMap);
 
   render() {
     const { Component, pageProps, router } = this.props,

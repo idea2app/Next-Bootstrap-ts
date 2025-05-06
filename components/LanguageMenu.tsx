@@ -10,7 +10,7 @@ const LanguageMenu: FC = observer(() => {
   return (
     <Select
       value={i18n.currentLanguage}
-      onChange={key => i18n.changeLanguage(key as typeof i18n.currentLanguage)}
+      onChange={key => i18n.loadLanguages(key as typeof i18n.currentLanguage)}
     >
       {Object.entries(LanguageName).map(([key, name]) => (
         <Option key={key} value={key}>

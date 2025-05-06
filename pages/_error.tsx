@@ -1,24 +1,38 @@
 import * as Sentry from '@sentry/nextjs';
-import type { NextPage } from 'next';
-import type { ErrorProps } from 'next/error';
+import type { NextPageContext } from 'next';
 import Error from 'next/error';
 
 import { NotFoundCard } from '../components/NotFoundCard';
+import {
+  createI18nStore,
+  I18nContext,
+  I18nProps,
+  loadSSRLanguage,
+} from '../models/Translation';
 
-const CustomErrorComponent: NextPage<ErrorProps> = props => (
-  <>
-    <Error {...props} />
-
-    <NotFoundCard {...props} />
-  </>
-);
 const enableSentry =
   process.env.NODE_ENV === 'development' || !process.env.SENTRY_AUTH_TOKEN;
 
-CustomErrorComponent.getInitialProps = async contextData => {
-  if (enableSentry) await Sentry.captureUnderscoreErrorException(contextData);
+export default class CustomError extends Error<I18nProps> {
+  static async getInitialProps(context: NextPageContext) {
+    if (enableSentry) await Sentry.captureUnderscoreErrorException(context);
 
-  return Error.getInitialProps(contextData);
-};
+    return {
+      ...(await Error.getInitialProps(context)),
+      ...(await loadSSRLanguage(context.req!.headers)),
+    };
+  }
 
-export default CustomErrorComponent;
+  i18nStore = createI18nStore(this.props.language, this.props.languageMap);
+
+  render() {
+    const { props, i18nStore } = this;
+
+    return (
+      <I18nContext.Provider value={i18nStore}>
+        <Error {...props} />
+        <NotFoundCard {...props} />
+      </I18nContext.Provider>
+    );
+  }
+}

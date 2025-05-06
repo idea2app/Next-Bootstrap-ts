@@ -1,28 +1,27 @@
 import { text2color } from 'idea-react';
-import { computed, observable } from 'mobx';
+import { computed } from 'mobx';
 import { GitRepository } from 'mobx-github';
 import { observer } from 'mobx-react';
+import { ObservedComponent, observePropsState } from 'mobx-react-helper';
 import { Column, RestTable } from 'mobx-restful-table';
-import { Component, ContextType } from 'react';
+import { Component } from 'react';
 import { Badge, Container } from 'react-bootstrap';
 
 import { PageHead } from '../components/PageHead';
 import { repositoryStore } from '../models/Base';
-import { I18nContext } from '../models/Translation';
+import { i18n, I18nContext } from '../models/Translation';
+
+export default interface PaginationPage
+  extends ObservedComponent<{}, typeof i18n> {}
 
 @observer
+@observePropsState
 export default class PaginationPage extends Component {
   static contextType = I18nContext;
 
-  declare context: ContextType<typeof I18nContext>;
-
-  @observable
-  // @ts-expect-error MobX compatibility
-  accessor observedContext = this.context;
-
   @computed
   get columns(): Column<GitRepository>[] {
-    const { t } = this.observedContext;
+    const { t } = this.observedContext!;
 
     return [
       {
@@ -61,7 +60,7 @@ export default class PaginationPage extends Component {
   }
 
   render() {
-    const i18n = this.observedContext;
+    const i18n = this.observedContext!;
 
     return (
       <Container style={{ height: '91vh' }}>

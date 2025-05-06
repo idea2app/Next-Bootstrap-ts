@@ -35,9 +35,6 @@ importers:
       '@editorjs/quote':
         specifier: ^2.7.6
         version: 2.7.6
-      '@koa/bodyparser':
-        specifier: ^5.1.1
-        version: 5.1.1(koa@2.16.1)
       '@koa/router':
         specifier: ^13.1.0
         version: 13.1.0
@@ -90,17 +87,20 @@ importers:
         specifier: ^0.3.5
         version: 0.3.5(core-js@3.42.0)(typescript@5.8.3)
       mobx-i18n:
-        specifier: ^0.6.0
-        version: 0.6.0(mobx@6.13.7)(typescript@5.8.3)
+        specifier: ^0.7.0
+        version: 0.7.0(mobx@6.13.7)(typescript@5.8.3)
       mobx-react:
         specifier: ^9.2.0
         version: 9.2.0(mobx@6.13.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      mobx-react-helper:
+        specifier: ^0.3.6
+        version: 0.3.6(mobx@6.13.7)(react@19.1.0)
       mobx-restful:
         specifier: ^2.1.0
         version: 2.1.0(core-js@3.42.0)(mobx@6.13.7)(typescript@5.8.3)
       mobx-restful-table:
-        specifier: ^2.2.1
-        version: 2.2.1(@types/react@19.1.2)(core-js@3.42.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+        specifier: ^2.2.2
+        version: 2.2.2(@types/react@19.1.2)(core-js@3.42.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       next:
         specifier: ^15.3.1
         version: 15.3.1(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -108,8 +108,8 @@ importers:
         specifier: ~5.6.0
         version: 5.6.0(@babel/core@7.27.1)(next@15.3.1(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.99.7)
       next-ssr-middleware:
-        specifier: ^0.10.0
-        version: 0.10.0(@koa/bodyparser@5.1.1(koa@2.16.1))(@koa/router@13.1.0)(jsonwebtoken@9.0.2)(koa@2.16.1)(mobx-i18n@0.6.0(mobx@6.13.7)(typescript@5.8.3))(next@15.3.1(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+        specifier: ^1.0.0
+        version: 1.0.0(next@15.3.1(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       next-with-less:
         specifier: ^3.0.1
         version: 3.0.1(less-loader@12.3.0(less@4.3.0)(webpack@5.99.7))(less@4.3.0)(next@15.3.1(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
@@ -2003,6 +2003,9 @@ packages:
   '@types/next-pwa@5.6.9':
     resolution: {integrity: sha512-KcymH+MtFYB5KVKIOH1DMqd0wUb8VLCxzHtsaRQQ7S8sGOaTH24Lo2vGZf6/0Ok9e+xWCKhqsSt6cgDJTk91Iw==}
 
+  '@types/node@22.15.14':
+    resolution: {integrity: sha512-BL1eyu/XWsFGTtDWOYULQEs4KR0qdtYfCxYAUYRoB7JP7h9ETYLgQTww6kH8Sj2C0pFGgrpM0XKv6/kbIzYJ1g==}
+
   '@types/node@22.15.3':
     resolution: {integrity: sha512-lX7HFZeHf4QG/J7tBZqrCAXwz9J5RD56Y6MpP0eJkka8p+K0RY/yBTW7CYFJ4VGCclxqOLKmiGP5juQc6MKgcw==}
 
@@ -2033,6 +2036,9 @@ packages:
 
   '@types/react@19.1.2':
     resolution: {integrity: sha512-oxLPMytKchWGbnQM9O7D67uPa9paTNxO7jVoNMXgkkErULBPhPARCfkKL9ytcIJJRGjbsVwW4ugJzyFFvm/Tiw==}
+
+  '@types/react@19.1.3':
+    resolution: {integrity: sha512-dLWQ+Z0CkIvK1J8+wrDPwGxEYFA4RAyHoZPxHVGspYmFVnwGSNT24cGIhFJrtfRnWVuW8X7NO52gCXmhkVUWGQ==}
 
   '@types/resolve@1.17.1':
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
@@ -3979,13 +3985,13 @@ packages:
   mobx-github@0.3.5:
     resolution: {integrity: sha512-7F2hErcsHTeBLRyVg7n+Vtm/Ftf94DPn35JwX05igjppvWB9t1tV2cZ2bGzv5NFKhvC49ArWDEzOx9IaQLqgHA==}
 
-  mobx-i18n@0.6.0:
-    resolution: {integrity: sha512-dooxek8Iq+RKbM0qGwCsAhQI/j8MtdwiC9gzFNzx+cCnn0bBDDgwK9Inie8UFw6XmOiy+T2kPzeaFvr72KLKQw==}
+  mobx-i18n@0.7.0:
+    resolution: {integrity: sha512-cEuZXkqqgUGXKLM9RnFTErSNWZV/jHnLDcYiF0sEYWEY8ftDRoXF1tRQ9DImOToZv7KoDLoMP+1stx4wKz542w==}
     peerDependencies:
       mobx: '>=6.11'
 
-  mobx-react-helper@0.3.4:
-    resolution: {integrity: sha512-h1M4s1oH2kf4ZTtnQEVmmGxsOlq2dwaEmg6HDp2zl0ruDkpXsN1XPz1BnjjgSNvrNkmC81XOa7JGdJsTIIaEkg==}
+  mobx-react-helper@0.3.6:
+    resolution: {integrity: sha512-99dzyDsxtsG+qg0TQ1S39CA+t2VDmN/LrLVa0lcATaatwwUzYw+uiDMnVWr3Cyke6q5CI6N73Fjgce5NNT1Fxw==}
     peerDependencies:
       mobx: '>=6.11'
       react: '>=16'
@@ -4016,8 +4022,8 @@ packages:
       react-native:
         optional: true
 
-  mobx-restful-table@2.2.1:
-    resolution: {integrity: sha512-rZue0JbU/Uf2SROFrcx+hX1AE1Ym2Y42GoeB7yYRV11SY/8d26mmRhgS8Pp3tbsjOwdTP53GNmyRt5z7GSZdaA==}
+  mobx-restful-table@2.2.2:
+    resolution: {integrity: sha512-H6iQ9YyXOX0IacaQxyVXqQAvcE2YSEbsGHf9svuYQu0MaI9JQLrZF70SKr32AX68BdaaYl1GVZAyt6Mnk4smCA==}
     peerDependencies:
       react: '>=16.8'
 
@@ -4064,14 +4070,9 @@ packages:
     peerDependencies:
       next: ^15.3.1
 
-  next-ssr-middleware@0.10.0:
-    resolution: {integrity: sha512-5Dmdw44hVp4ABoL4uSrcErb/G9zf2iwR2U9Uh/QJ1YFVtruJaBRzFDWaDJP2pvWjebtGy7UokZssCvK0Ndk7NA==}
+  next-ssr-middleware@1.0.0:
+    resolution: {integrity: sha512-mYnrUyumfb3L7ik7sgmT7a9UHFfVl33VfzKMZxbQgAVNfcRbsIx7zPKyCjMCiSLovRRH3FRLibtgq+3brBAuIQ==}
     peerDependencies:
-      '@koa/bodyparser': '>=5'
-      '@koa/router': '>=13'
-      jsonwebtoken: '>=9'
-      koa: '>=2'
-      mobx-i18n: '>=0.5 <1'
       next: ^15.3.1
       react: '>=18'
 
@@ -7207,11 +7208,11 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
 
   '@types/content-disposition@0.5.8': {}
 
@@ -7250,7 +7251,7 @@ snapshots:
 
   '@types/express-serve-static-core@5.0.6':
     dependencies:
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
       '@types/qs': 6.9.18
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -7264,7 +7265,7 @@ snapshots:
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
 
   '@types/hast@3.0.4':
     dependencies:
@@ -7279,7 +7280,7 @@ snapshots:
   '@types/jsonwebtoken@9.0.9':
     dependencies:
       '@types/ms': 2.1.0
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
 
   '@types/keygrip@1.0.6': {}
 
@@ -7318,7 +7319,7 @@ snapshots:
 
   '@types/mysql@2.15.26':
     dependencies:
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
 
   '@types/next-pwa@5.6.9(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
@@ -7339,6 +7340,10 @@ snapshots:
       - sass
       - supports-color
 
+  '@types/node@22.15.14':
+    dependencies:
+      undici-types: 6.21.0
+
   '@types/node@22.15.3':
     dependencies:
       undici-types: 6.21.0
@@ -7349,7 +7354,7 @@ snapshots:
 
   '@types/pg@8.6.1':
     dependencies:
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
       pg-protocol: 1.9.5
       pg-types: 2.2.0
 
@@ -7371,26 +7376,30 @@ snapshots:
     dependencies:
       csstype: 3.1.3
 
+  '@types/react@19.1.3':
+    dependencies:
+      csstype: 3.1.3
+
   '@types/resolve@1.17.1':
     dependencies:
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
 
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
 
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
       '@types/send': 0.17.4
 
   '@types/shimmer@1.2.0': {}
 
   '@types/tedious@4.0.14':
     dependencies:
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
 
   '@types/trusted-types@2.0.7': {}
 
@@ -8906,7 +8915,7 @@ snapshots:
       lodash: 4.17.21
       mobx: 6.13.7
       mobx-react: 9.2.0(mobx@6.13.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      mobx-react-helper: 0.3.4(mobx@6.13.7)(react@19.1.0)
+      mobx-react-helper: 0.3.6(mobx@6.13.7)(react@19.1.0)
       prismjs: 1.30.0
       react: 19.1.0
       react-bootstrap: 2.10.9(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -9158,13 +9167,13 @@ snapshots:
 
   jest-worker@26.6.2:
     dependencies:
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
       merge-stream: 2.0.0
       supports-color: 7.2.0
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.15.3
+      '@types/node': 22.15.14
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -9945,16 +9954,17 @@ snapshots:
       - jsdom
       - typescript
 
-  mobx-i18n@0.6.0(mobx@6.13.7)(typescript@5.8.3):
+  mobx-i18n@0.7.0(mobx@6.13.7)(typescript@5.8.3):
     dependencies:
       '@swc/helpers': 0.5.17
+      '@types/node': 22.15.14
       mobx: 6.13.7
       regenerator-runtime: 0.14.1
       web-utility: 4.4.3(typescript@5.8.3)
     transitivePeerDependencies:
       - typescript
 
-  mobx-react-helper@0.3.4(mobx@6.13.7)(react@19.1.0):
+  mobx-react-helper@0.3.6(mobx@6.13.7)(react@19.1.0):
     dependencies:
       '@swc/helpers': 0.5.17
       lodash.isequalwith: 4.4.0
@@ -9977,15 +9987,15 @@ snapshots:
     optionalDependencies:
       react-dom: 19.1.0(react@19.1.0)
 
-  mobx-restful-table@2.2.1(@types/react@19.1.2)(core-js@3.42.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3):
+  mobx-restful-table@2.2.2(@types/react@19.1.2)(core-js@3.42.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3):
     dependencies:
       '@swc/helpers': 0.5.17
       classnames: 2.5.1
       lodash: 4.17.21
       mobx: 6.13.7
-      mobx-i18n: 0.6.0(mobx@6.13.7)(typescript@5.8.3)
+      mobx-i18n: 0.7.0(mobx@6.13.7)(typescript@5.8.3)
       mobx-react: 9.2.0(mobx@6.13.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      mobx-react-helper: 0.3.4(mobx@6.13.7)(react@19.1.0)
+      mobx-react-helper: 0.3.6(mobx@6.13.7)(react@19.1.0)
       mobx-restful: 2.1.0(core-js@3.42.0)(mobx@6.13.7)(typescript@5.8.3)
       react: 19.1.0
       react-bootstrap: 2.10.9(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -10052,22 +10062,22 @@ snapshots:
       - uglify-js
       - webpack
 
-  next-ssr-middleware@0.10.0(@koa/bodyparser@5.1.1(koa@2.16.1))(@koa/router@13.1.0)(jsonwebtoken@9.0.2)(koa@2.16.1)(mobx-i18n@0.6.0(mobx@6.13.7)(typescript@5.8.3))(next@15.3.1(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(typescript@5.8.3):
+  next-ssr-middleware@1.0.0(next@15.3.1(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(typescript@5.8.3):
     dependencies:
       '@koa/bodyparser': 5.1.1(koa@2.16.1)
       '@koa/router': 13.1.0
       '@types/jsonwebtoken': 9.0.9
       '@types/koa': 2.15.0
       '@types/koa__router': 12.0.4
-      '@types/react': 19.1.2
+      '@types/react': 19.1.3
       jsonwebtoken: 9.0.2
       koa: 2.16.1
-      mobx-i18n: 0.6.0(mobx@6.13.7)(typescript@5.8.3)
       next: 15.3.1(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react: 19.1.0
       tslib: 2.8.1
       web-utility: 4.4.3(typescript@5.8.3)
     transitivePeerDependencies:
+      - supports-color
       - typescript
 
   next-with-less@3.0.1(less-loader@12.3.0(less@4.3.0)(webpack@5.99.7))(less@4.3.0)(next@15.3.1(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)):
