@@ -13,7 +13,7 @@ const HomePage = observer(() => {
 
   return (
     <Container as="main" className={styles.main}>
-      <PageHead />
+      <PageHead title={i18n.t('home_page')} />
 
       <h1 className={`m-0 text-center ${styles.title}`}>
         {i18n.t('welcome_to')}
