@@ -39,7 +39,7 @@ jobs:
           platforms: linux/amd64
           tags: ${{ env.BOX_URL }}:latest
           outputs: type=docker,dest=${{ env.ARTIFACT_PATH }}
-          ## use gha cache
+          # use GitHub actions cache
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
