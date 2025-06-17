@@ -1,27 +1,21 @@
-import { text2color } from 'idea-react';
 import { computed } from 'mobx';
 import { GitRepository } from 'mobx-github';
 import { observer } from 'mobx-react';
-import { ObservedComponent, observePropsState } from 'mobx-react-helper';
-import { Column, RestTable } from 'mobx-restful-table';
-import { Component } from 'react';
-import { Badge, Container } from 'react-bootstrap';
+import { ObservedComponent } from 'mobx-react-helper';
+import { BadgeBar, Column, RestTable } from 'mobx-restful-table';
+import { Container } from 'react-bootstrap';
 
 import { PageHead } from '../components/PageHead';
 import { repositoryStore } from '../models/Base';
 import { i18n, I18nContext } from '../models/Translation';
 
-export default interface PaginationPage
-  extends ObservedComponent<{}, typeof i18n> {}
-
 @observer
-@observePropsState
-export default class PaginationPage extends Component {
+export default class PaginationPage extends ObservedComponent<{}, typeof i18n> {
   static contextType = I18nContext;
 
   @computed
   get columns(): Column<GitRepository>[] {
-    const { t } = this.observedContext!;
+    const { t } = this.observedContext;
 
     return [
       {
@@ -32,6 +26,9 @@ export default class PaginationPage extends Component {
             {full_name}
           </a>
         ),
+        required: true,
+        minLength: 3,
+        invalidMessage: 'Input 3 characters at least',
       },
       { key: 'homepage', type: 'url', renderHead: t('home_page') },
       { key: 'language', renderHead: t('programming_language') },
@@ -39,28 +36,21 @@ export default class PaginationPage extends Component {
         key: 'topics',
         renderHead: t('topic'),
         renderBody: ({ topics }) => (
-          <>
-            {topics?.map(topic => (
-              <Badge
-                key={topic}
-                className="me-2"
-                bg={text2color(topic, ['light'])}
-                as="a"
-                target="_blank"
-                href={`https://github.com/topics/${topic}`}
-              >
-                {topic}
-              </Badge>
-            ))}
-          </>
+          <BadgeBar
+            list={(topics || []).map(text => ({
+              text,
+              link: `https://github.com/topics/${text}`,
+            }))}
+          />
         ),
       },
       { key: 'stargazers_count', type: 'number', renderHead: t('star_count') },
+      { key: 'description', renderHead: t('description'), rows: 3 },
     ];
   }
 
   render() {
-    const i18n = this.observedContext!;
+    const i18n = this.observedContext;
 
     return (
       <Container style={{ height: '91vh' }}>

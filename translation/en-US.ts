@@ -35,6 +35,7 @@ export default {
   programming_language: 'Programming Language',
   topic: 'Topic',
   star_count: 'Star Count',
+  description: 'Description',
 
   // Scroll List
   scroll_list: 'Scroll List',

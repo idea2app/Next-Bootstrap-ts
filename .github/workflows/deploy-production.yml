@@ -8,7 +8,7 @@ on:
     tags:
       - v*
 env:
-  ARTIFACT_PATH: /tmp/artifact.tar
+  ARTIFACT_PATH: artifact.tar
   BOX_NAME: ${{ github.event.repository.name }}
   BOX_URL: ${{ github.repository }}
 
@@ -55,18 +55,18 @@ jobs:
           target: /tmp/${{ env.BOX_NAME }}
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          password: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_KEY }}
           strip_components: 1
 
       - name: Run Image
-        uses: garygrossgarten/github-action-ssh@release
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          password: ${{ secrets.SSH_KEY }}
-          command: |
-            mkdir -p ~/${{ env.BOX_NAME }} 
+          key: ${{ secrets.SSH_KEY }}
+          script: |
             cd /tmp/${{ env.BOX_NAME }}
+            mkdir -p ~/${{ env.BOX_NAME }} 
             mv docker-compose.yml start.sh ~/${{ env.BOX_NAME }}
             cd ~/${{ env.BOX_NAME }}
             chmod +x start.sh

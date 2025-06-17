@@ -10,20 +10,21 @@ import { framework, mainNav } from './api/home';
 
 const HomePage = observer(() => {
   const i18n = useContext(I18nContext);
+  const { t } = i18n;
 
   return (
     <Container as="main" className={styles.main}>
-      <PageHead title={i18n.t('home_page')} />
+      <PageHead title={t('home_page')} />
 
       <h1 className={`m-0 text-center ${styles.title}`}>
-        {i18n.t('welcome_to')}
+        {t('welcome_to')}
         <a className="text-primary mx-2" href="https://nextjs.org">
           Next.js!
         </a>
       </h1>
 
       <p className={`text-center fs-4 ${styles.description}`}>
-        {i18n.t('get_started_by_editing')}
+        {t('get_started_by_editing')}
         <code className={`mx-2 rounded-3 bg-light ${styles.code}`}>
           pages/index.tsx
         </code>
@@ -49,7 +50,7 @@ const HomePage = observer(() => {
         ))}
       </Row>
 
-      <h2 className="my-4 text-center">{i18n.t('upstream_projects')}</h2>
+      <h2 className="my-4 text-center">{t('upstream_projects')}</h2>
 
       <Row className="g-4" xs={1} sm={2} md={3}>
         {framework.map(

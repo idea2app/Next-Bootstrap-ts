@@ -33,6 +33,7 @@ export default {
   programming_language: '編程語言',
   topic: '話題',
   star_count: '星標數',
+  description: '描述',
 
   // Scroll List
   scroll_list: '滾動列表',

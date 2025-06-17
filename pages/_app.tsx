@@ -21,15 +21,6 @@ configure({ enforceActions: 'never' });
 
 enableStaticRendering(isServer());
 
-globalThis.addEventListener?.('unhandledrejection', ({ reason }) => {
-  const { message, response } = reason as HTTPError;
-  const { statusText, body } = response || {};
-
-  const tips = body?.message || statusText || message;
-
-  if (tips) alert(tips);
-});
-
 @observer
 export default class CustomApp extends App<I18nProps> {
   static async getInitialProps(context: AppContext) {
@@ -40,6 +31,17 @@ export default class CustomApp extends App<I18nProps> {
   }
 
   i18nStore = createI18nStore(this.props.language, this.props.languageMap);
+
+  componentDidMount() {
+    window.addEventListener('unhandledrejection', ({ reason }) => {
+      const { message, response } = reason as HTTPError;
+      const { statusText, body } = response || {};
+
+      const tips = body?.message || statusText || message;
+
+      if (tips) alert(tips);
+    });
+  }
 
   render() {
     const { Component, pageProps, router } = this.props,

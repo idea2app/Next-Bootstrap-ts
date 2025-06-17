@@ -14,7 +14,7 @@ export const PageHead: FC<PageHeadProps> = ({
   children,
 }) => (
   <Head>
-    <title>{`${title}${title ? ' - ' : ''}${Name}`}</title>
+    <title>{`${title ? `${title} - ` : ''}${Name}`}</title>
 
     {description && <meta name="description" content={description} />}
 
