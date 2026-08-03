@@ -77,20 +77,25 @@ export async function* pageListOf(
   const list = await readdir(prefix + path, { withFileTypes: true });
 
   for (const node of list) {
-    let { name, path } = node;
+    let { name } = node;
+    const parentPath =
+      node.parentPath ?? (node as unknown as { path: string }).path;
 
     if (name.startsWith('.')) continue;
 
     const isMDX = MDX_pattern.test(name);
 
     name = name.replace(MDX_pattern, '');
-    path = `${path}/${name}`.replace(new RegExp(`^${prefix}`), '');
+    const nodePath = `${parentPath}/${name}`.replace(
+      new RegExp(`^${prefix}`),
+      '',
+    );
 
     if (node.isFile())
       if (isMDX) {
-        const article: ArticleMeta = { name, path, subs: [] };
+        const article: ArticleMeta = { name, path: nodePath, subs: [] };
         try {
-          const meta = await frontMatterOf(`${node.path}/${node.name}`);
+          const meta = await frontMatterOf(`${parentPath}/${node.name}`);
 
           if (meta) article.meta = meta;
         } catch (error) {
@@ -101,7 +106,7 @@ export async function* pageListOf(
 
     if (!node.isDirectory()) continue;
 
-    const subs = await Array.fromAsync(pageListOf(path, prefix));
+    const subs = await Array.fromAsync(pageListOf(nodePath, prefix));
 
     if (subs[0]) yield { name, subs };
   }
