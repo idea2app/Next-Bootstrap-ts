@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import { FC, HTMLAttributes } from 'react';
 import { Form } from 'react-bootstrap';
 
-import systemStore from '../models/System';
+import systemStore from '../../models/System';
 import styles from './LightSwitch.module.less';
 
 const LightSwitch: FC<HTMLAttributes<HTMLDivElement>> = observer(

@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import { ErrorProps } from 'next/error';
 import { FC, useContext } from 'react';
 
-import { I18nContext } from '../models/Translation';
+import { I18nContext } from '../../models/Translation';
 
 export const NotFoundCard: FC<ErrorProps> = observer(({ title }) => {
   const { currentLanguage } = useContext(I18nContext);

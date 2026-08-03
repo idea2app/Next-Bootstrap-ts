@@ -9,9 +9,9 @@
 /coverage
 
 # next.js
+next-env.d.ts
 /.next/
 /out/
-next-env.d.ts
 
 # PWA
 public/sw.js

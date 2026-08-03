@@ -11,16 +11,16 @@ import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-tsx';
 
-import { PageHead } from '../components/PageHead';
+import { PageHead } from '../components/Layout/PageHead';
 import { I18nContext } from '../models/Translation';
 import RichEditData from './api/rich-edit.json';
 
-const HTMLEditor = dynamic(() => import('../components/HTMLEditor'), {
+const HTMLEditor = dynamic(() => import('../components/Form/HTMLEditor'), {
   ssr: false,
 });
 HTMLEditor.displayName = 'HTMLEditor';
 
-const BlockEditor = dynamic(() => import('../components/BlockEditor'), {
+const BlockEditor = dynamic(() => import('../components/Form/BlockEditor'), {
   ssr: false,
 });
 BlockEditor.displayName = 'BlockEditor';

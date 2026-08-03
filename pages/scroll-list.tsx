@@ -2,16 +2,16 @@ import { Loading } from 'idea-react';
 import { GitRepository, RepositoryModel } from 'mobx-github';
 import { observer } from 'mobx-react';
 import { ScrollList } from 'mobx-restful-table';
-import { cache, compose, errorLogger } from 'next-ssr-middleware';
 import { FC, useContext } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
 import { GitCard } from '../components/Git/Card';
-import { PageHead } from '../components/PageHead';
+import { PageHead } from '../components/Layout/PageHead';
+import { skipBuilding } from '../lib/SSG';
 import { repositoryStore } from '../models/Base';
 import { I18nContext } from '../models/Translation';
 
-export const getServerSideProps = compose(errorLogger, cache(), async () => {
+export const getStaticProps = skipBuilding(async () => {
   const list = await new RepositoryModel('idea2app').getList();
 
   return { props: JSON.parse(JSON.stringify({ list })) };

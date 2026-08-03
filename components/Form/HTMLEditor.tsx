@@ -10,7 +10,7 @@ import {
 } from 'react-bootstrap-editor';
 import { Constructor } from 'web-utility';
 
-import { upload } from '../models/Base';
+import { upload } from '../../models/Base';
 
 const ExcludeTools = [IFrameTool, AudioTool, VideoTool];
 

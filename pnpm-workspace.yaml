@@ -9,3 +9,6 @@ allowBuilds:
   sharp: true
 minimumReleaseAgeExclude:
   - globals@17.9.0
+publicHoistPattern:
+  - '*import-in-the-middle*'
+  - '*require-in-the-middle*'

@@ -2,9 +2,9 @@ import { observer } from 'mobx-react';
 import { InferGetStaticPropsType } from 'next';
 import { FC, useContext } from 'react';
 
-import { MDXLayout } from '../../components/MDXLayout';
+import { MDXLayout } from '../../components/Layout/MDXLayout';
+import { ArticleMeta, pageListOf, traverseTree } from '../../lib/SSR';
 import { I18nContext } from '../../models/Translation';
-import { ArticleMeta, pageListOf, traverseTree } from '../api/core';
 
 export const getStaticProps = async () => {
   const tree = await Array.fromAsync(pageListOf('/article'));

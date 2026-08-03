@@ -5,7 +5,7 @@ import { ObservedComponent } from 'mobx-react-helper';
 import { BadgeBar, Column, RestTable } from 'mobx-restful-table';
 import { Container } from 'react-bootstrap';
 
-import { PageHead } from '../components/PageHead';
+import { PageHead } from '../components/Layout/PageHead';
 import { repositoryStore } from '../models/Base';
 import { i18n, I18nContext } from '../models/Translation';
 

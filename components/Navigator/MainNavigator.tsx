@@ -3,8 +3,8 @@ import dynamic from 'next/dynamic';
 import { FC, useContext } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
-import { Name } from '../models/configuration';
-import { I18nContext } from '../models/Translation';
+import { Name } from '../../models/configuration';
+import { I18nContext } from '../../models/Translation';
 
 const LightSwitch = dynamic(() => import('./LightSwitch'), { ssr: false }),
   LanguageMenu = dynamic(() => import('./LanguageMenu'), { ssr: false });

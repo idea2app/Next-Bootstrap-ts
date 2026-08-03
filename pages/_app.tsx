@@ -7,8 +7,8 @@ import App, { AppContext } from 'next/app';
 import Head from 'next/head';
 import { Image } from 'react-bootstrap';
 
-import { MainNavigator } from '../components/MainNavigator';
-import { MDXLayout } from '../components/MDXLayout';
+import { MDXLayout } from '../components/Layout/MDXLayout';
+import { MainNavigator } from '../components/Navigator/MainNavigator';
 import { isServer } from '../models/configuration';
 import {
   createI18nStore,
