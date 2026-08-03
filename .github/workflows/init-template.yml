@@ -16,7 +16,7 @@ jobs:
       contents: write
       actions: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: transform Repository variables to lower case
         run: |
@@ -30,6 +30,6 @@ jobs:
             ${{ env.REPOSITORY_OWNER }} ${{ env.REPOSITORY_NAME }}
           git checkout -- .github/workflows/init-template.yml
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: '[fix] replace Repository Name'

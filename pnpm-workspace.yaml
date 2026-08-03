@@ -1,4 +1,11 @@
+packages:
+  - .
+autoInstallPeers: false
+overrides:
+  next: '$next'
 allowBuilds:
-  '@sentry/cli': set this to true or false
-  core-js: set this to true or false
-  sharp: set this to true or false
+  '@sentry/cli': true
+  core-js: true
+  sharp: true
+minimumReleaseAgeExclude:
+  - globals@17.9.0

@@ -1,6 +1,6 @@
 import { autorun, observable } from 'mobx';
-import { setCookie } from 'mobx-i18n';
 import { persist, restore } from 'mobx-restful';
+import { setCookie } from 'web-utility';
 
 import { isServer } from './configuration';
 

@@ -1,4 +1,4 @@
-import Router, { RouterParamContext } from '@koa/router';
+import Router, { RouterContext } from '@koa/router';
 import { Context, Middleware } from 'koa';
 import { HTTPError } from 'koajax';
 import { DataObject } from 'mobx-restful';
@@ -44,7 +44,7 @@ export const safeAPI: Middleware<any, any> = async (context: Context, next) => {
 export const withSafeKoa = <S, C>(...middlewares: Middleware<S, C>[]) =>
   withKoa<S, C>({} as KoaOption, safeAPI, ...middlewares);
 
-export const withSafeKoaRouter = <S, C extends RouterParamContext<S>>(
+export const withSafeKoaRouter = <S, C extends RouterContext<S>>(
   router: Router<S, C>,
   ...middlewares: Middleware<S, C>[]
 ) => withKoaRouter<S, C>({} as KoaOption, router, safeAPI, ...middlewares);
