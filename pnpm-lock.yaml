@@ -8,8 +8,9 @@ overrides:
   next: 16.3.0
 
 patchedDependencies:
-  next@16.3.0: 2656f13eae5e46358e749a46a5d0d1a8e007c34856c8b9c28076813a569204cc
-
+  next@16.3.0:
+    hash: 2656f13eae5e46358e749a46a5d0d1a8e007c34856c8b9c28076813a569204cc
+    path: patches/next@16.3.0.patch
 importers:
 
   .:
