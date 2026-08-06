@@ -1,0 +1,14 @@
+packages:
+  - .
+autoInstallPeers: false
+overrides:
+  next: '$next'
+patchedDependencies:
+  next@16.3.0: patches/next@16.3.0.patch
+allowBuilds:
+  '@sentry/cli': true
+  core-js: true
+  sharp: true
+publicHoistPattern:
+  - '*import-in-the-middle*'
+  - '*require-in-the-middle*'

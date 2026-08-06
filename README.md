@@ -9,12 +9,12 @@
 
 ## Technology stack
 
-- Language: [TypeScript v5][2] + [MDX v3][10]
-- Component engine: [Next.js v15][3]
+- Language: [TypeScript v6][2] + [MDX v3][10]
+- Component engine: [Next.js v16][3]
 - Component suite: [Bootstrap v5][4]
 - PWA framework: [Workbox v6][5]
 - State management: [MobX v6][11]
-- API router: [Koa 2][12]
+- API router: [Koa v3][12]
 - CI / CD: GitHub [Actions][13] + [Vercel][14]
 - Monitor service: [Sentry][15]
 

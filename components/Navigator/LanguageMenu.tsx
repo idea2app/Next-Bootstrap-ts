@@ -2,7 +2,7 @@ import { Option, Select } from 'idea-react';
 import { observer } from 'mobx-react';
 import { FC, useContext } from 'react';
 
-import { I18nContext, LanguageName } from '../models/Translation';
+import { I18nContext, LanguageName } from '../../models/Translation';
 
 const LanguageMenu: FC = observer(() => {
   const i18n = useContext(I18nContext);

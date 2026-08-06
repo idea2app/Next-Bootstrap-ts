@@ -1,8 +1,9 @@
-import Router, { RouterParamContext } from '@koa/router';
+import 'core-js/full/array/from-async';
+
 import { Context, Middleware } from 'koa';
 import { HTTPError } from 'koajax';
 import { DataObject } from 'mobx-restful';
-import { KoaOption, withKoa, withKoaRouter } from 'next-ssr-middleware';
+import { KoaOption, withKoa } from 'next-ssr-middleware';
 import { ProxyAgent, setGlobalDispatcher } from 'undici';
 import { parse } from 'yaml';
 
@@ -44,11 +45,6 @@ export const safeAPI: Middleware<any, any> = async (context: Context, next) => {
 export const withSafeKoa = <S, C>(...middlewares: Middleware<S, C>[]) =>
   withKoa<S, C>({} as KoaOption, safeAPI, ...middlewares);
 
-export const withSafeKoaRouter = <S, C extends RouterParamContext<S>>(
-  router: Router<S, C>,
-  ...middlewares: Middleware<S, C>[]
-) => withKoaRouter<S, C>({} as KoaOption, router, safeAPI, ...middlewares);
-
 export interface ArticleMeta {
   name: string;
   path?: string;
@@ -56,49 +52,56 @@ export interface ArticleMeta {
   subs: ArticleMeta[];
 }
 
-const MDX_pattern = /\.mdx?$/;
+export const MD_pattern = /\.(md|markdown)$/i,
+  MDX_pattern = /\.mdx?$/i;
 
-export async function frontMatterOf(path: string) {
-  const { readFile } = await import('fs/promises');
+export function splitFrontMatter(raw: string) {
+  const [, frontMatter, markdown] =
+    raw.trim().match(/^---[\r\n]([\s\S]+?[\r\n])---[\r\n]([\s\S]*)/) || [];
 
-  const file = await readFile(path, 'utf-8');
+  if (!frontMatter) return { markdown: raw };
 
-  const [, frontMatter] = file.match(/^---[\r\n]([\s\S]+?[\r\n])---/) || [];
+  try {
+    const meta = parse(frontMatter) as DataObject;
 
-  return frontMatter && parse(frontMatter);
+    return { markdown, meta };
+  } catch (error) {
+    console.error(`Error parsing Front Matter:`, error);
+
+    return { markdown };
+  }
 }
 
 export async function* pageListOf(
   path: string,
   prefix = 'pages',
 ): AsyncGenerator<ArticleMeta> {
-  const { readdir } = await import('fs/promises');
+  const { readdir, readFile } = await import('fs/promises');
 
   const list = await readdir(prefix + path, { withFileTypes: true });
 
   for (const node of list) {
-    let { name, path } = node;
+    // eslint-disable-next-line prefer-const
+    let { name, parentPath } = node;
 
     if (name.startsWith('.')) continue;
 
     const isMDX = MDX_pattern.test(name);
 
     name = name.replace(MDX_pattern, '');
-    path = `${path}/${name}`.replace(new RegExp(`^${prefix}`), '');
+    const path = `${parentPath}/${name}`.replace(new RegExp(`^${prefix}`), '');
 
-    if (node.isFile())
-      if (isMDX) {
-        const article: ArticleMeta = { name, path, subs: [] };
-        try {
-          const meta = await frontMatterOf(`${node.path}/${node.name}`);
+    if (node.isFile() && isMDX) {
+      const article: ArticleMeta = { name, path, subs: [] };
 
-          if (meta) article.meta = meta;
-        } catch (error) {
-          console.error(error);
-        }
-        yield article;
-      } else continue;
+      const file = await readFile(`${parentPath}/${node.name}`, 'utf-8');
 
+      const { meta } = splitFrontMatter(file);
+
+      if (meta) article.meta = meta;
+
+      yield article;
+    }
     if (!node.isDirectory()) continue;
 
     const subs = await Array.fromAsync(pageListOf(path, prefix));
@@ -111,12 +114,12 @@ export type TreeNode<K extends string> = {
   [key in K]: TreeNode<K>[];
 };
 
-export function* traverseTree<K extends string>(
-  tree: TreeNode<K>,
+export function* traverseTree<K extends string, N extends TreeNode<K>>(
+  tree: N,
   key: K,
-): Generator<TreeNode<K>> {
+): Generator<N> {
   for (const node of tree[key] || []) {
-    yield node;
-    yield* traverseTree(node, key);
+    yield node as N;
+    yield* traverseTree(node as N, key);
   }
 }

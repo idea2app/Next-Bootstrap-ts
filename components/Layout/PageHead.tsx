@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import type { FC, PropsWithChildren } from 'react';
 
-import { Name, Summary } from '../models/configuration';
+import { Name, Summary } from '../../models/configuration';
 
 export type PageHeadProps = PropsWithChildren<{
   title?: string;

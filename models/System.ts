@@ -1,6 +1,6 @@
-import { observable, reaction } from 'mobx';
-import { setCookie } from 'mobx-i18n';
+import { autorun, observable } from 'mobx';
 import { persist, restore } from 'mobx-restful';
+import { setCookie } from 'web-utility';
 
 import { isServer } from './configuration';
 
@@ -12,25 +12,24 @@ const matchColorScheme = (color: ColorScheme) =>
 export class SystemModel {
   @persist()
   @observable
-  accessor colorScheme: 'light' | 'dark' = matchColorScheme('dark').matches
+  accessor colorScheme: 'light' | 'dark' = matchColorScheme('dark')?.matches
     ? 'dark'
     : 'light';
 
   restored =
     !isServer() &&
     restore(this, 'System').then(() =>
-      matchColorScheme('dark').addEventListener(
+      matchColorScheme('dark')?.addEventListener(
         'change',
         ({ matches }) => (this.colorScheme = matches ? 'dark' : 'light'),
       ),
     );
-  disposer = reaction(
-    () => this.colorScheme,
-    scheme => {
-      document.documentElement.dataset.bsTheme = scheme;
-      setCookie('colorScheme', scheme);
-    },
-  );
+  disposer =
+    !isServer() &&
+    autorun(() => {
+      document.documentElement.dataset.bsTheme = this.colorScheme;
+      setCookie('colorScheme', this.colorScheme);
+    });
 
   toggleColorScheme = () =>
     (this.colorScheme = this.colorScheme === 'dark' ? 'light' : 'dark');

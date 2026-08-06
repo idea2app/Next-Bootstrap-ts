@@ -2,7 +2,7 @@ import * as Sentry from '@sentry/nextjs';
 import type { NextPageContext } from 'next';
 import Error from 'next/error';
 
-import { NotFoundCard } from '../components/NotFoundCard';
+import { NotFoundCard } from '../components/Layout/NotFoundCard';
 import {
   createI18nStore,
   I18nContext,

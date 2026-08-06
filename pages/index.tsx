@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 
 import { GitCard } from '../components/Git/Card';
-import { PageHead } from '../components/PageHead';
+import { PageHead } from '../components/Layout/PageHead';
 import { I18nContext } from '../models/Translation';
 import styles from '../styles/Home.module.less';
 import { framework, mainNav } from './api/home';
