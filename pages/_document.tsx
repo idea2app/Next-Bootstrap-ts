@@ -40,6 +40,10 @@ export default class CustomDocument extends Document<CustomDocumentProps> {
             rel="stylesheet"
             href="https://unpkg.com/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
           />
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/mobx-restful-table@2.6.6/dist/index.css"
+          />
         </Head>
 
         <body>

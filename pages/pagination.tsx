@@ -57,7 +57,6 @@ export default class PaginationPage extends ObservedComponent<{}, typeof i18n> {
         <PageHead title={i18n.t('pagination')} />
 
         <RestTable
-          className="h-100 text-center"
           striped
           hover
           editable
