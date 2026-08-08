@@ -1,6 +1,7 @@
 packages:
   - .
 autoInstallPeers: false
+minimumReleaseAge: 0
 overrides:
   next: '$next'
 patchedDependencies:

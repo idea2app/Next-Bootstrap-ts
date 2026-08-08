@@ -3,13 +3,8 @@ import dynamic from 'next/dynamic';
 import { textJoin } from 'mobx-i18n';
 import { observer } from 'mobx-react';
 import { FC, PropsWithChildren, useContext } from 'react';
-import { Container } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import { CodeBlock, EditorHTML } from 'idea-react';
-
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-typescript';
-import 'prismjs/components/prism-tsx';
 
 import { PageHead } from '../components/Layout/PageHead';
 import { I18nContext } from '../models/Translation';
@@ -32,7 +27,9 @@ const Example: FC<PropsWithChildren<{ title: string }>> = ({
   <>
     <h2 className="mt-3">{title}</h2>
     {children}
-    <CodeBlock language="tsx">{children}</CodeBlock>
+    <Card body className="my-3 bg-light">
+      <CodeBlock language="tsx">{children}</CodeBlock>
+    </Card>
   </>
 );
 
@@ -43,12 +40,7 @@ const ComponentPage = observer(() => {
 
   return (
     <>
-      <PageHead title={title}>
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/prismjs@1.30.0/themes/prism.min.css"
-        />
-      </PageHead>
+      <PageHead title={title} />
 
       <Container>
         <h1 className="my-4 text-center">{title}</h1>
