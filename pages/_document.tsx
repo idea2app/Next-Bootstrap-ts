@@ -1,3 +1,5 @@
+import '@khmyznikov/pwa-install';
+
 import Document, {
   DocumentContext,
   Head,
@@ -42,11 +44,12 @@ export default class CustomDocument extends Document<CustomDocumentProps> {
           />
           <link
             rel="stylesheet"
-            href="https://unpkg.com/mobx-restful-table@2.6.6/dist/index.css"
+            href="https://unpkg.com/mobx-restful-table@2.7.4/dist/index.css"
           />
         </Head>
 
         <body>
+          <pwa-install />
           <Main />
           <NextScript />
         </body>

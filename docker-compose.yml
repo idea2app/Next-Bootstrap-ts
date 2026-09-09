@@ -1,5 +1,9 @@
 version: '3'
 
+volumes:
+  caddy_data:
+  caddy_config:
+
 networks:
   idea2app:
 
@@ -38,6 +42,9 @@ services:
     depends_on:
       - next-bootstrap-ts
     image: caddy
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
     ports:
       - 80:80
       - 443:443
