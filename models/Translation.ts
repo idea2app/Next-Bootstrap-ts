@@ -1,4 +1,5 @@
 import {
+  encodeFunctions,
   loadLanguageMapFrom,
   TranslationMap,
   TranslationModel,
@@ -19,7 +20,7 @@ export type LanguageCode = keyof typeof i18nData;
 
 export interface I18nProps {
   language: LanguageCode;
-  languageMap: typeof zhCN;
+  languageMap: string;
 }
 
 export const createI18nStore = <N extends LanguageCode, K extends string>(
@@ -60,13 +61,20 @@ export const parseSSRContext = <T extends DataObject = DataObject>(
   return cookie;
 };
 
-export const loadSSRLanguage = (context: NextPageContext) => {
+export const loadSSRLanguage = async (context: NextPageContext) => {
   const { headers } = context.req || {},
     { language } = parseSSRContext(context, ['language']);
   const header = {
     ...headers,
     ...(language ? { cookie: `language=${language}` } : {}),
   };
+  const data = (await loadLanguageMapFrom(i18nData, header)) || {
+    language: 'zh-CN',
+    languageMap: zhCN,
+  };
 
-  return loadLanguageMapFrom(i18nData, header);
+  return {
+    ...data,
+    languageMap: JSON.stringify(data.languageMap, encodeFunctions),
+  };
 };

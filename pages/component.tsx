@@ -1,10 +1,9 @@
-// eslint-disable-next-line simple-import-sort/imports
-import dynamic from 'next/dynamic';
+import { CodeBlock, EditorHTML } from 'idea-react';
 import { textJoin } from 'mobx-i18n';
 import { observer } from 'mobx-react';
+import dynamic from 'next/dynamic';
 import { FC, PropsWithChildren, useContext } from 'react';
 import { Card, Container } from 'react-bootstrap';
-import { CodeBlock, EditorHTML } from 'idea-react';
 
 import { PageHead } from '../components/Layout/PageHead';
 import { I18nContext } from '../models/Translation';

@@ -2,7 +2,7 @@
   "name": "Next-Bootstrap-ts scaffold",
   "short_name": "Next.ts demo",
   "start_url": ".",
-  "description": "React project scaffold based on TypeScript, Next.js, Bootstrap & Workbox.",
+  "description": "React project scaffold based on TypeScript, Next.js, Bootstrap & Serwist.",
   "scope": "/",
   "display": "standalone",
   "orientation": "any",

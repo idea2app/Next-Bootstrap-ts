@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/nextjs';
+import { decodeFunctions } from 'mobx-i18n';
 import type { NextPageContext } from 'next';
 import Error from 'next/error';
 
@@ -23,7 +24,10 @@ export default class CustomError extends Error<I18nProps> {
     };
   }
 
-  i18nStore = createI18nStore(this.props.language, this.props.languageMap);
+  i18nStore = createI18nStore(
+    this.props.language,
+    JSON.parse(this.props.languageMap, decodeFunctions),
+  );
 
   render() {
     const { props, i18nStore } = this;
