@@ -1,4 +1,5 @@
 import '../styles/globals.less';
+import '@khmyznikov/pwa-install';
 
 import { SerwistProvider } from '@serwist/next/react';
 import { HTTPError } from 'koajax';
@@ -61,6 +62,8 @@ export default class CustomApp extends App<I18nProps> {
               content="width=device-width, initial-scale=1"
             />
           </Head>
+
+          <pwa-install />
 
           <MainNavigator />
 

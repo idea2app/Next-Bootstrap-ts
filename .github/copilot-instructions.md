@@ -1,6 +1,6 @@
-# ActivityHub PWA - GitHub Copilot Instructions
+# Next-Bootstrap-ts - GitHub Copilot Instructions
 
-ActivityHub PWA is a React Progressive Web Application built with Next.js 15, TypeScript, Bootstrap, and Workbox. It serves as a project scaffold and includes features like markdown article rendering, component editors, pagination tables, and scroll lists.
+Next-Bootstrap-ts is a React Progressive Web Application built with Next.js 15, TypeScript, Bootstrap, and Workbox. It serves as a project scaffold and includes features like markdown article rendering, component editors, pagination tables, and scroll lists.
 
 Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
 

@@ -22,12 +22,12 @@ const { stdout, stderr } = spawnSync('git', ['rev-parse', 'HEAD'], {
 });
 const { GITHUB_SHA, VERCEL_GIT_COMMIT_SHA } = process.env;
 const revision =
-  stdout.trim() || VERCEL_GIT_COMMIT_SHA || GITHUB_SHA || crypto.randomUUID();
+  stdout?.trim() || VERCEL_GIT_COMMIT_SHA || GITHUB_SHA || crypto.randomUUID();
 
-if (!stdout.trim())
+if (!stdout?.trim())
   console.warn(
     `Falling back to random UUID for Serwist revision: ${
-      stderr.trim() || 'Git revision is unavailable'
+      stderr?.trim() || 'Git revision is unavailable'
     }`,
   );
 
