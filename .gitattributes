@@ -1,0 +1,3 @@
+*.patch text eol=lf
+pnpm-lock.yaml text eol=lf
+pnpm-workspace.yaml text eol=lf

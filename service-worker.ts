@@ -2,8 +2,7 @@
 /// <reference lib="webworker" />
 
 import { defaultCache } from '@serwist/next/worker';
-import type { PrecacheEntry, SerwistGlobalConfig } from 'serwist';
-import { Serwist } from 'serwist';
+import { PrecacheEntry, Serwist, SerwistGlobalConfig } from 'serwist';
 
 declare global {
   interface WorkerGlobalScope extends SerwistGlobalConfig {
