@@ -1,9 +1,8 @@
-import { CodeBlock, EditorHTML } from 'idea-react';
+import { Card, CodeBlock, Container, EditorHTML } from 'idea-react';
 import { textJoin } from 'mobx-i18n';
 import { observer } from 'mobx-react';
 import dynamic from 'next/dynamic';
 import { FC, PropsWithChildren, useContext } from 'react';
-import { Card, Container } from 'react-bootstrap';
 
 import { PageHead } from '../components/Layout/PageHead';
 import { I18nContext } from '../models/Translation';

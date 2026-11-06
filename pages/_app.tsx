@@ -2,13 +2,13 @@ import '../styles/globals.less';
 import '@khmyznikov/pwa-install';
 
 import { SerwistProvider } from '@serwist/next/react';
+import { Image } from 'idea-react';
 import { HTTPError } from 'koajax';
 import { configure } from 'mobx';
 import { decodeFunctions } from 'mobx-i18n';
 import { enableStaticRendering, observer } from 'mobx-react';
 import App, { AppContext } from 'next/app';
 import Head from 'next/head';
-import { Image } from 'react-bootstrap';
 
 import { MDXLayout } from '../components/Layout/MDXLayout';
 import { MainNavigator } from '../components/Navigator/MainNavigator';
@@ -67,15 +67,15 @@ export default class CustomApp extends App<I18nProps> {
 
           <MainNavigator />
 
-          {router.route.startsWith('/article/') ? (
-            <MDXLayout title={router.route.split('/').at(-1)}>
+          <div className="mt-10 pt-8 pb-6">
+            {router.route.startsWith('/article/') ? (
+              <MDXLayout title={router.route.split('/').at(-1)}>
+                <Component {...pageProps} />
+              </MDXLayout>
+            ) : (
               <Component {...pageProps} />
-            </MDXLayout>
-          ) : (
-            <div className="mt-5 pt-4">
-              <Component {...pageProps} />
-            </div>
-          )}
+            )}
+          </div>
 
           <footer className="flex-fill d-flex justify-content-center align-items-center border-top py-4">
             <a

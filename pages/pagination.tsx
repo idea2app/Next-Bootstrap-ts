@@ -1,9 +1,9 @@
+import { Container } from 'idea-react';
 import { computed } from 'mobx';
 import { GitRepository } from 'mobx-github';
 import { observer } from 'mobx-react';
 import { ObservedComponent } from 'mobx-react-helper';
 import { BadgeBar, Column, RestTable } from 'mobx-restful-table';
-import { Container } from 'react-bootstrap';
 
 import { PageHead } from '../components/Layout/PageHead';
 import { repositoryStore } from '../models/Base';

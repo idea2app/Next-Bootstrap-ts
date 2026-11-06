@@ -6,10 +6,10 @@ Always reference these instructions first and fallback to search or bash command
 
 ## Critical Requirements
 
-⚠️ **MANDATORY NODE.JS VERSION**: This project requires **Node.js >=22**. The build will fail on older versions with errors like "Array.fromAsync is not a function".
+⚠️ **MANDATORY NODE.JS VERSION**: This project requires **Node.js ^22.22.1 or >=23.2.0**. The build will fail on older versions with errors like "Array.fromAsync is not a function".
 
 - Check Node.js version: `node --version`
-- If using Node.js <22, the build WILL FAIL but development server may still work with warnings
+- If using an unsupported Node.js version, the build WILL FAIL but development server may still work with warnings
 - Development and linting commands work on Node.js 20+ but produce version warnings
 
 ## Working Effectively
@@ -26,13 +26,13 @@ Always reference these instructions first and fallback to search or bash command
 - **Run linting**: `pnpm lint` -- takes 15 seconds. NEVER CANCEL. Set timeout to 2+ minutes.
 - **Run tests**: `pnpm test` -- runs lint-staged + lint, takes 15 seconds. Set timeout to 2+ minutes.
 
-### Build Process (Node.js >=22 ONLY)
+### Build Process (Node.js ^22.22.1 or >=23.2.0 ONLY)
 
-- **Production build**: `pnpm build` -- FAILS on Node.js <22 with "Array.fromAsync is not a function" error
+- **Production build**: `pnpm build` -- FAILS on unsupported Node.js versions with "Array.fromAsync is not a function" error
   - ❌ CONFIRMED: Fails on Node.js 20.x with TypeError during article page prerendering
-  - ✅ Would work on Node.js >=22 (estimated 30s-2 minutes when working)
+  - ✅ Would work on Node.js ^22.22.1 or >=23.2.0 (estimated 30s-2 minutes when working)
   - NEVER CANCEL. Set timeout to 5+ minutes when using proper Node.js version.
-- **Static export**: `pnpm export` -- builds and exports static files (also requires Node.js >=22)
+- **Static export**: `pnpm export` -- builds and exports static files (also requires Node.js ^22.22.1 or >=23.2.0)
 
 ### Docker Commands (May Fail Due to Network Issues)
 
@@ -73,7 +73,7 @@ pnpm test     # Runs linting + staged file checks
 
 - **Symptom**: "Array.fromAsync is not a function" during build
 - **Cause**: Node.js version <22
-- **Solution**: Upgrade to Node.js >=22 OR document that builds don't work in current environment
+- **Solution**: Upgrade to Node.js ^22.22.1 or >=23.2.0 OR document that builds don't work in current environment
 
 ### Docker Build Issues
 
@@ -148,7 +148,7 @@ pnpm --version        # Check pnpm version
 
 ```bash
 pnpm dev             # Start development server (15-30s)
-pnpm build           # Production build (Node.js >=22 only, 30s-2min)
+pnpm build           # Production build (Node.js ^22.22.1 or >=23.2.0 only, 30s-2min)
 pnpm start           # Start production server
 pnpm export          # Build and export static files
 ```
@@ -172,7 +172,7 @@ pnpm container       # Run Docker container
 
 ### "Unsupported engine" Warnings
 
-- **Expected**: Warnings about Node.js version when <22
+- **Expected**: Warnings about unsupported Node.js versions
 - **Impact**: Development works, builds fail
 - **Action**: Document in changes or upgrade Node.js
 

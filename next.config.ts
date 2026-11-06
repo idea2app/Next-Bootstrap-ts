@@ -1,7 +1,7 @@
 import { spawnSync } from 'node:child_process';
 
 import NextMDX from '@next/mdx';
-import { withSentryConfig } from '@sentry/nextjs';
+import { withSentryConfig } from '@sentry/nextjs/config';
 import withSerwistInit from '@serwist/next';
 import CopyPlugin from 'copy-webpack-plugin';
 import { readdirSync, statSync } from 'fs';
@@ -104,7 +104,9 @@ const nextConfig = withSerwist(
 export default isDev || !SENTRY_AUTH_TOKEN
   ? nextConfig
   : withSentryConfig(nextConfig, {
-      autoInstrumentServerFunctions: false,
+      webpack: {
+        autoInstrumentServerFunctions: false,
+      },
       org: SENTRY_ORG,
       project: SENTRY_PROJECT,
       authToken: SENTRY_AUTH_TOKEN,
