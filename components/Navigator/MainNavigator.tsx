@@ -5,12 +5,13 @@ import {
   NavbarBrand,
   NavbarNav,
   NavbarToggler,
+  NavItem,
   NavLink,
 } from 'idea-react';
-import { action, observable } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
+import { ObservedComponent } from 'mobx-react-helper';
 import dynamic from 'next/dynamic';
-import { Component } from 'react';
 
 import { Name } from '../../models/configuration';
 import { i18n, I18nContext } from '../../models/Translation';
@@ -19,10 +20,8 @@ const LightSwitch = dynamic(() => import('./LightSwitch'), { ssr: false }),
   LanguageMenu = dynamic(() => import('./LanguageMenu'), { ssr: false });
 
 @observer
-export class MainNavigator extends Component<{}, typeof i18n> {
+export class MainNavigator extends ObservedComponent<{}, typeof i18n> {
   static contextType = I18nContext;
-
-  declare context: typeof i18n;
 
   @observable accessor open = false;
 
@@ -30,9 +29,24 @@ export class MainNavigator extends Component<{}, typeof i18n> {
 
   hide = action(() => (this.open = false));
 
-  render() {
-    const { t } = this.context;
+  @computed
+  get links() {
+    const { t } = this.observedContext;
 
+    return [
+      { href: '/article', label: t('article') },
+      { href: '/component', label: t('component') },
+      { href: '/pagination', label: t('pagination') },
+      { href: '/scroll-list', label: t('scroll_list') },
+      {
+        target: '_blank',
+        href: 'https://github.com/idea2app/Next-Bootstrap-ts',
+        label: t('source_code'),
+      },
+    ];
+  }
+
+  render() {
     return (
       <Navbar className="fixed-top bg-primary" theme="dark" expand="sm">
         <Container>
@@ -54,26 +68,15 @@ export class MainNavigator extends Component<{}, typeof i18n> {
             onDismiss={this.hide}
           >
             <NavbarNav className="flex-fill">
-              <NavLink href="/article" onClick={this.hide}>
-                {t('article')}
-              </NavLink>
-              <NavLink href="/component" onClick={this.hide}>
-                {t('component')}
-              </NavLink>
-              <NavLink href="/pagination" onClick={this.hide}>
-                {t('pagination')}
-              </NavLink>
-              <NavLink href="/scroll-list" onClick={this.hide}>
-                {t('scroll_list')}
-              </NavLink>
-              <NavLink
-                target="_blank"
-                href="https://github.com/idea2app/Next-Bootstrap-TS"
-                onClick={this.hide}
-              >
-                {t('source_code')}
-              </NavLink>
+              {this.links.map(({ href, label, target }) => (
+                <NavItem key={href}>
+                  <NavLink href={href} target={target} onClick={this.hide}>
+                    {label}
+                  </NavLink>
+                </NavItem>
+              ))}
             </NavbarNav>
+
             <div className="d-flex gap-3">
               <LightSwitch className="my-3 my-sm-0 mx-sm-3" />
               <LanguageMenu />

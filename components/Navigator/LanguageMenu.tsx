@@ -1,4 +1,4 @@
-import { Option, Select } from 'idea-react';
+import { Combobox, ComboboxOption } from 'idea-react';
 import { observer } from 'mobx-react';
 import { FC, useContext } from 'react';
 
@@ -8,16 +8,19 @@ const LanguageMenu: FC = observer(() => {
   const i18n = useContext(I18nContext);
 
   return (
-    <Select
+    <Combobox
+      name="language"
       value={i18n.currentLanguage}
-      onChange={key => i18n.loadLanguages(key as typeof i18n.currentLanguage)}
+      onChange={value =>
+        i18n.loadLanguages(value as typeof i18n.currentLanguage)
+      }
     >
       {Object.entries(LanguageName).map(([key, name]) => (
-        <Option key={key} value={key}>
+        <ComboboxOption key={key} value={key}>
           {name}
-        </Option>
+        </ComboboxOption>
       ))}
-    </Select>
+    </Combobox>
   );
 });
 

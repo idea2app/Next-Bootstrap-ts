@@ -38,7 +38,7 @@ const HomePage = observer(() => {
         </code>
       </p>
 
-      <Row className="g-4" cols={1} sm={2} md={4}>
+      <Row className="g-4" xs={1} sm={2} md={4}>
         {mainNav(i18n).map(({ link, title, summary }) => (
           <Col key={link}>
             <Card
@@ -60,7 +60,7 @@ const HomePage = observer(() => {
 
       <h2 className="my-4 text-center">{t('upstream_projects')}</h2>
 
-      <Row className="g-4" cols={1} sm={2} md={3}>
+      <Row className="g-4" xs={1} sm={2} md={3}>
         {framework.map(
           ({ title, languages, tags, summary, link, repository }) => (
             <Col key={title}>

@@ -62,7 +62,7 @@ export const GitCard: FC<GitCardProps> = observer(
               </Badge>
             ))}
           </nav>
-          <Row as="ul" className="list-unstyled g-4" cols={4}>
+          <Row as="ul" className="list-unstyled g-4" xs={4}>
             {languages.map(language => (
               <Col key={language} as="li">
                 <GitLogo name={language} />
@@ -73,7 +73,12 @@ export const GitCard: FC<GitCardProps> = observer(
         </CardBody>
         <CardFooter className="d-flex justify-content-between align-items-center">
           {homepage && (
-            <Button theme="success" target="_blank" href={homepage}>
+            <Button
+              variant="solid"
+              theme="success"
+              target="_blank"
+              href={homepage}
+            >
               {t('home_page')}
             </Button>
           )}
