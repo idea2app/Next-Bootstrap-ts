@@ -94,7 +94,12 @@ const nextConfig = withSerwist(
     withMDX({
       output: CI ? 'standalone' : undefined,
       pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-      transpilePackages: ['@sentry/browser'],
+      transpilePackages: [
+        '@sentry/browser',
+        'idea-react',
+        'iterable-observer',
+        'web-utility',
+      ],
       webpack,
       rewrites,
     }),
