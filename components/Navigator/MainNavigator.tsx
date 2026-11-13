@@ -1,52 +1,89 @@
+import {
+  Container,
+  Drawer,
+  Navbar,
+  NavbarBrand,
+  NavbarNav,
+  NavbarToggler,
+  NavItem,
+  NavLink,
+} from 'idea-react';
+import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
+import { ObservedComponent } from 'mobx-react-helper';
 import dynamic from 'next/dynamic';
-import { FC, useContext } from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
 
 import { Name } from '../../models/configuration';
-import { I18nContext } from '../../models/Translation';
+import { i18n, I18nContext } from '../../models/Translation';
 
 const LightSwitch = dynamic(() => import('./LightSwitch'), { ssr: false }),
   LanguageMenu = dynamic(() => import('./LanguageMenu'), { ssr: false });
 
-export const MainNavigator: FC = observer(() => {
-  const { t } = useContext(I18nContext);
+@observer
+export class MainNavigator extends ObservedComponent<{}, typeof i18n> {
+  static contextType = I18nContext;
 
-  return (
-    <Navbar
-      bg="primary"
-      variant="dark"
-      fixed="top"
-      expand="sm"
-      collapseOnSelect
-    >
-      <Container>
-        <Navbar.Brand href="/">{Name}</Navbar.Brand>
+  @observable accessor open = false;
 
-        <Navbar.Toggle aria-controls="navbar-inner" />
+  show = action(() => (this.open = true));
 
-        <Navbar.Collapse id="navbar-inner">
-          <Nav className="me-auto">
-            <Nav.Link href="/article">{t('article')}</Nav.Link>
+  hide = action(() => (this.open = false));
 
-            <Nav.Link href="/component">{t('component')}</Nav.Link>
+  @computed
+  get links() {
+    const { t } = this.observedContext;
 
-            <Nav.Link href="/pagination">{t('pagination')}</Nav.Link>
+    return [
+      { href: '/article', label: t('article') },
+      { href: '/component', label: t('component') },
+      { href: '/pagination', label: t('pagination') },
+      { href: '/scroll-list', label: t('scroll_list') },
+      {
+        target: '_blank',
+        href: 'https://github.com/idea2app/Next-Bootstrap-ts',
+        label: t('source_code'),
+      },
+    ];
+  }
 
-            <Nav.Link href="/scroll-list">{t('scroll_list')}</Nav.Link>
+  render() {
+    return (
+      <Navbar className="fixed-top bg-primary" theme="dark" expand="sm">
+        <Container>
+          <NavbarBrand href="/">{Name}</NavbarBrand>
 
-            <Nav.Link
-              target="_blank"
-              href="https://github.com/idea2app/Next-Bootstrap-TS"
-            >
-              {t('source_code')}
-            </Nav.Link>
-          </Nav>
+          <NavbarToggler
+            expanded={this.open}
+            aria-label="Toggle navigation"
+            onClick={this.show}
+          />
 
-          <LightSwitch className="my-3 my-sm-0 mx-sm-3" />
-          <LanguageMenu />
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
-});
+          <Drawer
+            className="w-100"
+            bodyClassName="d-flex"
+            title={Name}
+            responsive="sm"
+            placement="end"
+            open={this.open}
+            onDismiss={this.hide}
+          >
+            <NavbarNav className="flex-fill">
+              {this.links.map(({ href, label, target }) => (
+                <NavItem key={href}>
+                  <NavLink href={href} target={target} onClick={this.hide}>
+                    {label}
+                  </NavLink>
+                </NavItem>
+              ))}
+            </NavbarNav>
+
+            <div className="d-flex gap-3">
+              <LightSwitch className="my-3 my-sm-0 mx-sm-3" />
+              <LanguageMenu />
+            </div>
+          </Drawer>
+        </Container>
+      </Navbar>
+    );
+  }
+}

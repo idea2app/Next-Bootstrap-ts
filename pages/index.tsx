@@ -1,6 +1,14 @@
+import {
+  Card,
+  CardBody,
+  CardText,
+  CardTitle,
+  Col,
+  Container,
+  Row,
+} from 'idea-react';
 import { observer } from 'mobx-react';
 import { useContext } from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
 
 import { GitCard } from '../components/Git/Card';
 import { PageHead } from '../components/Layout/PageHead';
@@ -37,14 +45,14 @@ const HomePage = observer(() => {
               className={`h-100 p-4 rounded-3 border ${styles.card}`}
               tabIndex={-1}
             >
-              <Card.Body>
-                <Card.Title as="h2" className="fs-4 mb-3">
+              <CardBody>
+                <CardTitle as="h2" className="fs-4 mb-3">
                   <a href={link} className="stretched-link">
                     {title} &rarr;
                   </a>
-                </Card.Title>
-                <Card.Text className="fs-5">{summary}</Card.Text>
-              </Card.Body>
+                </CardTitle>
+                <CardText className="fs-5">{summary}</CardText>
+              </CardBody>
             </Card>
           </Col>
         ))}

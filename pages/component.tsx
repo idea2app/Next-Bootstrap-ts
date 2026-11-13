@@ -1,23 +1,16 @@
-import { CodeBlock, EditorHTML } from 'idea-react';
+import { Card, CodeBlock, Container, MarkdownView } from 'idea-react';
 import { textJoin } from 'mobx-i18n';
 import { observer } from 'mobx-react';
 import dynamic from 'next/dynamic';
 import { FC, PropsWithChildren, useContext } from 'react';
-import { Card, Container } from 'react-bootstrap';
 
 import { PageHead } from '../components/Layout/PageHead';
 import { I18nContext } from '../models/Translation';
-import RichEditData from './api/rich-edit.json';
 
 const HTMLEditor = dynamic(() => import('../components/Form/HTMLEditor'), {
   ssr: false,
 });
 HTMLEditor.displayName = 'HTMLEditor';
-
-const BlockEditor = dynamic(() => import('../components/Form/BlockEditor'), {
-  ssr: false,
-});
-BlockEditor.displayName = 'BlockEditor';
 
 const Example: FC<PropsWithChildren<{ title: string }>> = ({
   title,
@@ -48,12 +41,10 @@ const ComponentPage = observer(() => {
           <HTMLEditor defaultValue="Hello, HTML!" onChange={console.info} />
         </Example>
 
-        <Example title="Block Editor">
-          <BlockEditor name="content" defaultValue={RichEditData} />
-        </Example>
-
-        <Example title="Block Editor to HTML">
-          <EditorHTML data={RichEditData} />
+        <Example title="Markdown to HTML">
+          <MarkdownView>
+            {'## Markdown demo\n\nRendered with **Idea React**.'}
+          </MarkdownView>
         </Example>
       </Container>
     </>
