@@ -82,7 +82,7 @@
     "dev": "next dev --webpack",
     "build": "cross-env CI=true  next build --webpack",
     "start": "next start",
-    "lint:all": "eslint --fix .",
+    "lint-all": "eslint --fix .",
     "lint:inspect": "eslint --inspect-config",
     "test": "lint-staged  &&  tsc --noEmit",
     "pack-image": "docker build -t idea2app/next-bootstrap-ts:latest .",
